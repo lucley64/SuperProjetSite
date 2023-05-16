@@ -1,0 +1,87 @@
+header{
+    background-color: rgba(33, 139, 77, 0.719);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+a{
+    text-decoration: none;
+}
+
+h1{
+    text-align: center;
+    color: rgb(229, 231, 228);
+    width: auto;
+    border-radius: 15px;
+    margin: 0px;
+}
+h1 a{
+    color: rgb(229, 231, 228);
+}
+
+.titre{
+    width: fit-content;
+    margin: auto;
+}
+
+.buttonHeader, .buttonHeader::after {
+  transition: all 0.3s;
+}
+.buttonHeader {
+    width: 100%;
+    display: block;
+    height: 1.5cm;
+    background: none;
+    border: 4px solid rgb(229, 231, 228);
+    border-radius: 10px;
+    color: rgb(229, 231, 228);
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px auto;
+    position: relative;
+    text-transform: uppercase;
+}
+/* .buttonHeader span{
+    z-index: 1000;
+} */
+.buttonHeader::before, .buttonHeader::after {
+    background: rgb(229, 231, 228);
+    content: "";
+    position: absolute;
+    
+}
+.buttonHeader:hover {
+    color: rgb(104, 146, 144);
+    z-index: 1;
+}
+.buttonHeader::after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+    z-index: 0;
+    
+}
+.buttonHeader:hover:after {
+    width: 100%;
+    z-index: -1;
+    
+}
+
+.menuHeader table{
+    margin: auto;
+}
+.menuHeader th{
+    width: 5cm;
+}
+.menuHeader{
+    z-index: 1;
+}
+.menuHeader ul{
+    display: flex;
+    flex-direction: row;
+}
+.menuHeader li{
+list-style-type: none;
+}
