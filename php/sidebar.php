@@ -93,7 +93,7 @@
 			top:0;
 			border: 3px solid rgb(0, 0, 0) ;
 			padding: 20px;
-			background-color: rgba(250,250,250,0.5);
+			background-color: rgba(0,250,250,0.5);
 			border-radius: 25px;
 		}
 
