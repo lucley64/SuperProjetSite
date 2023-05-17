@@ -82,13 +82,39 @@
 		.div-background-blanc {
 			background-color: rgb(255, rgb(0, 255, 0), rgb(0, 0, 255));
 		}
+
+
 */
-        #sidebar
+		div[type=notToggled]
+		{
+			width: 0px;
+			height: 0px;
+			left: 0;
+			top:0;
+			border: 3px solid rgb(0, 0, 0) ;
+			padding: 20px;
+			background-color: rgba(250,250,250,0.5);
+			border-radius: 25px;
+		}
+
+		div[type=Toggled]
+		{
+			width: 100px;
+			height: 500px;
+			left: 0;
+			top:0;
+			border: 3px solid rgb(0, 0, 0) ;
+			padding: 20px;
+			background-color: rgba(250,250,250,0.5);
+			border-radius: 25px;
+
+		}
+        #sidebar,#sidebarToggle.active
         {
             display: none;
         }
 
-        #sidebar.active
+        #sidebar.active,#sidebarToggle
         {
             display: block;
         }
@@ -99,7 +125,10 @@
 
 <body>
 
-    <div id="sidebar">
+	<div id="sidebarToggle" type="notToggled">
+		<a href="#">e</a>
+	</div>
+    <div id="sidebar" type="Toggled">
 		<ul>
 			<li><a href="#">messagerie</a></li>
 			<li><a href="#">Modifier profil</a></li>
@@ -110,16 +139,24 @@
 
 
 
-%%%%%%  JAVASCRIPT  %%%%%%
   
   
   	<script>
 		var sidebar = document.getElementById('sidebar');
+		var sidebarToggle = document.getElementById('sidebarToggle');
+
+		sidebarToggle.addEventListener('click',function()
+		{
+			sidebar.classList.toggle('active');
+			sidebarToggle.classList.toggle('active');
+		});
 
 		sidebar.addEventListener('click',function()
 		{
+			sidebarToggle.classList.toggle('active');
 			sidebar.classList.toggle('active');
 		});
+
 
 
 
