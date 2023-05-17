@@ -16,7 +16,7 @@
                     <th><a href="" ><button class="buttonHeader">Archives</button></a></th>
                     <th><a href=""><button class="buttonHeader">IA Pau</button></a></th>
                     <th><a href=""><button class="buttonHeader">Tah la barre de recherche</button></a></th>
-                    <th><a href="php_client/client.php"><button class="buttonHeader">Se connecter</button></a></th>
+                    <th><a href="php/connexion.php"><button class="buttonHeader">Se connecter</button></a></th>
                 </tr>
             </table>
         </div>

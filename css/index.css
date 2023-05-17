@@ -1,0 +1,27 @@
+.principal{
+    border: solid;
+    position: absolute;
+    left: 22%;
+    top: 15%;
+    width: 75%;
+    height: 80%;
+}
+
+.principal h2{
+    text-align: center;
+    font-size: 30px;
+
+}
+.principal p{
+    margin-left:1em ;
+    font-size: 20px;
+
+}
+
+body{
+    background-color: rgb(191, 210, 188);
+    font-family: "Sofia", sans-serif;
+    text-shadow: 3px 3px 3px #ababab;
+
+
+}
