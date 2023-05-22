@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $cnx = mysqli_connect("localhost","dkd","dkdAchilleMael0","datas");
+    $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
     if (mysqli_connect_errno($cnx)) {
         echo mysqli_connect_error();
     };
@@ -49,7 +49,7 @@
     }
 
     $req = "INSERT INTO Users VALUES (\"" . $username . "\",\"" . $pwd . "\",\"" . $userType . "\",\"" . $lastName . "\",\"" . $firstName . "\",\"" . $workplace . "\",\"" . $studyLvl . "\",\"" . $phone . "\",\"" . $mail . "\", NULL, NULL);";
-    $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
+    $result = mysqli_query($cnx,$req) or die('Pb req : '.mysqli_error($cnx));
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
     header('Location: connexion.php');
