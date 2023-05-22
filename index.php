@@ -28,8 +28,5 @@
         <img src="src/imageAccueil.jpeg" alt="image accueil">
     </div>
     </div>
-    <div id="popupconnexion"><?php include("php/connexion.php");?></div>
-    <div id="popupcreation"><?php include("php/creation.php");?></div>
-
 </body>
 </html>
