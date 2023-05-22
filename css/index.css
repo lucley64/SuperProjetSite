@@ -1,10 +1,10 @@
 .principal{
-    border: solid;
     position: absolute;
-    left: 22%;
-    top: 15%;
+    left: 12.5%;
+    top: 13%;
     width: 75%;
-    height: 80%;
+    bottom: 0%;
+    background-color: rgba(255, 255, 255, 0.85); 
 }
 
 .principal h2{
@@ -21,14 +21,20 @@
 
 body{
     background-color: rgb(191, 210, 188);
-    font-family: "Sofia", sans-serif;
-    text-shadow: 3px 3px 3px #ababab;
 }
 
 .principal img{
     width: 50%;
     position: absolute;
     left: 25%;
-
 }
+
+body {
+    background-image: url('../img/pyrenees.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+}
+
 

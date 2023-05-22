@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/header.js"></script>
     <link rel="stylesheet" href="../css/loginsignin.css">
     <title>Se connecter</title>
 </head>
 
 <body>
     <div id="container">
-        <button onclick="window.location='./'" class="nav">Retour</button>
+        <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <h1>Se login</h1>
-        <form action="" method="post" id="login">
+        <form action="verifConnexion.php" method="post" id="login">
             <label for="login"> Login
-                <input <?php if (isset($loginErr)) {
+                <input required placeholder="Entrez votre nom d'utilisateur" <?php if (isset($loginErr)) {
                             echo $invalid;
                         }
                         if (isset($login)) {
@@ -26,7 +27,7 @@
                                     } ?>" aria-live="polite"><?php echo $loginErr ?></span>
             </label>
             <label for="mdp"> Mot de passe
-                <input <?php if (isset($passwordErr)) {
+                <input required placeholder="Entrez votre mot de passe" <?php if (isset($passwordErr)) {
                             echo $invalid;
                         }
                         if (isset($password)) {
@@ -36,9 +37,11 @@
                                         echo "active";
                                     } ?>" aria-live="polite"><?php echo $passwordErr ?></span>
             </label>
+
+            <input type="submit" value="Se connecter">
         </form>
-        <button class="val" onclick="login()">Login</button>
-        <span class="no">Pas de compte ? <a href="./signin.php">Creer un compte</a></span>
+
+        <span class="no">Pas de compte ? <a href="creation.php">Creer un compte</a></span>
     </div>
 </body>
 

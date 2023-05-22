@@ -5,16 +5,26 @@
 
 div#container {
     position: fixed;
-    left: 5%;
-    right: 5%;
-    top: 5%;
-    bottom: 5%;
+    width: 50%;
+    height: auto;
+    left: 25%;
+    top: 25%;
     padding: 1%;
     overflow: auto;
-    background: #52d8fa69;
+    background: #52d8fac8;
     border-radius: 25px;
 }
-
+div#containerCreation {
+    position: fixed;
+    width: 50%;
+    height: auto;
+    left: 25%;
+    top: 10%;
+    padding: 1%;
+    overflow: auto;
+    background: #52d8fac8;
+    border-radius: 25px;
+}
 input {
     margin: 8px 0 -2px 0;
     display: inline-block;
@@ -81,5 +91,13 @@ button.nav {
     color: black;
     /* border-radius: 5px;
     margin: 2px; */
+}
+
+body{
+    background-image: url("../src/pyrenees.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
 }
 
