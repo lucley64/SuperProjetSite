@@ -109,3 +109,7 @@ h1 a{
 .flou{
     filter: blur(5px);
 }
+
+#loupe{
+    width: 10%;
+}
