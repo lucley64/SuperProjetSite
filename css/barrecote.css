@@ -2,8 +2,7 @@
 .barrecote{
     
     position: absolute;
-    top: 16%;    
-    width: 16%;
+    width: 13%;
     height: 100%;
     background-color: none;
     z-index: 9999;
@@ -26,7 +25,7 @@
         background-position: 0% 0%;
     }
     100%{
-        background-color: rgb(43, 155, 123);
+        background-color: rgb(44, 44, 44);
         background-position: 100% 0%;
     }
 }
