@@ -28,5 +28,6 @@
         <img src="src/imageAccueil.jpeg" alt="image accueil">
     </div>
     </div>
+    <div id="popup"><?php include("php/connexion.php");?></div>
 </body>
 </html>
