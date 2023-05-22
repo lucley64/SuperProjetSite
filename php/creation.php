@@ -15,27 +15,27 @@
         <h1>Créer un compte</h1>
         <form action="php/verifCreation.php" method="post" id="creation">
             <label for="username"> Username
-                <input type="text " name="username" id="username">
+                <input type="text " name="username" id="username" placeholder="Entrez votre nom d'utilisateur" required>
             </label>
 
             <label for="pwd"> Password
-                <input type="text " name="pwd" id="pwd">
+                <input type="text " name="pwd" id="pwd" placeholder="Entrez votre mot de passe"required>
             </label>
 
             <label for="firstName"> First Name
-                <input type="text " name="firstName" id="firstName">
+                <input type="text " name="firstName" id="firstName" placeholder="Entrez votre prénom"required>
             </label>
 
             <label for="lastName"> Last Name
-                <input type="text " name="lastName" id="lastName">
+                <input type="text " name="lastName" id="lastName" placeholder="Entrez votre nom de famille"required>
             </label>
 
             <label for="workplace"> School
-                <input type="text " name="workplace" id="workplace">
+                <input type="text " name="workplace" id="workplace" placeholder="Entrez le nom de votre école"required>
             </label>
 
             <label for="studyLvl"> Level of Studies
-            <select name="studyLvl" id="studyLvl">
+            <select name="studyLvl" id="studyLvl"required>
                 <option value="none">Veuillez choisir une année d'études</option>
                 <option value="l1">L1</option>
                 <option value="l2">L2</option>
@@ -47,11 +47,11 @@
             </label>
 
             <label for="phone"> Phone number
-                <input type="text " name="phone" id="phone">
+                <input type="text " name="phone" id="phone" placeholder="Entrez votre numéro de téléphone"required>
             </label>
             
             <label for="mail"> Email adress
-                <input type="email" name="mail" id="mail">
+                <input type="email" name="mail" id="mail" placeholder="Entrez votre adresse email"required>
             </label>
 
             <input type="submit" value="Créer le compte">

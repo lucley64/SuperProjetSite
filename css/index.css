@@ -29,6 +29,14 @@ body{
     width: 50%;
     position: absolute;
     left: 25%;
-
 }
+
+body {
+    background-image: url('../img/pyrenees.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+}
+
 
