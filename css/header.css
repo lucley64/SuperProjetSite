@@ -34,13 +34,14 @@ h1 a{
 .buttonHeader {
     width: 100%;
     display: block;
-    height: 1.5cm;
+    height: 1.5cm; 
     background: none;
     border: 4px solid rgb(255, 240, 220);
     border-radius: 10px;
     color: rgb(255, 240, 220);
     font-weight: bold;
     top: 11%;
+    left: -30%;
     position: relative;
     text-transform: uppercase;
     font-size: 20px;
@@ -106,8 +107,4 @@ h1 a{
 
 .flou{
     filter: blur(5px);
-}
-
-#loupe{
-    width: 10%;
 }

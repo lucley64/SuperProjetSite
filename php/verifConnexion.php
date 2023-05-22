@@ -21,8 +21,6 @@
         $_SESSION['mail'] = $data[8];
         $_SESSION['startDate'] = $data[9];
         $_SESSION['endDate'] = $data[10];
-
-        
     }
     header('Location: ../index.php');
 ?>
