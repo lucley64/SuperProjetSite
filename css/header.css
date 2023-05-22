@@ -25,10 +25,12 @@ h1 a{
     width: fit-content;
     margin: auto;
 }
-
+ 
 .buttonHeader, .buttonHeader::after {
   transition: all 0.3s;
 }
+
+
 .buttonHeader {
     width: 100%;
     display: block;
@@ -38,11 +40,18 @@ h1 a{
     border-radius: 10px;
     color: rgb(255, 240, 220);
     font-weight: bold;
-    margin: 10px auto;
+    top: 11%;
+    left: -30%;
     position: relative;
     text-transform: uppercase;
     font-size: 20px;
 }
+
+
+.buttonHeader.connexion {
+    left: 140%;
+}
+
 /* .buttonHeader span{
     z-index: 1000;
 } */   
@@ -82,7 +91,7 @@ h1 a{
     flex-direction: row;
 }
 .menuHeader li{
-list-style-type: none;
+    list-style-type: none;
 }
 
 #popupconnexion, #popupcreation{
