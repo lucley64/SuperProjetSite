@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $cnx = mysqli_connect("localhost","dkd","dkdAchilleMael0","datas");
+    $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
     if (mysqli_connect_errno($cnx)) {
         echo mysqli_connect_error();
     };
@@ -22,8 +22,7 @@
         $_SESSION['startDate'] = $data[9];
         $_SESSION['endDate'] = $data[10];
 
-        header('Location: ../index.php');
-    }else {
-        header('Location: connexion.php');
+        
     }
+    header('Location: ../index.php');
 ?>
