@@ -14,7 +14,7 @@
                     <th><a href=""><button class="buttonHeader ">Actualités</button></a></th>
                     <th><a href=""><button class="buttonHeader">À venir</button></a></th>
                     <th><a href="" ><button class="buttonHeader">Archives</button></a></th>
-                    <th><a href=""><button class="buttonHeader">IA Pau</button></a></th>
+                    <th><a href="https://iapau.org/"><button class="buttonHeader">IA Pau</button></a></th>
                     <th><a href=""><button class="buttonHeader">Tah la barre de recherche</button></a></th>
                     <th><a href="php/connexion.php"><button class="buttonHeader">Se connecter</button></a></th>
                 </tr>

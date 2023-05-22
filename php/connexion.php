@@ -11,9 +11,9 @@
 
 <body>
     <div id="container">
-        <button onclick="window.location='./'" class="nav">Retour</button>
+        <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <h1>Se login</h1>
-        <form action="" method="post" id="login">
+        <form action="verifConnexion.php" method="post" id="login">
             <label for="login"> Login
                 <input <?php if (isset($loginErr)) {
                             echo $invalid;
@@ -38,7 +38,7 @@
             </label>
         </form>
         <button class="val" onclick="login()">Login</button>
-        <span class="no">Pas de compte ? <a href="./signin.php">Creer un compte</a></span>
+        <span class="no">Pas de compte ? <a href="./creation.php">Creer un compte</a></span>
     </div>
 </body>
 

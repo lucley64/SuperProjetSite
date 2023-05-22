@@ -1,0 +1,41 @@
+
+.barrecote{
+    
+    position: absolute;
+    top: 15%;    
+    width: 20%;
+    height: 80%;
+    background-color: none;
+}
+
+.barrecote li{
+    display: none;
+}
+.barrecote:hover li{
+    display: block;
+}
+.barrecote:hover {
+    animation: couleurFond 0.2s linear forwards;
+}
+
+@keyframes couleurFond{
+    0%{
+        background-color: none;
+        background-position: 0% 0%;
+    }
+    100%{
+        background-color: rgba(24, 130, 59, 0.392);
+        background-position: 100% 0%;
+    }
+}
+
+.barrecote ul li{
+    padding-top:1em ;
+    padding-bottom:1em ;
+}
+
+.barrecote img{
+    width: 4em;
+    
+}
+
