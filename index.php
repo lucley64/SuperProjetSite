@@ -21,7 +21,7 @@
         include "php/header.php";
         include "php/barrecote.php";
     ?>
-    <div class="principal">
+    <div id="principal" class="principal">
         <h2>Participez à des challenges avec l'association IA Pau</h2>
 
         <p>L'association IA Pau propose de nombreux data challenges et data battles, inscrivez vous sur "That'a challenge" pour pouvoir gérer tous vos projets et en découvrir d'autres. Avec des prix allant jusqu'a 3 000€!</p>
