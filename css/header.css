@@ -48,8 +48,9 @@ h1 a{
 }
 
 
-.buttonHeader.connexion {
-    left: 120%;
+.connexion {
+    position: absolute ;
+    left: 85%;
 }
 
 /* .buttonHeader span{
