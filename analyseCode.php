@@ -13,6 +13,5 @@
         </label>
         <button>Analyser code</button>
     </form>
-    
 </body>
 </html>
