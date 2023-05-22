@@ -31,21 +31,21 @@
     }
 
     if (isset($_POST["studyLvl"])) {
-        $userType = $_POST["studyLvl"];
+        $studyLvl = $_POST["studyLvl"];
     } else {
-        $userType = "NULL";
+        $studyLvl = "NULL";
     }
 
     if (isset($_POST["phone"])) {
-        $userType = $_POST["phone"];
+        $phone = $_POST["phone"];
     } else {
-        $userType = "NULL";
+        $phone = "NULL";
     }
 
     if (isset($_POST["mail"])) {
-        $userType = $_POST["mail"];
+        $mail = $_POST["mail"];
     } else {
-        $userType = "NULL";
+        $mail = "NULL";
     }
 
     $req = "INSERT INTO Users VALUES (\"" . $username . "\",\"" . $pwd . "\",\"" . $userType . "\",\"" . $lastName . "\",\"" . $firstName . "\",\"" . $workplace . "\",\"" . $studyLvl . "\",\"" . $phone . "\",\"" . $mail . "\", NULL, NULL);";
