@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="css/header.css">
+    <script type="text/javascript" src="js/header.js"></script>
 </head>
 
 <body>
@@ -16,7 +17,8 @@
                     <th><a href="" ><button class="buttonHeader">Archives</button></a></th>
                     <th><a href="https://iapau.org/"><button class="buttonHeader">IA Pau</button></a></th>
                     <th><a href=""><button class="buttonHeader">Tah la barre de recherche</button></a></th>
-                    <th><a href="php/connexion.php"><button class="buttonHeader">Se connecter</button></a></th>
+                    <th><a onclick="popup()"><button class="buttonHeader">Se connecter</button></a></th>
+                
                 </tr>
             </table>
         </div>

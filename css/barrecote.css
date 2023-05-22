@@ -15,7 +15,7 @@
     display: block;
 }
 .barrecote:hover {
-    animation: couleurFond 0.2s linear forwards;
+    animation: couleurFond 0.4s linear forwards;
 }
 
 @keyframes couleurFond{

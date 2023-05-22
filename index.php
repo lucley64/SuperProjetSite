@@ -14,6 +14,9 @@
     <title>That'a Challenge</title>
 </head>
 <body>
+    <div id="contenupage">
+
+    
     <?php
         include "php/header.php";
         include "php/barrecote.php";
@@ -24,5 +27,7 @@
         <p>L'association IA Pau propose de nombreux data challenges et data battles, inscrivez vous sur "That'a challenge" pour pouvoir gérer tous vos projets et en découvrir d'autres. Avec des prix allant jusqu'a 3 000€!</p>
         <img src="src/imageAccueil.jpeg" alt="image accueil">
     </div>
+    </div>
+    <div id="popup"><?php include("php/connexion.php");?></div>
 </body>
 </html>
