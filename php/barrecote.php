@@ -5,9 +5,8 @@
         <div class=barrecote onmouseover="afficherbarre()" onmouseout="cacherbarre()">
             <img src="src/liste.png" alt="iconeliste">
             <ul id="liste">
-                <li>Menu 1</li>
-                <li>menu 2</li>
-                <li>menu 3</li>
+                <li><a href="">Projet</a></li>
+                <li><a href="">Modifier profil</a></li>
             </ul>
 
 
