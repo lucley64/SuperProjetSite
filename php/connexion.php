@@ -15,7 +15,7 @@
         <h1>Se login</h1>
         <form action="verifConnexion.php" method="post" id="login">
             <label for="login"> Login
-                <input <?php if (isset($loginErr)) {
+                <input required placeholder="Entrez votre nom d'utilisateur" <?php if (isset($loginErr)) {
                             echo $invalid;
                         }
                         if (isset($login)) {
@@ -26,7 +26,7 @@
                                     } ?>" aria-live="polite"><?php echo $loginErr ?></span>
             </label>
             <label for="mdp"> Mot de passe
-                <input <?php if (isset($passwordErr)) {
+                <input required placeholder="Entrez votre mot de passe" <?php if (isset($passwordErr)) {
                             echo $invalid;
                         }
                         if (isset($password)) {
