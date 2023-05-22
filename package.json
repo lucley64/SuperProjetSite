@@ -1,5 +1,13 @@
 {
   "dependencies": {
-    "d3": "^7.8.4"
+    "chart.js": "^4.3.0",
+    "octokit": "^2.0.16",
+    "rollup": "^3.23.0",
+    "ts-loader": "^9.4.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-typescript": "^11.1.1",
+    "tslib": "^2.5.2"
   }
 }
