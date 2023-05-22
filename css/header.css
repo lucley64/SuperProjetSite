@@ -25,7 +25,7 @@ h1 a{
     width: fit-content;
     margin: auto;
 }
- 
+
 .buttonHeader, .buttonHeader::after {
   transition: all 0.3s;
 }
@@ -48,8 +48,8 @@ h1 a{
 
 
 .connexion {
-    position: absolute  ;
-    left: 120%;
+    position: absolute ;
+    left: 85%;
 }
 
 /* .buttonHeader span{
@@ -85,8 +85,6 @@ h1 a{
 }
 .menuHeader{
     z-index: 1;
-    position: absolute;
-    left: 16%;
 }
 .menuHeader ul{
     display: flex;
