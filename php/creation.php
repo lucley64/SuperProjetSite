@@ -11,7 +11,7 @@
 
 <body>
     <div id="containerCreation">
-        <button onclick="window.location='./index.php'" class="nav">Retour</button>
+        <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <h1>Créer un compte</h1>
         <form action="verifCreation.php" method="post" id="creation">
             <label for="username"> Username
