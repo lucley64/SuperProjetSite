@@ -1,5 +1,5 @@
 <?php
-/*ce script est a executer une fois avec sudo pour creer un utilisateur thatachallenge avec tous les droits*/
+/*ce script est à executer une fois avec sudo pour creer un utilisateur thatachallenge avec tous les droits*/
 $mysqli = new mysqli("localhost", "root", "");
 if ($mysqli->connect_error) {
     die("La connexion a échoué : " . $mysqli->connect_error);

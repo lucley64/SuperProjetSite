@@ -17,7 +17,7 @@
                     <th><a href="" ><button class="buttonHeader">Archives</button></a></th>
                     <th><a href="https://iapau.org/"><button class="buttonHeader">IA Pau</button></a></th>
                     <th><a href=""><button class="buttonHeader">Tah la barre de recherche</button></a></th>
-                    <th><a onclick="popup()"><button class="buttonHeader">Se connecter</button></a></th>
+                    <th><a onclick="popupconnexion()"><button class="buttonHeader">Se connecter</button></a></th>
                 
                 </tr>
             </table>

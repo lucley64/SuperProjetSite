@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/header.js"></script>
     <link rel="stylesheet" href="../css/loginsignin.css">
     <title>Se connecter</title>
 </head>
@@ -38,7 +39,7 @@
             </label>
         </form>
         <button class="val" onclick="login()">Login</button>
-        <span class="no">Pas de compte ? <a href="./creation.php">Creer un compte</a></span>
+        <span class="no">Pas de compte ? <a onclick="popupcreation()">Creer un compte</a></span>
     </div>
 </body>
 

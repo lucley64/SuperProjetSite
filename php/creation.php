@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <div id="container">
-        <button onclick="window.location='/connexion.php'" class="nav">Retour</button>
+    <div id="containerCreation">
+        <button onclick="window.location='./index.php'" class="nav">Retour</button>
         <h1>Créer un compte</h1>
-        <form action="verifCreation.php" method="post" id="creation">
+        <form action="php/verifCreation.php" method="post" id="creation">
             <label for="username"> Username
                 <input type="text " name="username" id="username">
             </label>
