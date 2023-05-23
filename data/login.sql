@@ -15,3 +15,12 @@ CREATE TABLE IF NOT EXISTS Users (
   startDate DATE,
   endDate DATE
 );
+
+
+CREATE TABLE IF NOT EXISTS Messages(
+  idMessage int PRIMARY KEY AUTO_INCREMENT,
+  expediteur VARCHAR(30),
+  destinataire VARCHAR(30),
+  messages TEXT,
+  sujet TEXT
+);
