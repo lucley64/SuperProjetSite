@@ -37,8 +37,10 @@
                                         echo "active";
                                     } ?>" aria-live="polite"><?php echo $passwordErr ?></span>
             </label>
+
+            <input type="submit" value="Se connecter">
         </form>
-        <button class="val" onclick="login()">Login</button>
+
         <span class="no">Pas de compte ? <a href="creation.php">Creer un compte</a></span>
     </div>
 </body>

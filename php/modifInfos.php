@@ -8,17 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/loginsignin.css">
-    <title>Création de compte</title>
+    <title>Modification de compte</title>
 </head>
 
 <body>
-    <div id="container">
+    <div id="containerCreation" style="top:5%;">
         <button onclick="window.location='/php/connexion.php'" class="nav">Retour</button>
-        <h1>Créer un compte</h1>
-        <form action="verifCreation.php" method="post" id="creation">
-            <label for="username"> Username
-                <input type="text " name="username" id="username" placeholder="Entrez votre nom d'utilisateur">
-            </label>
+        <h1>Modifier le compte</h1>
+        <form action="verifModif.php" method="post" id="creation">
 
             <label for="pwd"> Password
                 <input type="text " name="pwd" id="pwd" placeholder="Entrez votre mot de passe">
@@ -57,13 +54,13 @@
             </label>
 
             <?php
-                if ($userType == "manager") {
+                if ($_SESSION["userType"] == "student") {
                     echo ('
                     <label for="starDate"> Start Date
-                    <input type="text " name="startDate" id="startDate" placeholder="Entrez la date de départ">
+                    <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ">
                     </label>
-                    <label for="endDate"> ENd Date
-                    <input type="text " name="endDate" id="endDate" placeholder="Entrez la date de fin">
+                    <label for="endDate"> End Date
+                    <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin">
                     </label>
                     ');
                 }
