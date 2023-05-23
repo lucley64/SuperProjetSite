@@ -30,7 +30,7 @@
         $workplace = "NULL";
     }
 
-    if (isset($_POST["studyLvl"])) {
+    if ($_POST["studyLvl"]!="none") { 
         $studyLvl = $_POST["studyLvl"];
     } else {
         $studyLvl = "NULL";
@@ -47,10 +47,29 @@
     } else {
         $mail = "NULL";
     }
+    /*cas ou la personne n'a pas rentré de niveau d'études*/
+    if ($studyLvl=="NULL"){
+        $_SESSION["ErreurCreation"]=true;
+        header('Location: creation.php');
+    }else{
+        $_SESSION["ErreurCreation"]=false;
+        $req = "INSERT INTO Users VALUES (\"" . $username . "\",\"" . $pwd . "\",\"" . $userType . "\",\"" . $lastName . "\",\"" . $firstName . "\",\"" . $workplace . "\",\"" . $studyLvl . "\",\"" . $phone . "\",\"" . $mail . "\", NULL, NULL);";
+        $_SESSION["utilisateurDouble"]=false;
+        $result = mysqli_query($cnx,$req) or ErreurRequete(mysqli_errno($cnx));
+        $data = mysqli_fetch_row($result);
+        mysqli_close($cnx);
+        header('Location: connexion.php');
 
-    $req = "INSERT INTO Users VALUES (\"" . $username . "\",\"" . $pwd . "\",\"" . $userType . "\",\"" . $lastName . "\",\"" . $firstName . "\",\"" . $workplace . "\",\"" . $studyLvl . "\",\"" . $phone . "\",\"" . $mail . "\", NULL, NULL);";
-    $result = mysqli_query($cnx,$req) or die('Pb req : '.mysqli_error($cnx));
-    $data = mysqli_fetch_row($result);
-    mysqli_close($cnx);
-    header('Location: connexion.php');
+    }
+
+    function ErreurRequete($numeroErreur){
+        /*cas ou l'utilisateur rentré existe déjà*/
+        if($numeroErreur==1062){
+            $_SESSION["utilisateurDouble"]=true;
+            header('Location: creation.php');
+        }
+        /*a faire: cas ou une valeur a trop de caractères*/
+
+    }
+    
 ?>

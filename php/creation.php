@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php session_start();?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,12 +16,17 @@
         <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <h1>Créer un compte</h1>
         <form action="verifCreation.php" method="post" id="creation">
+        <?php
+             if($_SESSION["utilisateurDouble"]){
+                echo "<p style='color:red'>Cet utilisateur existe déjà </p>" ;
+            }
+                ?>
             <label for="username"> Username
                 <input type="text " name="username" id="username" placeholder="Entrez votre nom d'utilisateur" required>
             </label>
 
             <label for="pwd"> Password
-                <input type="text " name="pwd" id="pwd" placeholder="Entrez votre mot de passe"required>
+                <input type="password" name="pwd" id="pwd" placeholder="Entrez votre mot de passe"required>
             </label>
 
             <label for="firstName"> First Name
@@ -34,6 +41,12 @@
                 <input type="text " name="workplace" id="workplace" placeholder="Entrez le nom de votre école"required>
             </label>
 
+            <?php
+             if($_SESSION["ErreurCreation"]){
+                echo "<p style='color:red'>Veuillez entrer votre année d'étude </p>" ;
+            }
+                ?>
+
             <label for="studyLvl"> Level of Studies
             <select name="studyLvl" id="studyLvl"required>
                 <option value="none">Veuillez choisir une année d'études</option>
@@ -47,7 +60,7 @@
             </label>
 
             <label for="phone"> Phone number
-                <input type="text " name="phone" id="phone" placeholder="Entrez votre numéro de téléphone"required>
+                <input type="number" name="phone" id="phone" placeholder="Entrez votre numéro de téléphone"required>
             </label>
             
             <label for="mail"> Email adress

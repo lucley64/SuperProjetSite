@@ -41,7 +41,7 @@
             <input type="submit" value="Se connecter">
         </form>
 
-        <span class="no">Pas de compte ? <a href="creation.php">Creer un compte</a></span>
+        <span class="no" style="margin-top:1em;">Pas de compte ? <a href="creation.php">Creer un compte</a></span>
     </div>
 </body>
 
