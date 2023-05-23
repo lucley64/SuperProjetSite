@@ -1,0 +1,48 @@
+body {
+    background-image: url('/img/pyrenees.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+}
+
+#Contenu,#DemanderConnexion{
+    position: absolute;
+    width: 75%;
+    left: 18%;
+    top: 15%;
+    height: 75%;
+    background-color: rgba(255, 255, 255, 0.85); 
+
+}
+#DemanderConnexion{
+    display: none;
+}
+#DemanderConnexion h1{
+    
+    position: absolute;
+    top: 35%;
+    left:25%;
+    color: black;
+}
+#barreGauche{
+    background-color: rgba(128, 128, 128, 0.864);
+    height: 100%;
+    width: 25%;
+}
+#barreGauche ul,#barreGauche li{
+    margin-top: 0;
+    padding-top: 5%;
+}
+
+#barreDroite{
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    top: 0%;
+    left: 25%;
+}
+
+.messageRecu{
+    margin: 5%;
+}
