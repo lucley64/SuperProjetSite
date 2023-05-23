@@ -14,13 +14,15 @@
         $_SESSION['pwd'] = $data[1];
         $_SESSION['userType'] = $data[2];
         $_SESSION['lastName'] = $data[3];
-        $_SESSION['firstname'] = $data[4];
+        $_SESSION['firstName'] = $data[4];
         $_SESSION['workplace'] = $data[5];
         $_SESSION['studyLvl'] = $data[6];
         $_SESSION['phone'] = $data[7];
         $_SESSION['mail'] = $data[8];
         $_SESSION['startDate'] = $data[9];
         $_SESSION['endDate'] = $data[10];
+        $_SESSION['connected'] = true;
+        $_SESSION['wrongPwd'] = false;
     }
     header('Location: ../index.php');
 ?>
