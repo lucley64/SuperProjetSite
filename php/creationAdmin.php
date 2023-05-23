@@ -10,6 +10,13 @@
 </head>
 
 <body>
+
+<?php
+    session_start();
+    if ($_SESSION['userType'] != "admin") {
+        header('Location : index.php');
+    }
+?>
     <div id="container">
         <button onclick="window.location='/connexion.php'" class="nav">Retour</button>
         <h1>Créer un compte</h1>

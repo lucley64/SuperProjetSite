@@ -23,6 +23,9 @@
         $_SESSION['endDate'] = $data[10];
         $_SESSION['connected'] = true;
         $_SESSION['wrongPwd'] = false;
+        header('Location: ../index.php');
+    } else {
+        $_SESSION['wrongPwd'] = true;
+        header('Location: connexion.php');
     }
-    header('Location: ../index.php');
 ?>
