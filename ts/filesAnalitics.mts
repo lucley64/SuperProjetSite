@@ -57,7 +57,7 @@ function repoUrlToAPIUrl(repoUrl: string): {
     uname: string,
     repo: string
 } | null {
-    const match = repoUrl.match(/https:\/\/github\.com\/([a-zA-Z0-9-]*)\/([a-zA-Z0-9-]*)$/);
+    const match = RegExp(/https:\/\/github\.com\/([a-zA-Z0-9-]*)\/([a-zA-Z0-9-]*)$/).exec(repoUrl);
     if (match) {
         return {
             uname: match[1],
