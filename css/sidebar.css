@@ -72,7 +72,6 @@ input[type=bouton]
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  //vos styles pour les boutons ici
 }
 
 .barrecote a{
