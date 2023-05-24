@@ -26,11 +26,11 @@
         <form action="verifModif.php" method="post" id="creation">
 
             <label for="oldpwd"> Old Password
-                <input type="text " name="oldpwd" id="oldpwd" placeholder="Entrez votre ancien mot de passe">
+                <input type="password" name="oldpwd" id="oldpwd" placeholder="Entrez votre ancien mot de passe">
             </label>
 
             <label for="pwd"> New Password
-                <input type="text " name="pwd" id="pwd" placeholder="Entrez votre nouveau mot de passe">
+                <input type="password" name="pwd" id="pwd" placeholder="Entrez votre nouveau mot de passe">
             </label>
 
             <label for="firstName"> First Name

@@ -9,7 +9,7 @@
     $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
     $data = mysqli_fetch_row($result);
 
-    if ($_POST["oldpwd"] != $data[0]) {
+    if ($_SESSION['userType'] != "admin" && $_POST["oldpwd"] != $data[0]) {
         $_SESSION['wrongPwd'] = true;
         header('Location: modifInfos.php');
     } else {

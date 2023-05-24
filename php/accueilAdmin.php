@@ -19,7 +19,7 @@
     
     <?php
         include "php/header.php";
-        include "php/sidebar.php";
+        include "php/barrecote.php";
     ?>
     <div id="principal" class="principal">
         <h2>Participez à des challenges avec l'association IA Pau</h2>
