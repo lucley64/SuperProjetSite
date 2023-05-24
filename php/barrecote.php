@@ -9,7 +9,5 @@
                 <li><a href="">Modifier profil</a></li>
             </ul>
 
-
-
         </div>
 </body>

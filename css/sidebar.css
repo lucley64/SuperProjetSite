@@ -1,0 +1,93 @@
+div[type=notToggled]
+{
+    width: 10px;
+    height: 10px;
+    left: 10px;
+    top: 10px;
+    border: 3 px solid rgb(0, 0, 0) ;
+    padding: 20px;
+    background-color: rgba(250,250,250,0.85);
+    border-radius: 25px;
+}
+
+div[type=Toggled]
+{   
+
+    position: absolute;
+    width: 13%;
+    height: 100%;
+    background-color: rgb(48, 48, 48);
+    z-index: 9999;
+    text-transform: uppercase;
+    font-weight: bold;
+
+}
+
+
+
+.buttonHeader.side {
+    width: 100%;
+    display: block;
+    height: 1.5cm; 
+    background: none;
+    border: 4px solid rgb(255, 240, 220);
+    border-radius: 10px;
+    color: rgb(255, 240, 220);
+    font-weight: bold;
+    top: 11%;
+    left: -30%;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+
+
+#sidebar,#sidebarToggle.active
+{
+    display: none;
+}
+
+#sidebar.active,#sidebarToggle
+{
+    display: block;
+}
+
+input[type=bouton]
+{
+    border-radius: 25px;
+    width: 100px;
+    height: 20px;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+
+}
+
+.barrecote ul li{
+    padding-top:1em ;
+    padding-bottom:1em ;
+}
+
+.barrecote a{
+    color: white;
+}
+
+.barrecote img{
+    width: 4em; 
+    position:absolute;
+    left: -0.35em;
+    top: -0.45em;   
+}
+
+.barrecote{
+    
+    position: absolute;
+    width: 13%;
+    height: 100%;
+    background-color: none;
+    z-index: 9999;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+

@@ -6,18 +6,21 @@
     height: 100%;
     background-color: none;
     z-index: 9999;
-
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .barrecote li{
     display: none;
 }
+
 .barrecote:hover li{
     display: block;
 }
 .barrecote:hover {
     animation: couleurFond 0.4s linear forwards;
 }
+
 
 @keyframes couleurFond{
     0%{
@@ -26,6 +29,7 @@
     }
     100%{
         background-color: rgb(44, 44, 44);
+        color: rgb(255, 240, 220);
         background-position: 100% 0%;
     }
 }
@@ -35,8 +39,11 @@
     padding-bottom:1em ;
 }
 
+.barrecote a{
+    color: white;
+}
+
 .barrecote img{
     width: 4em;
-    
 }
 
