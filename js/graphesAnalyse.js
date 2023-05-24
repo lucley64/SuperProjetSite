@@ -32,11 +32,31 @@ window.onload = () => {
     form.onsubmit = (ev) => {
         const inp = form.elements.namedItem("repo-url");
         const repoUrl = inp.value;
-        getRepoPy(repoUrl).then(repo => console.log(repo));
+        analyseGithubRepo(repoUrl);
         ev.preventDefault();
     };
     document.body.appendChild(remainingText);
 };
+function analyseGithubRepo(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const repo = yield getRepoPy(url);
+        const data = [];
+        for (const fileData of repo) {
+            data.push(yield getLinesData(fileData));
+        }
+        console.log(data);
+    });
+}
+function getLinesData(fileData) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const blob = yield fetch(fileData.download_url).then(rep => rep.blob());
+        const file = new File([blob], fileData.name);
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("user", "codeAnalyzer");
+        return yield fetch("http://localhost:8001/lines", { method: "POST", body: formData }).then(rep => rep.json());
+    });
+}
 function repoUrlToAPIUrl(repoUrl) {
     const match = repoUrl.match(/https:\/\/github\.com\/([a-zA-Z0-9-]*)\/([a-zA-Z0-9-]*)$/);
     if (match) {

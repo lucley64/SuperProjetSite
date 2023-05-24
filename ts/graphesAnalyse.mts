@@ -20,6 +20,17 @@ interface Failed {
     message: string
 }
 
+interface LineData {
+    functionData: {
+        count: number,
+        maxLines: number,
+        avgLines: number,
+        minLines: number,
+        linesPerFunction: Array<number>
+    },
+    lines: number
+}
+
 let remaining = "0";
 const remainingText = document.createElement("p");
 
@@ -31,12 +42,35 @@ window.onload = () => {
         const inp = form.elements.namedItem("repo-url") as HTMLInputElement;
         const repoUrl = inp.value;
 
-        getRepoPy(repoUrl).then(repo => console.log(repo));
+        analyseGithubRepo(repoUrl);
 
         ev.preventDefault();
     }
 
     document.body.appendChild(remainingText);
+}
+
+async function analyseGithubRepo(url: string) {
+    const repo = await getRepoPy(url);
+    const data: LineData[] = [];
+    for (const fileData of repo) {
+        data.push(await getLinesData(fileData));
+    }
+
+    
+
+
+    console.log(data);
+    
+}
+
+async function getLinesData(fileData: RepoFile): Promise<LineData> {
+    const blob = await fetch(fileData.download_url).then(rep=>rep.blob());
+    const file = new File([blob], fileData.name);
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("user", "codeAnalyzer");
+    return await fetch("http://localhost:8001/lines", {method: "POST", body: formData}).then(rep=>rep.json());
 }
 
 function repoUrlToAPIUrl(repoUrl: string): {
