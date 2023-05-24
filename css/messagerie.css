@@ -53,3 +53,7 @@ h1{
 #barreGauche ul li:hover{
     cursor:pointer;
 }
+
+label,input{
+    margin: 5%;
+}
