@@ -28,7 +28,6 @@
                         };
                         $req = "SELECT username FROM Users;";
                         $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-                        $data = mysqli_fetch_row($result);
                         mysqli_close($cnx);
                         while ($data = mysqli_fetch_row($result)) {
                             echo('
@@ -39,19 +38,30 @@
                 </select>
             </label>
             <input type="submit" value="Supprimer l'utilisateur">
-            <input type="submit" value="Supprimer l'utilisateur">
         </form>
-        <button value="Modifier l'utilisateur"></button>
-        <button value="Supprimer l'utilisateur"></button>
-        
-    </div>
+
+        <form action="modifInfosAdmin.php" method="post" id="suppression">
+            <label for="username"> Modifier un utilisateur
+                <select name="username" id="username"required>
+                    <option value="none">Veuillez choisir un utilisateur</option>
+                    <?php
+                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
+                        if (mysqli_connect_errno($cnx)) {
+                            echo mysqli_connect_error();
+                        };
+                        $req = "SELECT username FROM Users;";
+                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
+                        mysqli_close($cnx);
+                        while ($data = mysqli_fetch_row($result)) {
+                            echo('
+                            <option value="' . $data[0] .'">' . $data[0] . '</option>
+                            ');
+                        }
+                    ?>
+                </select>
+            </label>
+            <input type="submit" value="Modifier l'utilisateur">
+        </form>
 </body>
 
 </html>
-
-<!-- 
-nb fonctions
-nb lignes/fonctions
-nb max min moy lignes
-nb lignes total
-nb occurences mot clef -->
