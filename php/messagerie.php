@@ -32,16 +32,16 @@
 
 
         <div id="barreDroite">
-            <div class="elt" id="envoyermail"style="display:none"><h1>Envoyer mail</h1>
+            <div class="elt" id="envoyermail"style="display:block"><h1>Envoyer mail</h1>
             <form action="messagerie/envoyermail.php" method="POST">
                 <label>Destinataire </label>
-                <input type="email" value="" placeholder="Destinataire"> <br>
+                <input name="destinataire" type="email" value="" placeholder="Destinataire"> <br>
                 <label>Sujet</label>
-                <input id=sujet type="text" value="" placeholder="Sujet"> <br>
+                <input id=sujet type="text" name="sujet" placeholder="Sujet"> <br>
                 <label>Message</label>
-                <input id=message type="text" value="" placeholder="Veuillez ecrire votre message"> <br>
+                <input id=message type="text" name="message"value="" placeholder="Veuillez ecrire votre message"> <br>
 
-                <input type="submit" name="Envoyer" id="Envoyer">
+                <input type="submit" id="Envoyer">
 
             </form>
 
@@ -51,7 +51,7 @@
 
 
 
-            <div class= "elt" id=messagesRecus style="display:block"> <h1>Messages reçus:</h1><br><div id="ContenuMessages"></div></div>
+            <div class= "elt" id=messagesRecus style="display:none"> <h1>Messages reçus:</h1><br><div id="ContenuMessages"></div></div>
             <div class= "elt" id="messagesEnvoyes" style="display:none"><h1>Messages envoyés:</h1><br><div id="ContenuMessagesEnvoyes"></div></div>
         </div>  
     </div>

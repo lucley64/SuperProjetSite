@@ -54,6 +54,13 @@ h1{
     cursor:pointer;
 }
 
-label,input{
-    margin: 5%;
+
+input{
+    margin-top: 3em;
+}
+
+
+#message{
+    width: 75%;
+    height: 25em;
 }

@@ -1,3 +1,5 @@
+
+<?php session_start();?>
 <head>
     <link rel="stylesheet" href="css/header.css">
     <script type="text/javascript" src="/js/header.js"></script>
@@ -17,7 +19,7 @@
                     <th><a href="/php/messagerie.php" ><button class="buttonHeader">Messagerie</button></a></th>
                     <th><a href="https://iapau.org/"><button class="buttonHeader">IA Pau</button></a></th>
                     <th onmouseover="changerLoupe()" onmouseout="remettreLoupe()"><a href=""> <button class="buttonHeader"><img src="/src/loupe2.png" alt="loupe" id="loupe"> ______</button></a></th>
-                    <?php session_start();
+                    <?php 
                     if (!$_SESSION['connected']) {
                         echo('<th class="connexion"><a href="/php/connexion.php"><button class="buttonHeader">Connexion</button></a></th>');
                     } else {
