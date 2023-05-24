@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+    session_start();
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="../js/header.js"></script>
+    <script type="text/javascript" src="../js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/loginsignin.css">
     <title>Se connecter</title>
 </head>
 
-<body>
+<body <?php
+        if ($_SESSION['wrongPwd']) {
+            $_SESSION['wrongPwd'] = false;
+            echo('onload="alertWrongIdentification();"');
+        }
+        if ($_SESSION['connected']) {
+            session_destroy();
+            header('Location: ../index.php');
+        }
+    ?>>
     <div id="container">
         <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <h1>Se login</h1>
@@ -41,7 +54,7 @@
             <input type="submit" value="Se connecter">
         </form>
 
-        <span class="no">Pas de compte ? <a href="creation.php">Creer un compte</a></span>
+        <span class="no" style="margin-top:1em;">Pas de compte ? <a href="creation.php">Creer un compte</a></span>
     </div>
 </body>
 
