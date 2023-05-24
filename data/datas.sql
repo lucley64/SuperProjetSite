@@ -16,6 +16,10 @@ CREATE TABLE IF NOT EXISTS Users (
   endDate DATE
 );
 
+INSERT INTO Users VALUES ("admin", "admin", "admin", "admin", "admin", "admin", NULL, "admin", "admin@admin.com", NULL, NULL);
+INSERT INTO Users VALUES ("a", "a", "student", "a", "a", "a", "l1", "a", "a@a.com", NULL, NULL);
+
+
 CREATE TABLE IF NOT EXISTS Messages(
   idMessage int PRIMARY KEY AUTO_INCREMENT,
   expediteur VARCHAR(30),
@@ -27,7 +31,7 @@ CREATE TABLE IF NOT EXISTS DataChallenges (
   challengeName VARCHAR(50) PRIMARY KEY,
   startDate DATE,
   endDate DATE
-)
+);
 
 CREATE TABLE IF NOT EXISTS ProjectData (
   id INT PRIMARY KEY,
@@ -36,10 +40,11 @@ CREATE TABLE IF NOT EXISTS ProjectData (
   img TEXT,
   phone TEXT,
   mail TEXT
-)
+);
 
 CREATE TABLE IF NOT EXISTS Ressources (
   id INT PRIMARY KEY,
+  content TEXT,
   dataChallengeId VARCHAR(50),
   projectId INT
-)
+);
