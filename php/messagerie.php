@@ -16,7 +16,7 @@
 
     
     ?>
-    
+        
     <div id=DemanderConnexion><h1>Veuillez vous connecter pour acceder à cette fonctionnalité</h1></div>
     <div id=Contenu>
         <div id="barreGauche">
