@@ -15,8 +15,6 @@
         </label>
         <input type="submit" value="Valider">
     </form>
-    <canvas id="myChart"></canvas>
-
 </body>
 
 </html>
