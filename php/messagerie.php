@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/messagerie.css">
     
+
     <title>Messagerie</title>
 </head>
 <body>
@@ -21,17 +22,17 @@
     <div id=Contenu>
         <div id="barreGauche">
             <ul>
-                <li>Messages reçus</li>
-                <li>Messages envoyés</li>
+                <li onclick="document.getElementById('messagesRecus').style.display='block';document.getElementById('messagesEnvoyes').style.display='none';">Messages reçus</li>
+                <li onclick="document.getElementById('messagesRecus').style.display='none';document.getElementById('messagesEnvoyes').style.display='block';">Messages envoyés</li>
             </ul>
         </div>
 
 
 
         <div id="barreDroite">
-            <div id=messagesRecus style="display:block"> <?php include("messagerie/messagesrecus.php");?></div>
-            <div id="messagesEnvoyes" style="display:none"></div>
-        </div>
+            <div id=messagesRecus style="display:block"> <h1>Messages reçus:</h1><br><div id="ContenuMessages"></div></div>
+            <div id="messagesEnvoyes" style="display:none"><h1>Messages envoyés:</h1><br><div id="ContenuMessagesEnvoyes"></div></div>
+        </div>  
     </div>
     <?php
     if(!isset($_SESSION["username"])){
@@ -42,4 +43,9 @@
     }?>
     
 </body>
+<script type="text/javascript" src="/js/messagerie.js">
+    
+
+</script>
+
 </html>
