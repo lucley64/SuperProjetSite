@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" href="css/header.css">
-    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="/js/header.js"></script>
 </head>
 
 <body>

@@ -42,7 +42,18 @@ body {
     top: 0%;
     left: 25%;
 }
+h1{
+    color: black;
+}
 
 .messageRecu{
+    margin: 5%;
+}
+
+#barreGauche ul li:hover{
+    cursor:pointer;
+}
+
+label,input{
     margin: 5%;
 }
