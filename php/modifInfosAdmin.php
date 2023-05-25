@@ -50,10 +50,6 @@
                 <input type="hidden" name="oldpwd" id="oldpwd" placeholder="Entrez l'identifiant du compte à modifier"  value="<?php echo('' . $_POST['username'] . '') ?>">
             </label>
 
-            <label for="oldpwd"> Old Password
-                <input type="password " name="oldpwd" id="oldpwd" placeholder="Entrez votre ancien mot de passe">
-            </label>
-
             <label for="pwd"> New Password
                 <input type="password " name="pwd" id="pwd" placeholder="Entrez votre nouveau mot de passe">
             </label>

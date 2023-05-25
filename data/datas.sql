@@ -16,8 +16,6 @@ CREATE TABLE IF NOT EXISTS Users (
   endDate DATE
 );
 
-INSERT INTO Users VALUES ("admin", "admin", "admin", "admin", "admin", "admin", NULL, "admin", "admin@admin.com", NULL, NULL);
-INSERT INTO Users VALUES ("a", "a", "student", "a", "a", "a", "l1", "a", "a@a.com", NULL, NULL);
 
 
 CREATE TABLE IF NOT EXISTS Messages(
@@ -34,17 +32,19 @@ CREATE TABLE IF NOT EXISTS DataChallenges (
 );
 
 CREATE TABLE IF NOT EXISTS ProjectData (
-  id INT PRIMARY KEY,
+  nom VARCHAR(50) PRIMARY KEY,
   dataChallengeId VARCHAR(50),
   details TEXT,
   img TEXT,
   phone TEXT,
-  mail TEXT
+  mail TEXT,
+  FOREIGN KEY fk_dataChallenge(challengeName) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Ressources (
-  id INT PRIMARY KEY,
-  content TEXT,
+  content VARCHAR(300) PRIMARY KEY,
   dataChallengeId VARCHAR(50),
-  projectId INT
+  projectId VARCHAR(50),
+  FOREIGN KEY fk_dataChallenge(challengeName) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE,
+  FOREIGN KEY fk_project(nom) REFERENCES ProjectData(nom) ON DELETE CASCADE
 );
