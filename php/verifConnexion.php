@@ -9,7 +9,7 @@
     $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
-    if ($data[1] == $_POST['mdp']) {
+    if (password_verify($_POST['mdp'],$data[1])) {
         $_SESSION['username'] = $data[0];
         $_SESSION['pwd'] = $data[1];
         $_SESSION['userType'] = $data[2];
