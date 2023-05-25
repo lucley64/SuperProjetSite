@@ -19,4 +19,3 @@ $resultat=$mysqli->query("GRANT ALL PRIVILEGES ON *.* TO 'thatachallenge'@'local
 if (!$resultat) {
     echo "Erreur l'utilisateur crée n'a pas eu tout les droits" . $mysqli->error;
 }
-?>
