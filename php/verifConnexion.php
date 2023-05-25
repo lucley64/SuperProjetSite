@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-    if (mysqli_connect_errno($cnx)) {
+    $cnx = mysqli_connect("localhost", "thatachallenge","thatachallenge123","datas");
+    if (mysqli_connect_errno()) {
         echo mysqli_connect_error();
-    };
+    }
 
     $req = "SELECT * FROM Users WHERE username=\"" . $_POST['login']. "\";";
     $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
@@ -28,4 +28,3 @@
         $_SESSION['wrongPwd'] = true;
         header('Location: connexion.php');
     }
-?>
