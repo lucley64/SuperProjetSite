@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "ES6",
+        "target": "ES6",
+        "jsx": "preserve",
+        "outDir": "js/",
+        "moduleResolution": "nodenext",
+        "baseUrl": ".",
+        "paths": {
+            "https://esm.sh/octokit@2.0.16": [
+                "octokit"
+            ]
+        }
+    },
+    "include": [
+        "ts/**/*"
+    ],
+    
+    
+}
