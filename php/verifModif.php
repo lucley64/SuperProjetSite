@@ -9,12 +9,14 @@
     $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
     $data = mysqli_fetch_row($result);
 
-    if ($_SESSION['userType'] != "admin" && $_POST["oldpwd"] != $data[0]) {
+    if ($_SESSION['userType'] != "admin" && !(password_verify($_POST["oldpwd"],$data[0]))) {
         $_SESSION['wrongPwd'] = true;
+        print_r("mauvais mdp".$_POST["pwd"]);  
         header('Location: modifInfos.php');
     } else {
         $username = "\"" . $_SESSION["username"] . "\"";
-        $pwd = "\"" . $_POST["pwd"] . "\"";
+        $pwd = "\"" .password_hash($_POST["pwd"],PASSWORD_DEFAULT) . "\"";
+        print_r($pwd);
         if ($_POST["userType"] != "") {
             $userType = "\"" . $_POST["userType"] . "\"";
         } else {

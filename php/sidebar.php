@@ -5,22 +5,22 @@
   	<meta charset="UTF-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   	<title>Document</title>
-  	<style>
+    <link rel="stylesheet" href="/css/sidebar.css">
+	<link rel="stylesheet" hreg="/css/header.css">
 
-	</style>
 
 </head>
 
 <body>
 
-	<div id="sidebarToggle" type="notToggled">
-		
+	<div id="sidebarToggle" type="notToggled" class="barrecote">
+		<img src="src/liste.png" alt="iconeliste">
 	</div>
-    <div id="sidebar" type="Toggled">
+    <div id="sidebar" type="Toggled" class="barrecote">
 		<ul>
-			<li><input type="bouton" value="créer un compte"></li>
-			<li>Modifier profil</li>
-			<li>Projet</li>
+			<li><input type="bouton" value="Projet" class="buttonHeader side"></li>
+			<li><input type="bouton" value="Messagerie" class="buttonHeader side"></li>
+			<li><input type="bouton" value="Modifier profil" class="buttonHeader side"></li>
 		</ul>
 	</div>
 
@@ -36,12 +36,10 @@
 		sidebarToggle.addEventListener('click',function()
 		{
 			sidebar.classList.toggle('active');
-			sidebarToggle.classList.toggle('active');
 		});
 
 		sidebar.addEventListener('click',function()
 		{
-			sidebarToggle.classList.toggle('active');
 			sidebar.classList.toggle('active');
 		});
 

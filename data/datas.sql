@@ -16,8 +16,6 @@ CREATE TABLE IF NOT EXISTS Users (
   endDate DATE
 );
 
-INSERT INTO Users VALUES ("admin", "admin", "admin", "admin", "admin", "admin", NULL, "admin", "admin@admin.com", NULL, NULL);
-INSERT INTO Users VALUES ("a", "a", "student", "a", "a", "a", "l1", "a", "a@a.com", NULL, NULL);
 
 
 CREATE TABLE IF NOT EXISTS Messages(

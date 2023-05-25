@@ -7,7 +7,7 @@ if ($mysqli->connect_error) {
     die("La connexion a échoué: " . $mysqli->connect_error);
 }
 
-$requete="Select * from Messages where destinataire='" .$_SESSION["mail"]."'";
+$requete="Select * from Messages where expediteur='" .$_SESSION["mail"]."'";
 $res=$mysqli->query($requete);
 /*on stoque dans le tableau donnees les resultat de la requete*/
 if($res==true){
@@ -20,8 +20,8 @@ if($res==true){
 }
 foreach ($donnees as $cle=>$val){
     $id=$donnees[$cle]['idMessage'];
-    echo "<div class='messageRecu' id='message".$id."'>";
-    echo $cle.": Message de ".$donnees[$cle]["expediteur"]."   Sujet:".$donnees[$cle]["sujet"]. " Message:".$donnees[$cle]["messages"];
+    echo "<div class='messageEnvoye' id='messageEnvoye".$id."'>";
+    echo $cle.": Message envoyé à ".$donnees[$cle]["destinataire"]."   Sujet:".$donnees[$cle]["sujet"]. " Message:".$donnees[$cle]["messages"];
     echo "</div>";
 }
 ?>

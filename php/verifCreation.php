@@ -6,6 +6,7 @@
     };
     $username = $_POST["username"];
     $pwd = $_POST["pwd"];
+    $hashpwd=password_hash($pwd,PASSWORD_DEFAULT);
     if (isset($_POST["userType"])) {
         $userType = $_POST["userType"];
     } else {
@@ -53,7 +54,7 @@
         header('Location: creation.php');
     }else{
         $_SESSION["ErreurCreation"]=false;
-        $req = "INSERT INTO Users VALUES (\"" . $username . "\",\"" . $pwd . "\",\"" . $userType . "\",\"" . $lastName . "\",\"" . $firstName . "\",\"" . $workplace . "\",\"" . $studyLvl . "\",\"" . $phone . "\",\"" . $mail . "\", NULL, NULL);";
+        $req = "INSERT INTO Users VALUES (\"" . $username . "\",\"" . $hashpwd . "\",\"" . $userType . "\",\"" . $lastName . "\",\"" . $firstName . "\",\"" . $workplace . "\",\"" . $studyLvl . "\",\"" . $phone . "\",\"" . $mail . "\", NULL, NULL);";
         $_SESSION["utilisateurDouble"]=false;
         $result = mysqli_query($cnx,$req) or ErreurRequete(mysqli_errno($cnx));
         $data = mysqli_fetch_row($result);
