@@ -15,7 +15,7 @@ ini_set('display_errors', 'On'); ?>
         <div class="menuHeader">
             <table>
                 <tr>
-                    <th><a href="/index.php"><button class="buttonHeader">Accueil</button></a></th>
+                    <th><a href="./index.php"><button class="buttonHeader">Accueil</button></a></th>
                     <th><a href=""><button class="buttonHeader ">Actualités</button></a></th>
                     <th><a href=""><button class="buttonHeader">À venir</button></a></th>
                     <th><a href="/php/messagerie.php"><button class="buttonHeader">Messagerie</button></a></th>

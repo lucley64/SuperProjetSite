@@ -2,10 +2,10 @@
 <html lang="fr">
 
 <head>
-  	<meta charset="UTF-8" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  	<title>Document</title>
-    <link rel="stylesheet" href="/css/sidebar.css">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<link rel="stylesheet" href="/css/sidebar.css">
 	<link rel="stylesheet" hreg="/css/header.css">
 
 
@@ -16,20 +16,41 @@
 	<div id="sidebarToggle" type="notToggled" class="barrecote">
 		<img src="src/liste.png" alt="iconeliste">
 	</div>
-    <div id="sidebar" type="Toggled" class="barrecote">
+	<div id="sidebar" type="Toggled" class="barrecote">
 		<ul>
-			<li><input type="bouton" value="Projet" class="buttonHeader side"></li>
-			<li><input type="bouton" value="Messagerie" class="buttonHeader side"></li>
-			<li><input type="bouton" value="Modifier profil" class="buttonHeader side"></li>
+			<li>
+			<table>
+				<tr>
+				<th><img src="/src/graphique.png" type="icone"></th>
+				<th><input type="bouton" value="Projet" class="buttonHeader side"></th>
+				</tr>
+			</table>
+			</li>
+			<li>				
+			<table>
+			<tr>
+				<th><img src="/src/messagerie.png" type="icone"></th>
+				<th><input type="bouton" value="Messagerie" class="buttonHeader side"></th>
+				</tr>
+			</table>
+			</li>
+			<li>
+			<table>
+			<tr>
+				<th><img src="/src/modifier_profil.png" type="icone"></th>
+				<th><input type="bouton" value="Modifier profil" class="buttonHeader side"></th>
+			</tr>
+			</table>
+			</li>
 		</ul>
 	</div>
 
 
 
 
-  
-  
-  	<script>
+
+
+	<script>
 		var sidebar = document.getElementById('sidebar');
 		var sidebarToggle = document.getElementById('sidebarToggle');
 
@@ -46,7 +67,7 @@
 
 
 
-  	</script>
+	</script>
 </body>
 
 </html>
