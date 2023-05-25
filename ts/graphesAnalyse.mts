@@ -6,20 +6,12 @@ let dataFull: LineData[] | null = null;
 let chartLines: Chart | null;
 let chartFines: Chart | null;
 const lpfileBtn = document.createElement("button");
-lpfileBtn.onclick = () => {
-    chartLines?.setDatasetVisibility(0, true);
-    chartLines?.setDatasetVisibility(1, false);
-    chartLines?.update('none');
-}
+lpfileBtn.onclick = () => pieLine(dataFull, canvas);
 lpfileBtn.innerText = "Afficher le nombre de ligne par fichier";
 lpfileBtn.hidden = true;
 
 const fnPfileBtn = document.createElement("button");
-fnPfileBtn.onclick = () => {
-    chartLines?.setDatasetVisibility(0, false);
-    chartLines?.setDatasetVisibility(1, true);
-    chartLines?.update('none');
-};
+fnPfileBtn.onclick = () => pieFile(dataFull, canvas);
 fnPfileBtn.innerText = "Afficher le nombre de fonction par fichier";
 fnPfileBtn.hidden = true;
 
@@ -38,6 +30,9 @@ fileSelect.onchange = (ev) => {
     pieFunctionDataPerFile(fileData, canvasFile);
 }
 
+const maxText = document.createElement("p");
+const avgText = document.createElement("p");
+const minText = document.createElement("p");
 
 
 window.onload = () => {
@@ -51,8 +46,6 @@ window.onload = () => {
         analyseGithubRepo(repoUrl)
             .then(rep => dataFull = rep)
             .then(rep => {
-                generatePieFile(rep, canvas);
-
                 rep.forEach(rep => {
                     if (rep.functionData.count > 0) {
                         const opt = document.createElement("option");
@@ -74,24 +67,21 @@ window.onload = () => {
     document.body.appendChild(canvas);
     document.body.appendChild(fileSelect);
     document.body.appendChild(canvasFile);
+    document.body.appendChild(maxText);
+    document.body.appendChild(avgText);
+    document.body.appendChild(minText);
 }
 
-function generatePieFile(dataFiles: LineData[], canvas: HTMLCanvasElement) {
+function pieFile(dataFiles: LineData[], canvas: HTMLCanvasElement) {
+    chartLines?.destroy();
     const names = dataFiles.flatMap(d => d.fileName);
     const fn = dataFiles.flatMap(d => d.functionData.count);
-    const lines = dataFiles.flatMap(d => d.lines);
 
     const data: ChartData = {
         labels: names,
         datasets: [{
             label: "function per file",
             data: fn,
-            hidden: true
-        },
-        {
-            label: "lines per file",
-            data: lines,
-            hidden: true
         }]
     };
 
@@ -100,10 +90,35 @@ function generatePieFile(dataFiles: LineData[], canvas: HTMLCanvasElement) {
         data: data
     });
 }
+
+function pieLine(dataFiles: LineData[], canvas: HTMLCanvasElement) {
+    chartLines?.destroy();
+    const names = dataFiles.flatMap(d => d.fileName);
+    const lines = dataFiles.flatMap(d => d.lines);
+
+    const data: ChartData = {
+        labels: names,
+        datasets: [
+        {
+            label: "lines per file",
+            data: lines,
+        }]
+    };
+
+    chartLines = new Chart(canvas, {
+        type: "pie",
+        data: data
+    });
+}
+
 function pieFunctionDataPerFile(fileData: LineData, canvas: HTMLCanvasElement) {
     chartFines?.destroy();
     const names = [...fileData.functionData.linesPerFunction.keys()];
     const lines = fileData.functionData.linesPerFunction
+
+    maxText.innerText = `${fileData.functionData.maxLines}`;
+    avgText.innerText = `${fileData.functionData.avgLines}`;
+    minText.innerText = `${fileData.functionData.minLines}`;
 
     const data: ChartData = {
         labels: names,
