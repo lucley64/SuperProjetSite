@@ -7,11 +7,11 @@ if (mysqli_connect_errno()) {
 
 $ressourceName = "\"" . $_POST["ressourceProject"] . "\"";
 
-if ($_POST["fichier"] != "") {
-    $fichier = "\"" . $_POST["fichier"] . "\"";
-} else {
-    $fichier = "NULL";
-}
+    if ($_FILES["fichier"] != "") {
+        $fichier = "\"" . $_FILES["fichier"] . "\"";
+    } else {
+        $fichier = "NULL";
+    }
 
 if ($_SESSION["temporary"] != "") {
     $dataChallengeId = "\"" . $_SESSION["temporary"] . "\"";

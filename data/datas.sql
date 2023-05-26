@@ -16,7 +16,11 @@ CREATE TABLE IF NOT EXISTS Users (
   endDate DATE
 );
 
-
+CREATE TABLE Equipe(
+	id INT PRIMARY KEY,
+	nom VARCHAR(30),
+  
+);
 
 CREATE TABLE IF NOT EXISTS Messages(
   idMessage int PRIMARY KEY AUTO_INCREMENT,

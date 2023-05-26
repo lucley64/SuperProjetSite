@@ -5,8 +5,8 @@ if (mysqli_connect_errno()) {
     echo mysqli_connect_error();
 }
 
-$challengeName = "\"" . $_POST["challengeName"] . "\"";
-$newChallengeName = "\"" . $_POST["newChallengeName"] . "\"";
+    $challengeName = "\"" . $_POST["selectDataChallenge"] . "\"";
+    $newChallengeName = "\"" . $_POST["newChallengeName"] . "\"";
 
 if ($_POST["startDate"] != "") {
     $startDate = "\"" . $_POST["startDate"] . "\"";
