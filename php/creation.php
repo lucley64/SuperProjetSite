@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
     <div id="containerCreation">
         <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <h1>Créer un compte</h1>
