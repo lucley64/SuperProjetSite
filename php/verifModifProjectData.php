@@ -13,41 +13,27 @@ if ($_POST['selectProject'] == "creation") {
 
     $newProjectName = "\"" . $_POST["projectName"] . "\"";
 
-        $associateDatachallenge = "\"" . $_POST["associateDatachallenge"] . "\"";
+    $associateDatachallenge = "\"" . $_POST["associateDatachallenge"] . "\"";
 
-        if ($_POST["details"] != "") {
-            $details = "\"" . $_POST["details"] . "\"";
-        } else {
-            $details = "NULL";
-        }
-
-        $file = $_FILES['img'];
-        if ($file['error'] == UPLOAD_ERR_OK && $file['error'] != UPLOAD_ERR_NO_FILE && $_FILES['img'] != NULL) {
-            chmod('../data/ressources/projectImg/', 0777);
-            $img = "\"" . $file['name'] . "\"";
-            $destination = '../data/ressources/projectImg/fichier_de_merde.jpg';// . $file['name'];
-            move_uploaded_file($file['tmp_name'], $destination);
-        } else {
-            $img = "'ca a pas marche'";
-        }
-
-    if ($_POST["img"] != "") {
-        $img = "\"" . $_POST["img"] . "\"";
+    if ($_POST["details"] != "") {
+        $details = "\"" . $_POST["details"] . "\"";
     } else {
-        $img = "NULL";
+        $details = "NULL";
     }
 
-        if ($_POST["mail"] != "") {
-            $mail = "\"" . $_POST["mail"] . "\"";
-        } else {
-            $mail = "NULL";
-        }
-        $req = "INSERT INTO ProjectData VALUES (" . $newProjectName. ", " . $associateDatachallenge . ", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
-        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-        $data = mysqli_fetch_row($result);
-        mysqli_close($cnx);
-        header('Location: ./modifDataChallenge.php');
+    $file = $_FILES['img'];
+    if ($file['error'] == UPLOAD_ERR_OK && $file['error'] != UPLOAD_ERR_NO_FILE && $_FILES['img'] != NULL) {
+        chmod('../data/ressources/projectImg/', 0777);
+        $img = "\"" . $file['name'] . "\"";
+        $destination = '../data/ressources/projectImg/fichier_de_merde.jpg';// . $file['name'];
+        move_uploaded_file($file['tmp_name'], $destination);
     } else {
+        $img = "'ca a pas marche'";
+    }
+
+    if ($_POST["phone"] != "") {
+        $phone = "\"" . $_POST["phone"] . "\"";
+    } else { 
         $phone = "NULL";
     }
 
@@ -56,7 +42,8 @@ if ($_POST['selectProject'] == "creation") {
     } else {
         $mail = "NULL";
     }
-    $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", \"" . $_SESSION['temporary'] . "\", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
+
+    $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", " . $associateDatachallenge . ", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
     $result = mysqli_query($cnx, $req) or die($mess . $req);
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
