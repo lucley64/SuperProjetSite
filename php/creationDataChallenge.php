@@ -13,12 +13,12 @@
 
 <body>
 
-<?php
+    <?php
     session_start();
     if (!isset($_SESSION['userType']) || $_SESSION['userType'] != "admin") {
         header('Location: /index.php');
     }
-?>
+    ?>
     <div id="container">
         <button onclick="window.location='/connexion.php'" class="nav">Retour</button>
         <h1>Créer un data challenge</h1>
@@ -35,7 +35,7 @@
             <label for="endDate"> Date de fin
                 <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin" required>
             </label>
-            
+
             <input type="submit" value="Créer le data challenge">
 
         </form>

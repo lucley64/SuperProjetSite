@@ -2,11 +2,11 @@
 <html lang="fr">
 
 <head>
-  	<meta charset="UTF-8" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  	<title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <link rel="stylesheet" href="/css/sidebar.css">
-	<link rel="stylesheet" hreg="/css/header.css">
+    <link rel="stylesheet" hreg="/css/header.css">
 
 
 </head>
@@ -16,21 +16,29 @@
 	<div id="sidebarToggle" type="notToggled" class="barrecote">
 		<img src="src/liste.png" alt="iconeliste">
 	</div>
-    <div id="sidebar" type="Toggled" class="barrecote">
+	<div id="sidebar" type="Toggled" class="barrecote">
 		<ul>
-			<li><input type="bouton" value="Projet" class="buttonHeader side"></li>
-			<li><input type="bouton" value="Messagerie" class="buttonHeader side"></li>
-			<li><input type="bouton" value="Modifier profil" class="buttonHeader side"></li>
-			<li><input type="bouton" value="Creer challenge" class="buttonHeader side" style="display:none;"></li>
+			<li>
+				<img src="/src/graphique.png" type="icone"> 
+				<input type="bouton" value="Projet" class="buttonHeader side"> 
+			</li>
+			<li>				
+				<img src="/src/messagerie.png" type="icone"> 
+				<input type="bouton" value="Messagerie" class="buttonHeader side"> 
+			</li>
+			<li>
+				<img src="/src/modifier_profil.png" type="icone"> 
+				<input type="bouton" value="Modifier profil" class="buttonHeader side"> 
+			</li>
 		</ul>
 	</div>
 
 
 
 
-  
-  
-  	<script>
+
+
+	<script>
 		var sidebar = document.getElementById('sidebar');
 		var sidebarToggle = document.getElementById('sidebarToggle');
 
@@ -47,7 +55,7 @@
 
 
 
-  	</script>
+	</script>
 </body>
 
 </html>
