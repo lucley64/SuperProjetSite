@@ -109,7 +109,7 @@ img[type="icone"]{
     text-transform: uppercase;
     font-weight: bold;
 }
-
 #btndata{
-    height: 7em ;
+    left: 0;
+    
 }
