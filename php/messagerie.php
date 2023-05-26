@@ -15,7 +15,7 @@
     <?php
     session_start();
     include "header.php";
-    include "barrecote.php";
+    include "sidebar.php";
 
 
     ?>

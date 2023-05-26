@@ -14,7 +14,7 @@
 <body>
 
 	<div id="sidebarToggle" type="notToggled" class="barrecote">
-		<img src="src/liste.png" alt="iconeliste">
+		<img src="/src/liste.png" alt="iconeliste">
 	</div>
 	<div id="sidebar" type="Toggled" class="barrecote">
 		<ul>
@@ -29,6 +29,9 @@
 			<li>
 				<img src="/src/modifier_profil.png" type="icone"> 
 				<input type="bouton" value="Modifier profil" class="buttonHeader side"> 
+			</li>
+			<li>
+				<input type="bouton" value="Creer data challenge" class="buttonHeader side" id="btndata">
 			</li>
 		</ul>
 	</div>
