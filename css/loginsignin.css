@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-div#container {
+div#container, #pasAdmin {
     position: fixed;
     width: 50%;
     height: auto;
@@ -105,6 +105,15 @@ body {
     background-size: cover; */
     height: 100vh;
     margin: 0;
+}
+
+#pasAdmin{
+    position: absolute;
+    text-align: center;
+    height: 17%;
+    top: 40%;
+    left: 25%;
+    font-size: 2em;    
 }
 
 img.background {
