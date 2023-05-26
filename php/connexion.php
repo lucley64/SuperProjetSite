@@ -25,6 +25,7 @@ session_start();
             header('Location: ../index.php');
         }
         ?>>
+    <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
     <div id="container">
         <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <h1>Se login</h1>
