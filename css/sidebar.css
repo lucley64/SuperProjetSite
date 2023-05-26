@@ -28,7 +28,7 @@ div[type=Toggled]
 
 
 .buttonHeader.side {
-    width: 40%;                         /*taille du bouton relativement à la barre */
+    width: 40%;
     text-align: center;
     display: block;
     height: 1cm; 
