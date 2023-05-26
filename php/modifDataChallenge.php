@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    session_start();
+session_start();
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,10 +56,10 @@
         </form>
 
         <h1>Modifier/Creer Projet Data</h1>
-        <form action="verifModifProjectData.php" method="post" id="creation" enctype="multipart/form-data">
-
-        <label for="associateDatachallenge"> Sélectionnez le data challenge associé
-                <select name="associateDatachallenge" id="associateDatachallenge" required>
+        <form action="verifModifProjectData.php" method="post" id="creation">
+            <label for="selectProject"> Sélectionnez un projet
+                <select name="selectProject" id="selectProject"required>
+                    <option value="creation">Créer un nouveau projet</option>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
                         if (mysqli_connect_errno($cnx)) {
@@ -77,21 +78,21 @@
             </label>
         
             <label for="selectProject"> Sélectionnez un projet
-                <select name="selectProject" id="selectProject"required>
+                <select name="selectProject" id="selectProject" required>
                     <option value="creation">Créer un nouveau projet</option>
                     <?php
-                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
-                            echo mysqli_connect_error();
-                        };
-                        $req = "SELECT nom FROM ProjectData;";
-                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-                        mysqli_close($cnx);
-                        while ($data = mysqli_fetch_row($result)) {
-                            echo('
-                            <option value="' . $data[0] .'">' . $data[0] . '</option>
-                            ');
-                        }
+                    $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                    if (mysqli_connect_errno()) {
+                        echo mysqli_connect_error();
+                    }
+                    $req = "SELECT nom FROM ProjectData;";
+                    $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+                    mysqli_close($cnx);
+                    while ($data = mysqli_fetch_row($result)) {
+                        echo '
+                            <option value="' . $data[0] . '">' . $data[0] . '</option>
+                            ';
+                    }
                     ?>
                 </select>
             </label>
@@ -106,7 +107,7 @@
             <label for="img"> Image
                 <input type="file" name="img" id="img" placeholder="Sélectionnez un image">
             </label>
-            
+
             <label for="phone"> Téléphone
                 <input type="text" multiple name="phone" id="phone" placeholder="Entrez le numero de telephone du porteur de projet">
             </label>
@@ -120,22 +121,22 @@
 
         <h1>Ajouter des ressources</h1>
         <form action="verifCreationRessource.php" method="post" id="creation">
-        
+
             <label for="projectId"> Sélectionnez un projet
                 <select name="projectId" id="projectId">
                     <?php
-                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
-                            echo mysqli_connect_error();
-                        };
-                        $req = "SELECT nom FROM ProjectData;";
-                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-                        mysqli_close($cnx);
-                        while ($data = mysqli_fetch_row($result)) {
-                            echo('
-                            <option value="' . $data[0] .'">' . $data[0] . '</option>
-                            ');
-                        }
+                    $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                    if (mysqli_connect_errno()) {
+                        echo mysqli_connect_error();
+                    }
+                    $req = "SELECT nom FROM ProjectData;";
+                    $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+                    mysqli_close($cnx);
+                    while ($data = mysqli_fetch_row($result)) {
+                        echo '
+                            <option value="' . $data[0] . '">' . $data[0] . '</option>
+                            ';
+                    }
                     ?>
                 </select>
             </label>
@@ -154,4 +155,5 @@
     $_SESSION['temporary'] = NULL;
 ?>
 </body>
+
 </html>

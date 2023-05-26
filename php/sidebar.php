@@ -2,11 +2,11 @@
 <html lang="fr">
 
 <head>
-  	<meta charset="UTF-8" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  	<title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <link rel="stylesheet" href="/css/sidebar.css">
-	<link rel="stylesheet" hreg="/css/header.css">
+    <link rel="stylesheet" hreg="/css/header.css">
 
 
 </head>
@@ -14,22 +14,36 @@
 <body>
 
 	<div id="sidebarToggle" type="notToggled" class="barrecote">
-		<img src="src/liste.png" alt="iconeliste">
+		<img src="/src/liste.png" alt="iconeliste">
 	</div>
-    <div id="sidebar" type="Toggled" class="barrecote">
+	<div id="sidebar" type="Toggled" class="barrecote">
 		<ul>
-			<li><input type="bouton" value="Projet" class="buttonHeader side"></li>
-			<li><input type="bouton" value="Messagerie" class="buttonHeader side"></li>
-			<li><input type="bouton" value="Modifier profil" class="buttonHeader side"></li>
+			<li>
+				<img src="/src/graphique.png" type="icone"> 
+				<input type="bouton" value="Projet" class="buttonHeader side"> 
+			</li>
+			<li>				
+				<img src="/src/messagerie.png" type="icone"> 
+				<input type="bouton" value="Messagerie" class="buttonHeader side"> 
+			</li>
+			<li>
+				<img src="/src/modifier_profil.png" type="icone"> 
+				<input type="bouton" value="Modifier profil" class="buttonHeader side"> 
+			</li>
+			<li>
+				<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:none;";}?> class="buttonHeader side" id="btndata" onclick="document.location.href='/php/creationDataChallenge.php'" cols="5" rows="2">Creer data challenge</textarea>
+				<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:none;";}?> class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2">Creer nouveau compte administrateur</textarea>
+				
+			</li>
 		</ul>
 	</div>
 
 
 
 
-  
-  
-  	<script>
+
+
+	<script>
 		var sidebar = document.getElementById('sidebar');
 		var sidebarToggle = document.getElementById('sidebarToggle');
 
@@ -46,7 +60,7 @@
 
 
 
-  	</script>
+	</script>
 </body>
 
 </html>

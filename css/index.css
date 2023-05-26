@@ -18,11 +18,6 @@
 
 }
 
-
-body{
-    background-color: rgb(191, 210, 188);
-}
-
 .principal img{
     width: 50%;
     position: absolute;
@@ -30,11 +25,13 @@ body{
 }
 
 body {
+    background-color: rgb(191, 210, 188);
     background-image: url('../src/pyrenees.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 
