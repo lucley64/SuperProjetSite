@@ -31,7 +31,7 @@
 				<input type="bouton" value="Modifier profil" class="buttonHeader side"> 
 			</li>
 			<li>
-				<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:none;";}?> class="buttonHeader side" id="btndata" name="" id="" cols="5" rows="2">Creer data challenge</textarea>
+				<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:block;";}?> class="buttonHeader side" id="btndata" onclick="document.location.href='/php/creationDataChallenge.php'" cols="5" rows="2">Creer data challenge</textarea>
 				
 			</li>
 		</ul>

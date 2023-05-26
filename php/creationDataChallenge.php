@@ -16,7 +16,7 @@
     <?php
     session_start();
     if (!isset($_SESSION['userType']) || $_SESSION['userType'] != "admin") {
-        header('Location: /index.php');
+            header('Location: /index.php');
     }
     ?>
     <div id="container">
