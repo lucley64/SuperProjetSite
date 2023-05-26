@@ -25,7 +25,7 @@
     </div>
     <div id=Contenu>
         <div id="barreGauche">
-            <h1>Messagerie trop belle</h1>
+            <h1>dédicace à ma soeur, mon huissier de justice Benoit et à moi même</h1>
             <ul>
                 <li class="envoyermail" onclick=afficher(this);>Envoyer mail</li>
                 <li class="messagesRecus" onclick=afficher(this);>Messages reçus</li>
