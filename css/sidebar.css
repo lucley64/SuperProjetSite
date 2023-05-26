@@ -17,7 +17,7 @@ div[type=Toggled]
     position: absolute;
     width: 13%;
     height: 200%;
-    margin-top: -33%;
+    margin-top: -31%;
     background-color: rgb(48, 48, 48);
     z-index: 9999;
     text-transform: uppercase;
@@ -28,7 +28,7 @@ div[type=Toggled]
 
 
 .buttonHeader.side {
-    width: 73%;
+    width: 40%;                         /*taille du bouton relativement à la barre */
     text-align: center;
     display: block;
     height: 1cm; 
@@ -37,11 +37,12 @@ div[type=Toggled]
     border-radius: 10px;
     color: rgb(255, 240, 220);
     font-weight: bold;
-    margin-top: 30%;
-    margin-left: 42%;
+    margin-top: 15%;
+    margin-left: 15%;
     position: relative;
     text-transform: uppercase;
-    font-size: 17px;
+    font-size: 15px;
+    bottom: 7.5em;
 }
 
 
@@ -57,13 +58,14 @@ div[type=Toggled]
 
 input[type=bouton]
 {
-    border-radius: 25px;
-    width: 100px;
-    height: 20px;
+    border-radius: 22px;
+    width: 90px;
+    height: 16px;
     background-color: #ffffff;
-    text-transform: uppercase;
-    font-weight: bold;
+    text-transform: uppercase;      
+    font-weight: bold;          
     text-align: center;
+    left:0px;                      /*écart entre l'image et le bouton*/
 
 }
 
@@ -74,15 +76,27 @@ input[type=bouton]
   transform: translateY(-50%);
 }
 
+
+.barrecote li{
+    margin-left: -30px;             /*décale le bouton ET l'icone*/
+    width: 350px;
+}
+
 .barrecote a{
     color: white;
 }
 
 .barrecote img{
     width: 4em; 
-    position:relative;
+    position:absolute;
     left: -0.35em;
     top: -0.45em;   
+}
+
+
+img[type="icone"]{
+    width: 3em;
+    position: relative;
 }
 
 .barrecote{  
@@ -95,13 +109,4 @@ input[type=bouton]
     z-index: 9999;
     text-transform: uppercase;
     font-weight: bold;
-}
-
-th {
-    position: absolute;
-    
-}
-
-table {
-    position: relative;
 }

@@ -19,28 +19,16 @@
 	<div id="sidebar" type="Toggled" class="barrecote">
 		<ul>
 			<li>
-			<table>
-				<tr>
-				<th><img src="/src/graphique.png" type="icone"></th>
-				<th><input type="bouton" value="Projet" class="buttonHeader side"></th>
-				</tr>
-			</table>
+				  <img src="/src/graphique.png" type="icone"> 
+				  <input type="bouton" value="Projet" class="buttonHeader side"> 
 			</li>
 			<li>				
-			<table>
-			<tr>
-				<th><img src="/src/messagerie.png" type="icone"></th>
-				<th><input type="bouton" value="Messagerie" class="buttonHeader side"></th>
-				</tr>
-			</table>
+				  <img src="/src/messagerie.png" type="icone"> 
+				  <input type="bouton" value="Messagerie" class="buttonHeader side"> 
 			</li>
 			<li>
-			<table>
-			<tr>
-				<th><img src="/src/modifier_profil.png" type="icone"></th>
-				<th><input type="bouton" value="Modifier profil" class="buttonHeader side"></th>
-			</tr>
-			</table>
+				  <img src="/src/modifier_profil.png" type="icone"> 
+				  <input type="bouton" value="Modifier profil" class="buttonHeader side"> 
 			</li>
 		</ul>
 	</div>
