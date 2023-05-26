@@ -14,17 +14,21 @@ div#container, #pasAdmin {
     background: #52d8fac8;
     border-radius: 25px;
 }
+
 div#containerCreation {
-    position: fixed;
+    position: absolute;
     width: 50%;
     height: auto;
     left: 25%;
-    top: 10%;
+    top: 5%;
+    bottom: 5%;
     padding: 1%;
     overflow: auto;
     background: #52d8fac8;
     border-radius: 25px;
+    
 }
+
 input {
     margin: 8px 0 -2px 0;
     display: inline-block;
@@ -38,11 +42,13 @@ input {
 .no {
     float: right;
 }
+
 label {
     width: 100%;
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
+
 button {
     background-color: #52d8fa;
     color: white;
@@ -93,10 +99,10 @@ button.nav {
     margin: 2px; */
 }
 
-body{
-    background-image: url("../src/pyrenees.jpg");
+body {
+    /* background-image: url("../src/pyrenees.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     height: 100vh;
     margin: 0;
 }
@@ -108,4 +114,10 @@ body{
     top: 40%;
     left: 25%;
     font-size: 2em;    
+}
+
+img.background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
