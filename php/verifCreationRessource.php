@@ -7,8 +7,8 @@
 
     $ressourceName = "\"" . $_POST["ressourceProject"] . "\"";
 
-    if ($_POST["fichier"] != "") {
-        $fichier = "\"" . $_POST["fichier"] . "\"";
+    if ($_FILES["fichier"] != "") {
+        $fichier = "\"" . $_FILES["fichier"] . "\"";
     } else {
         $fichier = "NULL";
     }

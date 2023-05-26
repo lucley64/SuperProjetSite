@@ -5,7 +5,7 @@
         echo mysqli_connect_error();
     };
 
-    $challengeName = "\"" . $_POST["challengeName"] . "\"";
+    $challengeName = "\"" . $_POST["selectDataChallenge"] . "\"";
     $newChallengeName = "\"" . $_POST["newChallengeName"] . "\"";
 
     if ($_POST["startDate"] != "") {
