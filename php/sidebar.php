@@ -21,6 +21,7 @@
 			<li><input type="bouton" value="Projet" class="buttonHeader side"></li>
 			<li><input type="bouton" value="Messagerie" class="buttonHeader side"></li>
 			<li><input type="bouton" value="Modifier profil" class="buttonHeader side"></li>
+			<li><input type="bouton" value="Creer challenge" class="buttonHeader side" style="display:none;"></li>
 		</ul>
 	</div>
 
