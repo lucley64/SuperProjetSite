@@ -36,3 +36,17 @@ function afficher(elt){
     let classe=elt.className;
     document.getElementById(classe).style.display="block";
 }
+
+
+async function VoirTousLesMessages() {
+  try {
+    const response = await fetch('messagerie/voirtouslesmessages.php');
+    const data = await response.text();
+    //console.log(data);
+    document.getElementById("voirMessages").innerHTML=data;
+    setTimeout(MessagesEnvoyes, 5000);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des messages envoyés:', error);
+  }
+}
+VoirTousLesMessages();

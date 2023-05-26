@@ -19,8 +19,9 @@ session_start();
             $_SESSION['wrongPwd'] = false;
             echo 'onload="alertWrongPassword();"';
         }
-        ?>>
+        ?> >
 
+    <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
     <div id="containerCreation" style="top:5%;">
         <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Modifier le compte</h1>

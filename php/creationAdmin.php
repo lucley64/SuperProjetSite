@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
 
     <?php
     session_start();
@@ -18,7 +19,7 @@
     }
     ?>
     <div id="container">
-        <button onclick="window.location='/php/connexion.php'" class="nav">Retour</button>
+        <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Créer un compte</h1>
         <form action="verifCreation.php" method="post" id="creation">
             <label for="userType"> Type d'utilisateur

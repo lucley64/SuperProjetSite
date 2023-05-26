@@ -14,12 +14,16 @@ session_start();
     <title>Modification de Data Challenge</title>
 </head>
 
-<body <?php
+<body
+
+<?php
         if ($_SESSION['wrongPwd']) {
             $_SESSION['wrongPwd'] = false;
             echo 'onload="alertWrongPassword();"';
         }
         ?>>
+    <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
+
 
     <div id="containerCreation" style="top:5;">
         <button onclick="window.location='/php/connexion.php'" class="nav">Retour</button>
