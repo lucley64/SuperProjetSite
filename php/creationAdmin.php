@@ -11,23 +11,23 @@
 
 <body>
 
-<?php
+    <?php
     session_start();
     if ($_SESSION['userType'] != "admin") {
         header('Location : index.php');
     }
-?>
+    ?>
     <div id="container">
         <button onclick="window.location='/connexion.php'" class="nav">Retour</button>
         <h1>Créer un compte</h1>
         <form action="verifCreation.php" method="post" id="creation">
             <label for="userType"> Type d'utilisateur
-            <select name="userType" id="userType" required>
-                <option value="none">Veuillez choisir un type</option>
-                <option value="user">Participant</option>
-                <option value="manager">Gestionnaire</option>
-                <option value="admin">Administrateur</option>
-            </select>
+                <select name="userType" id="userType" required>
+                    <option value="none">Veuillez choisir un type</option>
+                    <option value="user">Participant</option>
+                    <option value="manager">Gestionnaire</option>
+                    <option value="admin">Administrateur</option>
+                </select>
             </label>
 
             <label for="username"> Username
