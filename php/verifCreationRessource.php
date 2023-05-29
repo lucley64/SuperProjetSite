@@ -7,16 +7,10 @@ if (mysqli_connect_errno()) {
 
 $ressourceName = "\"" . $_POST["ressourceProject"] . "\"";
 
-    if ($_FILES["fichier"] != "") {
-        $fichier = "\"" . $_FILES["fichier"] . "\"";
-    } else {
-        $fichier = "NULL";
-    }
-
-if ($_SESSION["temporary"] != "") {
-    $dataChallengeId = "\"" . $_SESSION["temporary"] . "\"";
+if ($_POST["fichier"] != "") {
+    $fichier = "\"" . $_POST["fichier"] . "\"";
 } else {
-    $dataChallengeId = "NULL";
+    $fichier = "NULL";
 }
 
 if ($_POST["projectId"] != "" || $_POST["dataChallengeId"] != "none") {
@@ -25,7 +19,7 @@ if ($_POST["projectId"] != "" || $_POST["dataChallengeId"] != "none") {
     $projectId = "NULL";
 }
 
-$req = "INSERT INTO Ressources VALUES (" . $fichier . ", " . $dataChallengeId . ", " . $projectId . ");";
+$req = "INSERT INTO Ressources VALUES (" . $fichier . ", " . $projectId . ");";
 $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
 mysqli_close($cnx);
 header('Location: ./modifDataChallenge.php');

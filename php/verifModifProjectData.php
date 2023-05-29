@@ -13,7 +13,7 @@ if ($_POST['selectProject'] == "creation") {
 
     $newProjectName = "\"" . $_POST["projectName"] . "\"";
 
-    $associateDatachallenge = "\"" . $_POST["associateDatachallenge"] . "\"";
+    $associateDataChallenge = "\"" . $_POST["associateDataChallenge"] . "\"";
 
     if ($_POST["details"] != "") {
         $details = "\"" . $_POST["details"] . "\"";
@@ -21,14 +21,10 @@ if ($_POST['selectProject'] == "creation") {
         $details = "NULL";
     }
 
-    $file = $_FILES['img'];
-    if ($file['error'] == UPLOAD_ERR_OK && $file['error'] != UPLOAD_ERR_NO_FILE && $_FILES['img'] != NULL) {
-        chmod('../data/ressources/projectImg/', 0777);
-        $img = "\"" . $file['name'] . "\"";
-        $destination = '../data/ressources/projectImg/fichier_de_merde.jpg';// . $file['name'];
-        move_uploaded_file($file['tmp_name'], $destination);
-    } else {
-        $img = "'ca a pas marche'";
+    if ($_POST["img"] != "") {
+        $img = "\"" . $_POST["img"] . "\"";
+    } else { 
+        $img = "NULL";
     }
 
     if ($_POST["phone"] != "") {
@@ -43,7 +39,7 @@ if ($_POST['selectProject'] == "creation") {
         $mail = "NULL";
     }
 
-    $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", " . $associateDatachallenge . ", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
+    $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", " . $associateDataChallenge . ", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
     $result = mysqli_query($cnx, $req) or die($mess . $req);
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
