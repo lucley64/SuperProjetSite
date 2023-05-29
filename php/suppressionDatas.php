@@ -25,7 +25,7 @@
     ?>> 
     <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
     <div id="containerCreation" style="top:5;">
-        <button onclick="window.location='/php/connexion.php'" class="nav">Retour</button>
+        <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Supprimer un Data Challenge</h1>
         <form action="verifSuppressionDataChallenge.php" method="post" id="creation">
 
