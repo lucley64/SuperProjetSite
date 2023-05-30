@@ -29,10 +29,14 @@
         ?>
     </div>
 
-    <div id="contenupage">
+    <div id="head">
         <?php
         include "header.php";
         ?>
+
+    </div>
+
+    <div id="contenupage">
 
         <div id=DemanderConnexion>
             <h1>Veuillez vous connecter pour acceder à cette fonctionnalité</h1>
@@ -56,12 +60,15 @@
                 <div class="elt" id="envoyermail" style="display:block">
                     <h1>Envoyer mail</h1>
                     <form action="messagerie/envoyermail.php" method="POST">
-                        <label>Destinataire </label>
-                        <input name="destinataire" type="email" value="" placeholder="Destinataire"> <br>
-                        <label>Sujet</label>
-                        <input id=sujet type="text" name="sujet" placeholder="Sujet"> <br>
-                        <label>Message</label>
-                        <input id=message type="text" name="message" value="" placeholder="Veuillez ecrire votre message"> <br>
+                        <label>Destinataire
+                            <input name="destinataire" type="email" value="" placeholder="Destinataire"> <br>
+                        </label>
+                        <label>Sujet
+                            <input id=sujet type="text" name="sujet" placeholder="Sujet"> <br>
+                        </label>
+                        <label>Message
+                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Veuillez ecrire votre message"></textarea>
+                        </label>
 
                         <input type="submit" id="Envoyer">
 

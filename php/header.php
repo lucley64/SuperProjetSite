@@ -17,8 +17,7 @@ ini_set('display_errors', 'On'); ?>
             <table>
                 <tr>
                     <th><a href="/index.php"><button class="buttonHeader">Accueil</button></a></th>
-                    <th><a href=""><button class="buttonHeader ">Actualités</button></a></th>
-                    <th><a href="/php/creationDataChallenge.php"><button class="buttonHeader">Creer Data Challenge</button></a></th>
+                    <th><a href="https://www.youtube.com/watch?v=BP2dJiYXX_I"><button class="buttonHeader ">Actualités</button></a></th>
                     <th><a href="/php/messagerie.php" ><button class="buttonHeader">Messagerie</button></a></th>
                     <th><a href="https://iapau.org/"><button class="buttonHeader">IA Pau</button></a></th>
                     <th onmouseover="changerLoupe()" onmouseout="remettreLoupe()"><a href=""> <button class="buttonHeader"><img src="/src/loupe2.png" alt="loupe" id="loupe"> ______</button></a></th>
