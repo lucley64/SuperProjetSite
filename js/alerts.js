@@ -33,3 +33,12 @@ function alertSuccessDeleteProjectData() {
         background: 'white',
         });
 }
+
+function alertOutOfTime(){
+    Swal.fire({
+        title: "Erreur",
+        text: "Ce formulaire n'est plus disponible",
+        icon: 'error',
+        background: 'white',
+        });
+}

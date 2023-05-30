@@ -5,7 +5,7 @@ USE datas;
 CREATE TABLE IF NOT EXISTS Users (
   username VARCHAR(30) PRIMARY KEY,
   pwd VARCHAR(255) NOT NULL,
-  userType VARCHAR(30), -- admin, gest ou etudiant
+  userType VARCHAR(30), -- admin, manager ou student
   lastName VARCHAR(30),
   firstName VARCHAR(30),
   workplace VARCHAR(30),
@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS Messages(
 CREATE TABLE IF NOT EXISTS DataChallenges (
   challengeName VARCHAR(50) PRIMARY KEY,
   startDate DATE,
-  endDate DATE
+  endDate DATE,
+  gestionnaire VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS ProjectData (
@@ -83,5 +84,7 @@ CREATE TABLE IF NOT EXISTS Reponse(
   id INT PRIMARY KEY AUTO_INCREMENT,
   content TEXT,
   question INT,
-  FOREIGN KEY fk_question(question) REFERENCES Question(id) ON DELETE CASCADE
+  idEquipe INT,
+  FOREIGN KEY fk_question(question) REFERENCES Question(id) ON DELETE CASCADE,
+  FOREIGN KEY fk_Equipe(idEquipe) REFERENCES Equipe(id) ON DELETE CASCADE
 );
