@@ -25,11 +25,12 @@
     </div>
     <div id=Contenu>
         <div id="barreGauche">
-            <h1>dédicace à ma soeur, mon huissier de justice Benoit et à moi même</h1>
+            <h1>Messagerie</h1>
             <ul>
                 <li class="envoyermail" onclick=afficher(this);>Envoyer mail</li>
                 <li class="messagesRecus" onclick=afficher(this);>Messages reçus</li>
                 <li class="messagesEnvoyes" onclick=afficher(this);>Messages envoyés</li>
+                <li <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="manager"){echo "style=display:none;";} ?>class="voirMessages" onclick=afficher(this)>Voir tous les messages</li>
             </ul>
         </div>
 
@@ -63,6 +64,11 @@
             <div class="elt" id="messagesEnvoyes" style="display:none">
                 <h1>Messages envoyés:</h1><br>
                 <div id="ContenuMessagesEnvoyes"></div>
+            </div>
+
+            <div class="elt" id="voirMessages" style="display:none" > <h1>Voir tous les messages</h1>
+
+        
             </div>
         </div>
     </div>

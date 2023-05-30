@@ -12,15 +12,17 @@
 </head>
 
 <body>
+<img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
+
 
     <?php
     session_start();
     if (!isset($_SESSION['userType']) || $_SESSION['userType'] != "admin") {
-        header('Location: /index.php');
+            header('Location: /index.php');
     }
     ?>
     <div id="container">
-        <button onclick="window.location='/connexion.php'" class="nav">Retour</button>
+        <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Créer un data challenge</h1>
         <form action="verifCreationDataChallenge.php" method="post" id="creation">
 

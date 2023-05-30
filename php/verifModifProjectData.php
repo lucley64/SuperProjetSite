@@ -13,6 +13,8 @@ if ($_POST['selectProject'] == "creation") {
 
     $newProjectName = "\"" . $_POST["projectName"] . "\"";
 
+    $associateDataChallenge = "\"" . $_POST["associateDataChallenge"] . "\"";
+
     if ($_POST["details"] != "") {
         $details = "\"" . $_POST["details"] . "\"";
     } else {
@@ -21,13 +23,13 @@ if ($_POST['selectProject'] == "creation") {
 
     if ($_POST["img"] != "") {
         $img = "\"" . $_POST["img"] . "\"";
-    } else {
+    } else { 
         $img = "NULL";
     }
 
     if ($_POST["phone"] != "") {
         $phone = "\"" . $_POST["phone"] . "\"";
-    } else {
+    } else { 
         $phone = "NULL";
     }
 
@@ -36,7 +38,8 @@ if ($_POST['selectProject'] == "creation") {
     } else {
         $mail = "NULL";
     }
-    $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", \"" . $_SESSION['temporary'] . "\", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
+
+    $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", " . $associateDataChallenge . ", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
     $result = mysqli_query($cnx, $req) or die($mess . $req);
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);

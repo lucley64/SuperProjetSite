@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
+    session_start();
 ?>
 
 <head>
@@ -14,39 +14,69 @@ session_start();
     <title>Modification de Data Challenge</title>
 </head>
 
-<body <?php
-        if ($_SESSION['wrongPwd']) {
-            $_SESSION['wrongPwd'] = false;
-            echo 'onload="alertWrongPassword();"';
-        }
-        ?>>
+<body> 
+<img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
 
     <div id="containerCreation" style="top:5;">
-        <button onclick="window.location='/php/connexion.php'" class="nav">Retour</button>
+        <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Modifier le Data Challenge</h1>
         <form action="verifModifDataChallenge.php" method="post" id="creation">
 
-            <label for="challengeName"><?php echo '' . $_SESSION['temporary'] . '' ?>
-                <input type="hidden" name="challengeName" id="challengeName" placeholder="Entrez le nom du data Challenge à modifier" value="<?php echo '' . $_SESSION['temporary'] . '' ?>">
+            <label for="selectDataChallenge"> Sélectionnez un Data Challenge
+                <select name="selectDataChallenge" id="selectDataChallenge" required>
+                    <?php
+                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
+                        if (mysqli_connect_errno($cnx)) {
+                            echo mysqli_connect_error();
+                        };
+                        $req = "SELECT challengeName FROM DataChallenges;";
+                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
+                        mysqli_close($cnx);
+                        while ($data = mysqli_fetch_row($result)) {
+                            echo('
+                            <option value="' . $data[0] .'">' . $data[0] . '</option>
+                            ');
+                        }
+                    ?>
+                </select>
             </label>
 
             <label for="newChallengeName"> Nouveau nom du data challenge
-                <input type="text" name="newChallengeName" id="newChallengeName" placeholder="Entrez le nouveau nom du data Challenge à modifier" value="<?php echo '' . $_SESSION['temporary'] . '' ?>" required>
+                <input type="text" name="newChallengeName" id="newChallengeName" placeholder="Entrez le nouveau nom du data Challenge à modifier">
             </label>
 
             <label for="startDate"> Start Date
-                <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ" value="<?php echo '' . $startDate . '' ?>">
+                <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ" >
             </label>
 
             <label for="endDate"> End Date
-                <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin" value="<?php echo '' . $endDate . '' ?>">
+                <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin">
             </label>
 
-            <input type="submit" value="Mettre à jour les informations du compte">
+            <input type="submit" value="Mettre à jour le data challenge">
         </form>
 
         <h1>Modifier/Creer Projet Data</h1>
         <form action="verifModifProjectData.php" method="post" id="creation">
+            <label for="associateDataChallenge"> Sélectionnez le data challenge associé
+                <select name="associateDataChallenge" id="associateDataChallenge"required>
+                    <?php
+                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
+                        if (mysqli_connect_errno($cnx)) {
+                            echo mysqli_connect_error();
+                        };
+                        $req = "SELECT challengeName FROM DataChallenges;";
+                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
+                        mysqli_close($cnx);
+                        while ($data = mysqli_fetch_row($result)) {
+                            echo('
+                            <option value="' . $data[0] .'">' . $data[0] . '</option>
+                            ');
+                        }
+                    ?>
+                </select>
+            </label>
+
             <label for="selectProject"> Sélectionnez un projet
                 <select name="selectProject" id="selectProject" required>
                     <option value="creation">Créer un nouveau projet</option>
@@ -75,7 +105,7 @@ session_start();
             </label>
 
             <label for="img"> Image
-                <input type="file" name="img" id="img" placeholder="Sélectionnez un image">
+                <input type="text" name="img" id="img" placeholder="Sélectionnez un image">
             </label>
 
             <label for="phone"> Téléphone
@@ -86,7 +116,7 @@ session_start();
                 <input type="email" name="mail" id="mail" placeholder="Entrez le mail du porteur de projet">
             </label>
 
-            <input type="submit" value="Mettre à jour les informations du compte">
+            <input type="submit" value="Valider">
         </form>
 
         <h1>Ajouter des ressources</h1>
@@ -94,7 +124,6 @@ session_start();
 
             <label for="projectId"> Sélectionnez un projet
                 <select name="projectId" id="projectId">
-                    <option value="none">Directement associée au data challenge</option>
                     <?php
                     $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
                     if (mysqli_connect_errno()) {
@@ -113,12 +142,16 @@ session_start();
             </label>
 
             <label for="fichier"> Ressource
-                <input type="file" name="fichier" id="fichier" placeholder="Sélectionnez un fichier">
+                <input type="text" name="fichier" id="fichier" placeholder="Sélectionnez un fichier">
             </label>
 
-            <input type="submit" value="Mettre à jour les informations du compte">
+            <input type="submit" value="Ajouter la ressource">
         </form>
     </div>
+
+<?php
+    $_SESSION['temporary'] = NULL;
+?>
 </body>
 
 </html>

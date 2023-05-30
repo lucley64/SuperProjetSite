@@ -15,3 +15,21 @@ function alertWrongIdentification() {
         background: 'white',
         });
 }
+
+function alertSuccessDeleteDataChallenge() {
+    Swal.fire({
+        title: "Succès",
+        text: "Data Challenge supprimé avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertSuccessDeleteProjectData() {
+    Swal.fire({
+        title: "Succès",
+        text: "Project Data supprimé avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}

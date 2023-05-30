@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 
-
 CREATE TABLE IF NOT EXISTS Messages(
   idMessage int PRIMARY KEY AUTO_INCREMENT,
   expediteur VARCHAR(30),
@@ -38,13 +37,51 @@ CREATE TABLE IF NOT EXISTS ProjectData (
   img TEXT,
   phone TEXT,
   mail TEXT,
-  FOREIGN KEY fk_dataChallenge(challengeName) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
+  FOREIGN KEY fk_dataChallenge(dataChallengeId) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Ressources (
   content VARCHAR(300) PRIMARY KEY,
-  dataChallengeId VARCHAR(50),
   projectId VARCHAR(50),
-  FOREIGN KEY fk_dataChallenge(challengeName) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE,
-  FOREIGN KEY fk_project(nom) REFERENCES ProjectData(nom) ON DELETE CASCADE
+  FOREIGN KEY fk_project(projectId) REFERENCES ProjectData(nom) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Equipe(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+	nomEquipe VARCHAR(30),
+  dataChallenge VARCHAR(50),
+  capitaine VARCHAR(30),
+  githubLink TEXT,
+  score INT DEFAULT 0 NOT NULL,
+  FOREIGN KEY fk_dataChallenge(dataChallenge) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Participe(
+	idEquipe INT,
+	idUser VARCHAR(30),
+  CONSTRAINT pk_Participe PRIMARY KEY (idEquipe, idUser),
+	FOREIGN KEY fk_equipe(idEquipe) REFERENCES Equipe(id) ON DELETE CASCADE,
+	FOREIGN KEY fk_user(idUser) REFERENCES Users(username) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Questionnaire(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  startDate DATE,
+  endDate DATE,
+  dataChallenge VARCHAR(50),
+  FOREIGN KEY fk_dataChallenge(dataChallenge) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Question(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  questionnaire INT,
+  content TEXT,
+  FOREIGN KEY fk_questionnaire(questionnaire) REFERENCES Questionnaire(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Reponse(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  content TEXT,
+  question INT,
+  FOREIGN KEY fk_question(question) REFERENCES Question(id) ON DELETE CASCADE
 );

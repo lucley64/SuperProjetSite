@@ -22,12 +22,12 @@ session_start();
         }
         if ($_SESSION['connected']) {
             session_destroy();
-            header('Location: ../index.php');
+            header('Location: /index.php');
         }
         ?>>
-    <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
+    <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
     <div id="container">
-        <button onclick="window.location='../index.php'" class="nav">Retour</button>
+        <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Se login</h1>
         <form action="verifConnexion.php" method="post" id="login">
             <label for="login"> Login

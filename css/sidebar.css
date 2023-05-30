@@ -106,5 +106,9 @@ img[type="icone"] {
 
 #btndata {
     left: 0;
-
+    
+}
+#btnadmin{
+    left: 0;
+    height: 3em;
 }
