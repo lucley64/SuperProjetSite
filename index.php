@@ -16,12 +16,18 @@
 </head>
 
 <body>
+    <img class="background" src="/src/pyrenees.jpg" alt="pyr">
+    <div id="sidebarr">
+        <?php
+        include "php/sidebar.php";
+
+        ?>
+    </div>
     <div id="contenupage">
 
 
         <?php
         include "php/header.php";
-        include "php/sidebar.php";
         ?>
         <div id="principal" class="principal">
             <h2>Participez à des challenges avec l'association IA Pau</h2>

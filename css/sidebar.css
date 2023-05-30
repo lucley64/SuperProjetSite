@@ -1,115 +1,110 @@
-div[type=notToggled]
-{
+div[type=notToggled] {
     width: 10px;
     height: 10px;
     left: 10px;
     top: 15px;
-    border: 3 px solid rgb(0, 0, 0) ;
+    border: 3 px solid rgb(0, 0, 0);
     padding: 20px;
-    background-color: rgba(250,250,250,0.85);
+    background-color: rgba(250, 250, 250, 0.85);
     border-radius: 25px;
     z-index: 10000;
+    position: fixed;
 }
 
-div[type=Toggled]
-{   
-
-    position: absolute;
-    width: 13%;
-    height: 200%;
-    margin-top: -31%;
+div[type=Toggled] {
+    /* top: 0; */
+    /* position: fixed; */
+    /* width: 12.5%; */
+    height: 100%;
+    /* margin-top: -31%; */
     background-color: rgb(48, 48, 48);
     z-index: 9999;
     text-transform: uppercase;
     font-weight: bold;
+
 }
 
 
 
 .buttonHeader.side {
-    width: 40%;
+    width: 100%;
     text-align: center;
     display: block;
-    height: 1cm; 
+    height: 1cm;
     background: none;
     border: 4px solid rgb(255, 240, 220);
     border-radius: 10px;
     color: rgb(255, 240, 220);
     font-weight: bold;
-    margin-top: 15%;
-    margin-left: 15%;
-    position: relative;
+    /* margin-top: 15%; */
+    /* margin-left: 15%; */
+    /* position: relative; */
     text-transform: uppercase;
     font-size: 15px;
     bottom: 7.5em;
 }
 
 
-#sidebar,#sidebarToggle.active
-{
+#sidebar,
+#sidebarToggle.active {
     display: none;
 }
 
-#sidebar.active,#sidebarToggle
-{
+#sidebar.active,
+#sidebarToggle {
     display: block;
 }
 
-input[type=bouton]
-{
+input[type=bouton] {
     border-radius: 22px;
     width: 90px;
     height: 16px;
     background-color: #ffffff;
-    text-transform: uppercase;      
-    font-weight: bold;          
+    text-transform: uppercase;
+    font-weight: bold;
     text-align: center;
-    left:0px;                      /*écart entre l'image et le bouton*/
+    left: 0px;
+    /*écart entre l'image et le bouton*/
 
 }
 
-.barrecote ul{
-
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.barrecote ul {
+    padding-left: 0;
+    margin-top: 0;
+    padding-top: 1px;
 }
 
 
-.barrecote li{
-    margin-left: -30px;             /*décale le bouton ET l'icone*/
-    width: 350px;
+.barrecote li {
+    list-style-type: none;
+    display: flex;
+    margin: 33% 0;
+    /* margin-left: -30px;             décale le bouton ET l'icone */
+    /* width: 350px; */
 }
 
-.barrecote a{
+.barrecote a {
     color: white;
 }
 
-.barrecote img{
-    width: 4em; 
-    position:absolute;
+.barrecote img {
+    width: 4em;
+    /* position:absolute; */
     left: -0.35em;
-    top: -0.45em;   
+    top: -0.45em;
+}
+
+img.iconBar {
+    position: absolute;
 }
 
 
-img[type="icone"]{
+img[type="icone"] {
     width: 3em;
-    position: relative;
+    /* position: relative; */
 }
 
-.barrecote{  
-    position: relative;
-    display: flex-block;
-    width: 13%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-#btndata{
+#btndata {
     left: 0;
     
 }

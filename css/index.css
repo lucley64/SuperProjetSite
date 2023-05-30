@@ -1,9 +1,10 @@
 .principal{
-    position: absolute;
-    left: 12.5%;
-    top: 13%;
+    /* position: absolute; */
+    /* left: 12.5%; */
+    /* top: 13%; */
+    margin: 0 auto;
     width: 75%;
-    bottom: 0%;
+    /* bottom: 0%; */
     background-color: rgba(255, 255, 255, 0.85); 
 }
 
@@ -20,18 +21,36 @@
 
 .principal img{
     width: 50%;
-    position: absolute;
-    left: 25%;
+    /* position: absolute; */
+    /* left: 25%; */
+    margin-left: 25%;
 }
 
 body {
-    background-color: rgb(191, 210, 188);
-    background-image: url('../src/pyrenees.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+    display: grid;
+    /* background-color: rgb(191, 210, 188); */
+    /* background-image: url('../src/pyrenees.jpg'); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    height: 100%;
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
+}
+
+div#sidebarr {
+    grid-column: 1;
+}
+div#contenupage{
+    grid-column: 2;
+}
+
+img.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
 
 

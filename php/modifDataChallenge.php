@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
+    session_start();
 ?>
 
 <head>
@@ -15,14 +15,15 @@ session_start();
 </head>
 
 <body> 
-    
+<img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
+
     <div id="containerCreation" style="top:5;">
         <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Modifier le Data Challenge</h1>
         <form action="verifModifDataChallenge.php" method="post" id="creation">
 
             <label for="selectDataChallenge"> Sélectionnez un Data Challenge
-                <select name="selectDataChallenge" id="selectDataChallenge" value=<?php echo('' . $_SESSION['temporary'] . '')?>required>
+                <select name="selectDataChallenge" id="selectDataChallenge" required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
                         if (mysqli_connect_errno($cnx)) {
@@ -41,7 +42,7 @@ session_start();
             </label>
 
             <label for="newChallengeName"> Nouveau nom du data challenge
-                <input type="text" name="newChallengeName" id="newChallengeName" placeholder="Entrez le nouveau nom du data Challenge à modifier" required>
+                <input type="text" name="newChallengeName" id="newChallengeName" placeholder="Entrez le nouveau nom du data Challenge à modifier">
             </label>
 
             <label for="startDate"> Start Date
@@ -57,9 +58,8 @@ session_start();
 
         <h1>Modifier/Creer Projet Data</h1>
         <form action="verifModifProjectData.php" method="post" id="creation">
-            <label for="selectProject"> Sélectionnez un projet
-                <select name="selectProject" id="selectProject"required>
-                    <option value="creation">Créer un nouveau projet</option>
+            <label for="associateDataChallenge"> Sélectionnez le data challenge associé
+                <select name="associateDataChallenge" id="associateDataChallenge"required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
                         if (mysqli_connect_errno($cnx)) {
@@ -76,7 +76,7 @@ session_start();
                     ?>
                 </select>
             </label>
-        
+
             <label for="selectProject"> Sélectionnez un projet
                 <select name="selectProject" id="selectProject" required>
                     <option value="creation">Créer un nouveau projet</option>
@@ -105,7 +105,7 @@ session_start();
             </label>
 
             <label for="img"> Image
-                <input type="file" name="img" id="img" placeholder="Sélectionnez un image">
+                <input type="text" name="img" id="img" placeholder="Sélectionnez un image">
             </label>
 
             <label for="phone"> Téléphone
@@ -141,10 +141,8 @@ session_start();
                 </select>
             </label>
 
-
-
             <label for="fichier"> Ressource
-                <input type="file" name="fichier" id="fichier" placeholder="Sélectionnez un fichier">
+                <input type="text" name="fichier" id="fichier" placeholder="Sélectionnez un fichier">
             </label>
 
             <input type="submit" value="Ajouter la ressource">
