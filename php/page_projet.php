@@ -37,7 +37,7 @@
 <!DOCTYPE html>
 <?php
 
-?>
+?> 
 
 <html lang="fr">
 
