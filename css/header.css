@@ -1,5 +1,7 @@
 header{
     width: 100%;
+    position: fixed;
+    top : 0;
 }
 a{
     text-decoration: none;
