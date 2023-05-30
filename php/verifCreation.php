@@ -56,7 +56,6 @@ $result = mysqli_query($cnx, $req);
 if (!$result) {
     erreurRequete(mysqli_errno($cnx));
 }
-$data = mysqli_fetch_row($result);
 mysqli_close($cnx);
 
 if ($_SESSION["connected"] == true && $_SESSION["userType"] == "admin") {
