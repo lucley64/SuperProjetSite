@@ -7,8 +7,9 @@ if (mysqli_connect_errno()) {
 $challengeName = $_POST["challengeName"];
 $startDate = $_POST["startDate"];
 $endDate = $_POST["endDate"];
+$associateManager = $_POST["associateManager"];
 
-$req = "INSERT INTO DataChallenges VALUES (\"" . $challengeName . "\",\"" . $startDate . "\",\"" . $endDate . "\");";
+$req = "INSERT INTO DataChallenges VALUES (\"" . $challengeName . "\",\"" . $startDate . "\",\"" . $endDate . "\",\"" . $associateManager . "\");";
 $_SESSION["utilisateurDouble"] = false;
 $result = mysqli_query($cnx, $req);
 if (!$result){

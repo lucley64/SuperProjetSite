@@ -1,7 +1,11 @@
 .projet{
-    background-color: aliceblue;
+    position:relative;
     border-radius: 20px;
-    width: 200px;
-    height: 200px;
-    z-index: 10000;
+    width: 50%;
+    height: 20%;
+    margin-bottom: 10%;
+    top: 10%;
+    border: 2px solid black;
+    margin-left: auto;
+margin-right: auto;
 }
