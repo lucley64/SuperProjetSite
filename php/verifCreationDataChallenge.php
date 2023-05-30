@@ -15,7 +15,6 @@ $result = mysqli_query($cnx, $req);
 if (!$result){
     erreurRequete(mysqli_errno($cnx));
 }
-$data = mysqli_fetch_row($result);
 mysqli_close($cnx);
 
 $_SESSION['temporary'] = $challengeName;
