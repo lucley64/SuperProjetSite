@@ -23,15 +23,15 @@ session_start();
 		<ul>
 			<li>
 				<img src="/src/graphique.png" type="icone"> 
-				<input type="bouton" value="Projet" class="buttonHeader side"> 
+				<input type="bouton" value="Projet" class="buttonHeader side" onclick="document.location.href='/php/page_projet.php'" /> 
 			</li>
 			<li>				
 				<img src="/src/messagerie.png" type="icone"> 
-				<input type="bouton" value="Messagerie" class="buttonHeader side"> 
+				<input type="bouton" value="Messagerie" class="buttonHeader side" onclick="document.location.href='/php/messagerie.php'" /> 
 			</li>
 			<li>
 				<img src="/src/modifier_profil.png" type="icone"> 
-				<input type="bouton" value="Modifier profil" class="buttonHeader side"> 
+				<input type="bouton" value="Modifier profil" class="buttonHeader side" onclick="document.location.href='/php/page_modifier_profil.php'" /> 
 			</li>
 			<li>
 				<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:none;";}?> class="buttonHeader side" id="btndata" onclick="document.location.href='/php/creationDataChallenge.php'" cols="5" rows="2">Creer data challenge</textarea>
