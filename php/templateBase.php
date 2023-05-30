@@ -23,7 +23,9 @@
 
     </div>
     <div id="contenupage">
-        <!--!!! Contenu de la page ici !!!-->
+        <div id="principal" class="principal">
+            <!--!!! Contenu de la page ici !!!-->
+        </div>
     </div>
 </body>
 
