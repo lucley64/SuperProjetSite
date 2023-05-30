@@ -25,7 +25,7 @@
             <label for="userType"> Type d'utilisateur
                 <select name="userType" id="userType" required>
                     <option value="none">Veuillez choisir un type</option>
-                    <option value="user">Participant</option>
+                    <option value="student">Participant</option>
                     <option value="manager">Gestionnaire</option>
                     <option value="admin">Administrateur</option>
                 </select>

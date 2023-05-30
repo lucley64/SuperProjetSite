@@ -48,23 +48,23 @@ if (isset($_POST["mail"])) {
 } else {
     $mail = "NULL";
 }
-/*cas ou la personne n'a pas rentré de niveau d'études*/
-if ($studyLvl == "NULL") {
-    $_SESSION["ErreurCreation"] = true;
-    header('Location: creation.php');
+
+$splash = "\",\"";
+$req = "INSERT INTO Users VALUES (\"" . $username . $splash . $hashpwd . $splash . $userType . $splash . $lastName . $splash . $firstName . $splash . $workplace . $splash . $studyLvl . $splash . $phone . $splash . $mail . "\", NULL, NULL);";
+$_SESSION["utilisateurDouble"] = false;
+$result = mysqli_query($cnx, $req);
+if (!$result) {
+    erreurRequete(mysqli_errno($cnx));
+}
+$data = mysqli_fetch_row($result);
+mysqli_close($cnx);
+
+if ($_SESSION["connected"] == true && $_SESSION["userType"] == "admin") {
+   header('Location: creationAdmin.php');
 } else {
-    $_SESSION["ErreurCreation"] = false;
-    $splash = "\",\"";
-    $req = "INSERT INTO Users VALUES (\"" . $username . $splash . $hashpwd . $splash . $userType . $splash . $lastName . $splash . $firstName . $splash . $workplace . $splash . $studyLvl . $splash . $phone . $splash . $mail . "\", NULL, NULL);";
-    $_SESSION["utilisateurDouble"] = false;
-    $result = mysqli_query($cnx, $req);
-    if (!$result) {
-        erreurRequete(mysqli_errno($cnx));
-    }
-    $data = mysqli_fetch_row($result);
-    mysqli_close($cnx);
     header('Location: connexion.php');
 }
+
 
 function erreurRequete($numeroErreur)
 {
