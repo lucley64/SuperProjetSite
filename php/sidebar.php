@@ -14,7 +14,7 @@
 <body>
 
 	<div id="sidebarToggle" type="notToggled" class="barrecote">
-		<img src="/src/liste.png" alt="iconeliste">
+		<img src="/src/liste.png" alt="iconeliste" class="iconBar">
 	</div>
 	<div id="sidebar" type="Toggled" class="barrecote">
 		<ul>

@@ -1,22 +1,17 @@
 header{
-    /* background-color: rgba(33, 139, 77, 0.719); */
-    position: absolute;
     width: 100%;
-    left: 0;
-    top: 0;
-    height: 13%;
 }
 a{
     text-decoration: none;
 }
 
-h1{
+/* h1{
     text-align: center;
     color: rgb(255, 255, 255);
     width: auto;
     border-radius: 15px;
     margin: 0px;
-}
+} */
 h1 a{
     color: rgb(255, 255, 255);
 }
@@ -35,46 +30,31 @@ h1 a{
     width: 100%;
     display: block;
     height: 1.5cm; 
-    background: none;
     border: 4px solid rgb(255, 240, 220);
     border-radius: 10px;
     color: rgb(255, 240, 220);
     font-weight: bold;
-    top: 11%;
-    position: relative;
+    /* top: 11%;
+    position: relative; */
     text-transform: uppercase;
     font-size: 20px;
+
+    background: linear-gradient(to right, rgb(255, 240, 220) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .2s ease-out;
 }
   
 
 .connexion {
     position: absolute ;
-    left: 88.8%;
+    right: 2%;
 }
 
-/* .buttonHeader span{
-    z-index: 1000;
-} */   
-.buttonHeader::before, .buttonHeader::after {
-    background: rgb(255, 240, 220);
-    content: "";
-    position: absolute;
-}
-
-.buttonHeader:hover {
+.buttonHeader:hover{
     color: rgb(100, 180, 230);
-    z-index: 1;
-}
-.buttonHeader::after {
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 0;
-    z-index: -1;
-}
-.buttonHeader:hover:after {
-    width: 100%;
-    z-index: -1;
+    transition: all .2s ease-out;
+    background-position: left bottom;
 }
 
 .menuHeader table{
