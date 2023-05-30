@@ -29,10 +29,14 @@
         ?>
     </div>
 
-    <div id="contenupage">
+    <div id="head">
         <?php
         include "header.php";
         ?>
+
+    </div>
+
+    <div id="contenupage">
 
         <div id=DemanderConnexion>
             <h1>Veuillez vous connecter pour acceder à cette fonctionnalité</h1>

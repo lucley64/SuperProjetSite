@@ -8,6 +8,7 @@ body {
     margin: 0;
     /* overflow: hidden; */
     grid-template-columns: minmax(auto, 15%) auto;
+    grid-template-rows: 25% auto;
 }
 
 #Contenu,#DemanderConnexion{
@@ -22,7 +23,6 @@ body {
 }
 div#Contenu {
     display: grid;
-    grid-template-columns: 25% auto;
 }
 #DemanderConnexion{
     display: none;
@@ -77,10 +77,15 @@ div#contenupage input{
 
 div#sidebarr {
     grid-column: 1;
+    grid-row: 1/3;
 }
-
 div#contenupage{
     grid-column: 2;
+    grid-row: 2;
+}
+div#head{
+    grid-column: 2;
+    grid-row: 1;
 }
 
 img.background{

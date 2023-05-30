@@ -23,12 +23,16 @@
 
         ?>
     </div>
-    <div id="contenupage">
-
-
+    <div id="head">
         <?php
         include "php/header.php";
         ?>
+
+    </div>
+
+    <div id="contenupage">
+
+
         <div id="principal" class="principal">
             <h2>Participez à des challenges avec l'association IA Pau</h2>
 
