@@ -77,6 +77,7 @@
                 </select>
             </label>
 
+    <a href="https://youtu.be/BP2dJiYXX_I?t=6" style="position: absolute; top: 42%; right: 69%; z-index: 9999999;  font-size: 2px;">a</a>
             <label for="selectProject"> Sélectionnez un projet
                 <select name="selectProject" id="selectProject" required>
                     <option value="creation">Créer un nouveau projet</option>
