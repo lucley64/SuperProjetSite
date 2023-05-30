@@ -1,7 +1,5 @@
 <?php session_start();
 
-print_r($_POST);
-print_r($_SESSION);
 
 $mysqli = new mysqli("localhost", "thatachallenge", "thatachallenge123", "datas");
 
@@ -19,11 +17,11 @@ $idmax = $idmax->fetch_assoc();
 $idmax = $idmax["max(idMessage)"] + 1;
 
 
-$requete = 'INSERT INTO Messages Values(' . '"' . $idmax . '"' . ',' . '"' . $emmeteur . '"' . ',' . '"' . $destinataire . '"' . ',' . '"' . $message . '"' . ',' . '"' . $sujet . '"' . ');';
+$requete = 'INSERT INTO Messages (idmessage, expediteur,destinataire,messages,sujet) Values(' . '"' . $idmax . '"' . ',' . '"' . $emmeteur . '"' . ',' . '"' . $destinataire . '"' . ',' . '"' . $message . '"' . ',' . '"' . $sujet . '"' . ');';
 
 
 
-echo $requete;
+//echo $requete;
 $messageenvoye = $mysqli->query($requete) or die("Erreur envoi message" . $mysqli->error);
 
 header("Location:../messagerie.php");

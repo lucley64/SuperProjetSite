@@ -62,7 +62,7 @@
         include "header.php";
         ?>
         <div id="principal" class="principal">
-            <div class="projet"> <title> projet : sacré projet</title></div>            
+            <div class="projet"> <p>projet<p> </div>            
             <div class="projet"> <title> projet : deuxième projet</title></div>
         </div>
     </div>

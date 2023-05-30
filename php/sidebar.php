@@ -23,31 +23,41 @@ session_start();
 	<div id="sidebar" type="Toggled" class="barrecote">
 		<ul>
 			<li>
-				<img src="/src/graphique.png" type="icone" alt="graphique">
-				<input type="bouton" value="Projet" class="buttonHeader side" onclick="document.location.href='/php/page_projet.php'" />
+				<a href="/php/page_projet.php">
+					<img src="/src/graphique.png" type="icone" alt="graphique">
+					<input type="bouton" value="Projet" class="buttonHeader side" onclick="document.location.href='/php/page_projet.php'" />
+				</a>
 			</li>
 			<li>
-				<img src="/src/messagerie.png" type="icone" alt="">
-				<input type="bouton" value="Messagerie" class="buttonHeader side" onclick="document.location.href='/php/messagerie.php'" />
+				<a href="/php/messagerie.php">
+					<img src="/src/messagerie.png" type="icone" alt="">
+					<input type="bouton" value="Messagerie" class="buttonHeader side" onclick="document.location.href='/php/messagerie.php'" />
+				</a>
 			</li>
 			<?php
 			if (isset($_SESSION['userType'])) {
 				echo '<li>' .
+				'<a href="/php/modifInfos.php">'.
 					'<img src="/src/modifier_profil.png" type="icone" alt="">' .
 					'<input type="bouton" value="Modifier profil" class="buttonHeader side" onclick="document.location.href=\'/php/modifInfos.php\'"/>' .
+					'</a>'.
 					'</li>';
 			}
 			?>
 			<li>
+				<a href="/php/creationDataChallenge.php">
 				<input type="button" value="Creer data challenge" <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
-											echo "style=display:none;";
-										} ?> class="buttonHeader side" id="btndata" onclick="document.location.href='/php/creationDataChallenge.php'" cols="5" rows="2"></input>
+																		echo "style=display:none;";
+																	} ?> class="buttonHeader side" id="btndata" onclick="document.location.href='/php/creationDataChallenge.php'" cols="5" rows="2"></input>
 
+				</a>
 			</li>
 			<li>
+				<a href="/php/creationAdmin.php">
 				<input type="button" value="Creer nouveau compte<" <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
-											echo "style=display:none;";
-										} ?> class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
+																		echo "style=display:none;";
+																	} ?> class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
+				</a>
 			</li>
 		</ul>
 	</div>
