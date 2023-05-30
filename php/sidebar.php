@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -32,8 +35,10 @@
 			</li>
 			<li>
 				<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:none;";}?> class="buttonHeader side" id="btndata" onclick="document.location.href='/php/creationDataChallenge.php'" cols="5" rows="2">Creer data challenge</textarea>
-				<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:none;";}?> class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2">Creer nouveau compte</textarea>
 				
+			</li>
+			<li>
+			<textarea  <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="admin"){echo "style=display:none;";}?> class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2">Creer nouveau compte</textarea>
 			</li>
 		</ul>
 	</div>
