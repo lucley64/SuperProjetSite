@@ -4,7 +4,7 @@ ini_set('display_errors', 'On'); ?>
 
 <head>
     <title>header</title>
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="/css/header.css">
     <script type="text/javascript" src="/js/header.js"></script>
 </head>
 
