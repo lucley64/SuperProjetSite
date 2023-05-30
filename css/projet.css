@@ -1,4 +1,7 @@
 .projet{
     background-color: aliceblue;
     border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    z-index: 10000;
 }
