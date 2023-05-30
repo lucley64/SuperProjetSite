@@ -15,7 +15,7 @@
 
     <?php
     session_start();
-    ?>
+    ?> 
     <div id="container">
         <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Créer une équipe</h1>

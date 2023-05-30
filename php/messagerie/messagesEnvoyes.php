@@ -21,6 +21,6 @@ if ($res == true) {
 foreach ($donnees as $cle => $val) {
     $id = $donnees[$cle]['idMessage'];
     echo "<div class='messageEnvoye' id='messageEnvoye" . $id . "'>";
-    echo $cle . ": Message envoyé à " . $donnees[$cle]["destinataire"] . "   Sujet:" . $donnees[$cle]["sujet"] . " Message:" . $donnees[$cle]["messages"];
+    echo $donnees[$cle]["idMessage"] . ": Message envoyé à " . $donnees[$cle]["destinataire"] . "   Sujet:" . $donnees[$cle]["sujet"] . " Message:" . $donnees[$cle]["messages"];
     echo "</div>";
 }

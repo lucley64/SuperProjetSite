@@ -22,7 +22,9 @@ CREATE TABLE IF NOT EXISTS Messages(
   expediteur VARCHAR(30),
   destinataire VARCHAR(30),
   messages TEXT,
-  sujet TEXT);
+  sujet TEXT,
+  idEquipeARejoindre int DEFAULT -1
+  );
 
 CREATE TABLE IF NOT EXISTS DataChallenges (
   challengeName VARCHAR(50) PRIMARY KEY,
