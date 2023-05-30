@@ -17,13 +17,13 @@ body {
     margin: 0;
     /* overflow: hidden; */
     grid-template-columns: minmax(auto, 15%) auto;
-    grid-template-rows: 25% auto;
+    grid-template-rows: 150px auto;
 }
 
 #Contenu,
 #DemanderConnexion {
     /* position: absolute; */
-    width: 75%;
+    width: 88%;
     margin: 0 auto;
     /* left: 18%; */
     /* top: 15%; */
