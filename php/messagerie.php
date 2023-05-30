@@ -27,7 +27,7 @@
         <div id="barreGauche">
             <h1>Messagerie</h1>
             <ul>
-                <li class="envoyermail" onclick=afficher(this);>Envoyer mail</li>
+                <li class="envoyermail" onclick=afficher(this);>Envoyer message</li>
                 <li class="messagesRecus" onclick=afficher(this);>Messages reçus</li>
                 <li class="messagesEnvoyes" onclick=afficher(this);>Messages envoyés</li>
                 <li <?php if (!isset($_SESSION["userType"])||$_SESSION["userType"]!="manager"){echo "style=display:none;";} ?>class="voirMessages" onclick=afficher(this)>Voir tous les messages</li>
