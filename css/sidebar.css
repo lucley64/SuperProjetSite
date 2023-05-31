@@ -87,7 +87,7 @@ input[type=bouton] {
 
 .barrecote li {
     list-style-type: none;
-    display: flex;
+    /* display: flex; */
     margin: 0 0 33% 0;
     /* margin-left: -30px;             décale le bouton ET l'icone */
     /* width: 350px; */
@@ -95,6 +95,7 @@ input[type=bouton] {
 
 .barrecote a {
     color: white;
+    display: flex;
 }
 
 .barrecote img {
