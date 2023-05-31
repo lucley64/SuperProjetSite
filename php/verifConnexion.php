@@ -23,6 +23,13 @@ if (password_verify($_POST['mdp'], $data[1])) {
     $_SESSION['endDate'] = $data[10];
     $_SESSION['connected'] = true;
     $_SESSION['wrongPwd'] = false;
+    if ($_SESSION["userType"] == "student") {
+        header('Location: /accueilStudent.php');
+    } else if($_SESSION["userType"] == "manager") {
+        header('Location: /php/accueilManager.php');
+    } else {
+        header('Location: /php/accueilAdmin.php');
+    }
     header('Location: ../index.php');
 } else {
     $_SESSION['wrongPwd'] = true;

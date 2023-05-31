@@ -1,14 +1,14 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
+<?php
+    session_start();
+?>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <a href="https://youtu.be/BP2dJiYXX_I?t=6" style="position: absolute; top: 42%; right: 69%; z-index: 9999999;  font-size: 2px;">a</a>
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" hreg="/css/header.css">
 

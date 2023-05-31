@@ -7,18 +7,19 @@ if (mysqli_connect_errno()) {
 
 $nomEquipe = $_POST["nomEquipe"];
 $dataChallenge = $_POST["selectDataChallenge"];
+$_SESSION["dataChallenge"] = $dataChallenge;
 $githubLink = $_POST["githubLink"];
 
-$req = "SELECT dataChallenge FROM Equipe WHERE capitaine = \"" . $_SESSION["username"] . "\";";
+$req = "SELECT e.dataChallenge FROM Equipe e JOIN Participe p ON e.id = p.idEquipe WHERE p.idUser = \"" . $_SESSION["username"] . "\";";
 $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
 
-$_SESSION["valid"] = true;
+$_SESSION["hasWorked"] = "ok";
 while ($data = mysqli_fetch_row($result)) {
     if ($data[0] == $dataChallenge) {
-        $_SESSION["valid"] = false;
+        $_SESSION["hasWorked"] = "pb";
     }
 }
-if ($_SESSION["valid"]) {
+if ($_SESSION["hasWorked"] == "ok") {
     $req = "INSERT INTO Equipe (nomEquipe, dataChallenge, capitaine, githubLink) VALUES (\"" . $nomEquipe . "\",\"" . $dataChallenge . "\",\"" . $_SESSION["username"] . "\",\"" . $githubLink . "\");";
     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
 
@@ -30,6 +31,8 @@ if ($_SESSION["valid"]) {
     $req = "INSERT INTO Participe (idEquipe,idUser) VALUES (\"" . $idEquipe . "\",\"" . $_SESSION["username"] . "\");";
     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
     mysqli_close($cnx);
+
+    $_SESSION["hasWorked"] = "nothing";
 
     header('Location: /php/ajoutEquipeUser.php');
 } else {

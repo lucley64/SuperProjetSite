@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["hasWorked"] = "ok";
 $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
 if (mysqli_connect_errno()) {
     echo mysqli_connect_error();
@@ -72,21 +73,30 @@ if (isset($_POST["endDate"])) {
 $splash = "\",\"";
 $req = "INSERT INTO Users VALUES (" . $username . ", " . $hashpwd . ", " . $userType . ", " . $lastName . ", " . $firstName . ", " . $workplace . ", " . $studyLvl . ", " . $phone . ", " . $mail . ", " . $startDate . ", " . $endDate . ");";
 $_SESSION["utilisateurDouble"] = false;
-$result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
+$result = mysqli_query($cnx, $req);
+if (!$result){
+    erreurRequete(mysqli_errno($cnx));
+}
 mysqli_close($cnx);
 
-if ($_SESSION["connected"] == true && $_SESSION["userType"] == "admin") {
-   header('Location: creationAdmin.php');
-} else {
-    header('Location: connexion.php');
+if ($_SESSION["hasWorked"] == "ok") {
+    if ($_SESSION["connected"] == true && $_SESSION["userType"] == "admin") {
+    header('Location: creationAdmin.php');
+    } else {
+        $_SESSION["hasWorked"] = "nothing";
+        header('Location: connexion.php');
+    }
 }
 
 
 function erreurRequete($numeroErreur)
 {
     /*cas ou l'utilisateur rentré existe déjà*/
-    if ($numeroErreur == 1062) {
-        $_SESSION["utilisateurDouble"] = true;
+    $_SESSION["hasWorked"] = "pb";
+    if ($_SESSION["connected"] == true && $_SESSION["userType"] == "admin") {
+        header('Location: creationAdmin.php');
+    } else {
         header('Location: creation.php');
     }
+
 }

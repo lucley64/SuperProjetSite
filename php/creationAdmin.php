@@ -5,11 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/loginsignin.css">
     <title>Création de compte en tant qu'administrateur</title>
 </head>
 
-<body>
+<body <?php
+        session_start();
+        if ($_SESSION['hasWorked'] == "ok") {
+            $_SESSION['hasWorked'] = "nothing";
+            echo 'onload="alertValidCreatedUser();"';
+        } else if ($_SESSION['hasWorked'] == "pb") {
+            echo 'onload="alertErrorCreatedUser();"';
+        }
+        ?>>
 <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
 
     <?php

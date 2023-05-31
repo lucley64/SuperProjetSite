@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php session_start(); ?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/loginsignin.css">
     <title>Création de compte</title>
 </head>
 
-<body>
+<body <?php
+        session_start();
+        if ($_SESSION['hasWorked'] == "pb") {
+            echo 'onload="alertErrorCreatedUser();"';
+        }
+        $_SESSION['hasWorked'] = "nothing";
+        ?>>
     <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
     <div id="containerCreation">
         <button onclick="window.location='../index.php'" class="nav">Retour</button>

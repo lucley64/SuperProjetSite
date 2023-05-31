@@ -54,6 +54,7 @@
                         echo "<th>Nom</th>";
                         echo "<th>details</th>";
                         echo "<th>image</th>";
+                        echo "<th>equipes</th>";
                         echo "<th>ressources</th>";
                         echo "<th>email</th>";
                         echo "</thead>";
@@ -63,6 +64,25 @@
                             echo "<td>$value[nom]</td>";
                             echo "<td>$value[details]</td>";
                             echo "<td><img src='$value[img]' height='500px' width='500px'></img></td>";
+
+                            echo "<td>";
+                            echo "<ul>";
+
+                            $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                            if (mysqli_connect_errno()) {
+                                echo mysqli_connect_error();
+                            }
+
+                            $req = "SELECT nomEquipe, id FROM Equipe WHERE dataChallenge = \"" . $val["challengeName"] . "\";";
+                            $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
+
+                            while ($data = mysqli_fetch_row($result)) {
+                                echo "<li> <a href='/php/detailsEquipe.php?id=" . $data[1] . "'>" . $data[0] . "</a> </li>";
+                            }
+
+                            mysqli_close($cnx);
+                            echo "</ul>";
+                            echo "</td>";
 
                             $res4 = $connexion->query(
                                 "SELECT `Ressources`.* FROM `ProjectData` " .

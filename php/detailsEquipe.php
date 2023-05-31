@@ -7,7 +7,7 @@
         echo mysqli_connect_error();
     }
     
-    $req = "SELECT e.nomEquipe, e.dataChallenge, e.capitaine, e.githubLink FROM Equipe e WHERE e.id = " . $idEquipe . ";";
+    $req = "SELECT e.nomEquipe, e.dataChallenge, e.capitaine, e.githubLink, e.score FROM Equipe e WHERE e.id = " . $idEquipe . ";";
     $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
     $donneesEquipe = mysqli_fetch_row($result);
 ?>
@@ -67,26 +67,38 @@
                     $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
 
                     echo('<h3>Liste des membres :</h3>');
+                    echo('<ul>');
 
                     while ($data = mysqli_fetch_row($result)) {
-                        if ($data[0] == $donneesEquipe[2]) {
-                            echo("<p>" . $data[0] . "⭐<a title='Supprimer cette équipe' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">❌</button></a> </p>");
+                        if ($_SESSION["username"] == $donneesEquipe[2]) {
+                            if ($data[0] == $donneesEquipe[2]) {
+                                echo("<li><p>" . $data[0] . "⭐<a title='Supprimer cette équipe' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">❌</button></a> </p></li>");
+                            } else {
+                                echo("<li><p>" . $data[0] . "<a title='Retirer cet utilisateur' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">👋</button></a> </p></li>");
+                            }
                         } else {
-                            echo("<p>" . $data[0] . "<a title='Retirer cet utilisateur' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">👋</button></a> </p>");
+                            if ($data[0] == $donneesEquipe[2]) {
+                                echo("<li><p>" . $data[0] . "⭐</p></li>");
+                            } else if ($data[0] != $_SESSION["username"]){
+                                echo("<li><p>" . $data[0] . "</p></li>");
+                            } else {
+                                echo("<li><p>" . $data[0] . "<a title='Quitter cette équipe' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">🚪</button></a> </p></li>");
+                            }
                         }
                     }
+                    echo('</ul>');
                     mysqli_close($cnx);
                 ?>
             </div>
             <div id="finit">
                 <h3>Data challenge auquel l'équipe est inscrite :</h3>
                 <ul>
-
                     <?php
                     echo("<a href='/php/infoDataChallenge.php?challenge=" . $donneesEquipe[1] . "'>" . $donneesEquipe[1] . "</a>"); 
                     ?>
                 </ul>
 
+                <h3>Score actuel : <?php echo($donneesEquipe[4]) ?></h3>
             </div>
         </div>
     </div>
