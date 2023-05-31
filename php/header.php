@@ -27,7 +27,7 @@ ini_set('display_errors', 'On'); ?>
                     } else {
                         echo '<th class="connexion"><a href="/php/connexion.php"><button class="buttonHeader">Deconnexion</button></a></th>';
                     }
-                    ?>
+                    ?> 
                 </tr>
             </table>
         </div>
