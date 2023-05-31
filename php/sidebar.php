@@ -45,6 +45,12 @@ session_start();
 			}
 			?>
 			<li>
+				<a><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
+			</li>
+			<li>
+				<a><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
+			</li>
+			<li>
 				<a href="/php/creationDataChallenge.php">
 				<input type="button" value="Creer data challenge" <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
 																		echo "style=display:none;";
@@ -54,11 +60,12 @@ session_start();
 			</li>
 			<li>
 				<a href="/php/creationAdmin.php">
-				<input type="button" value="Creer nouveau compte<" <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
+				<input type="button" value="Creer nouveau compte" <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
 																		echo "style=display:none;";
 																	} ?> class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
 				</a>
 			</li>
+			
 		</ul>
 	</div>
 

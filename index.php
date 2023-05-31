@@ -29,7 +29,6 @@
     </div>
 
     <div id="contenupage">
-        <?php var_dump($_SESSION);?>
 
 
         <div id="principal" class="principal">
