@@ -24,6 +24,23 @@
 
             if (date('Y-m-d') > strtotime($data[1]) || date('Y-m-d') < strtotime($data[0])) {
                 echo('onload="alertOutOfTime();"');
+            } else {
+                $req = "SELECT id FROM Equipe WHERE capitaine = " . $_SESSION["username"] . ";";
+                $result = mysqli_query($cnx, $req);
+                $equipe = mysqli_fetch_row($result);
+
+                $req = "SELECT q.id FROM (Questionnaire q JOIN Question qu ON q.id = qu.questionnaire) JOIN Reponse r ON r.question = qu.id WHERE r.idEquipe = " . $equipe[0] . ";";
+                $result = mysqli_query($cnx, $req);
+                $valid = true;
+                while ($data = mysqli_fetch_row($result)) {
+                    if ($data[0] == $id) {
+                        $valid = false;
+                    }
+                }
+
+                if (!$valid) {
+                    echo('onload="alertAlreadyAnswered();"');
+                }
             }
             mysqli_close($cnx);
         ?>

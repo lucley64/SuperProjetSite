@@ -67,19 +67,6 @@ session_start();
                 <input type="email" name="mail" id="mail" placeholder="Entrez votre adresse email" value="<?php echo '' . $_SESSION['mail'] . '' ?>">
             </label>
 
-            <?php
-            if ($_SESSION["userType"] == "manager") {
-                echo '
-                    <label for="starDate"> Start Date
-                    <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ" value="' . $_SESSION['startDate'] . '">
-                    </label>
-                    <label for="endDate"> End Date
-                    <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin" value="' . $_SESSION['firstName'] . '">
-                    </label>
-                    ';
-            }
-            ?>
-
             <input type="submit" value="Mettre à jour les informations du compte">
         </form>
     </div>

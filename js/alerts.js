@@ -42,3 +42,12 @@ function alertOutOfTime(){
         background: 'white',
         });
 }
+
+function alertAlreadyAnswered(){
+    Swal.fire({
+        title: "Erreur",
+        text: "Vous avez déjà répondu à ce formulaire",
+        icon: 'error',
+        background: 'white',
+        });
+}
