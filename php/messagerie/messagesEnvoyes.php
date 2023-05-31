@@ -7,7 +7,7 @@ if ($mysqli->connect_error) {
     die("La connexion a échoué: " . $mysqli->connect_error);
 }
 
-$requete = "Select * from Messages where expediteur='" . $_SESSION["mail"] . "'";
+$requete = "Select * from Messages where expediteur='" . $_SESSION["username"] . "'";
 $res = $mysqli->query($requete);
 /*on stoque dans le tableau donnees les resultat de la requete*/
 if ($res == true) {

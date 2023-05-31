@@ -7,12 +7,12 @@ if (mysqli_connect_errno()) {
 
 $selectEquipe = $_POST["selectEquipe"];
 $selectUser = $_POST["selectUser"];
-
-$req="Select mail from Users where username='".$selectUser."'";
+/*
+$req="Select username from Users where username='".$selectUser."'";
 $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
 while ($data = mysqli_fetch_row($result)) {
     $mailUser=$data[0];
-}
+}*/
 
 
 $nomEquipe=mysqli_query($cnx,"Select nomEquipe from Equipe;")or die('Pb req : ' . $req);
@@ -25,8 +25,8 @@ $idmax = $idmax["max(idMessage)"] + 1;
 
 $message="Bonjour, vous avez été invité à rejoindre l'équipe suivante:".$nomEquipe.". Si vous voulez rejoindre cette équipe, cliquez sur le bouton suivant: <br> <input  onclick='ajouterUseraequipe(this)' type='button' value='Rejoindre l équipe'>";
 
-$req='INSERT INTO Messages Values(' . '"' . $idmax . '"' . ',' . '"' . $_SESSION["mail"] . '"' . ',' . '"' . $mailUser . '"' . ',' . '"' . $message . '"' . ',' . '"' . "Invitation a une équipe" . '",' .'"'.$selectEquipe.'"'.');';
-
+$req='INSERT INTO Messages Values(' . '"' . $idmax . '"' . ',' . '"' . $_SESSION["username"] . '"' . ',' . '"' . $selectUser . '"' . ',' . '"' . $message . '"' . ',' . '"' . "Invitation a une équipe" . '",' .'"'.$selectEquipe.'"'.');';
+echo $req;
 $result = mysqli_query($cnx, $req) or die('Pb req : ' . mysqli_error($cnx));
 mysqli_close($cnx);
 

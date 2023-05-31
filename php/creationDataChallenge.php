@@ -37,8 +37,8 @@
             <label for="endDate"> Date de fin
                 <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin" required>
             </label>
-            <label for="selectManager"> Selectionner un manager
-                <select name="associateManager" id="selectManager" required>
+            <label for="associateManager"> Selectionner un manager
+                <select name="associateManager" id="associateManager" required>
                     <?php
                     $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
                     if (mysqli_connect_errno()) {
@@ -56,9 +56,6 @@
                 </select>
             </label>
 
-            <label for="associateManager">
-                <input type="hidden" value="">
-            </label>
 
             <input type="submit" value="Créer le data challenge">
 
