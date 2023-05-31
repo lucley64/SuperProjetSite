@@ -59,6 +59,15 @@ session_start();
                     <input type="button" value="Creer nouveau compte<" class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
                 </a>
             </li>
+            <li <?php
+            if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "manager") {
+                echo "hidden";
+            }
+            ?>>
+                <a href="/php/creationForm.php">
+                    <input type="button" value="Creer nouveau questionnaire" class="buttonHeader side" id="btnquest"></input>
+                </a>
+            </li>
         </ul>
     </div>
 
