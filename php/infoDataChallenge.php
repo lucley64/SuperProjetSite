@@ -41,6 +41,8 @@
                     echo "<p> Commence le " . date_format($dateDeb, "d/m/Y") . "</p>";
                     echo "<p> Prend fin le " . date_format($dateFin, "d/m/Y") . "</p>";
 
+                    
+
                     if ($dateFin < date_create()) {
                         $res2 = $connexion->query(
                             "SELECT * FROM `Equipe` JOIN `DataChallenges` ON `Equipe`.`dataChallenge` = `DataChallenges`.`challengeName` WHERE `DataChallenges`.`challengeName` = '$_GET[challenge]' ORDER BY `Equipe`.`score` DESC LIMIT 3"

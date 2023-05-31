@@ -25,7 +25,7 @@
                 <select name="selectEquipe" id="selectEquipe" value="" required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
+                        if (mysqli_connect_errno()) {
                             echo mysqli_connect_error();
                         };
                         $req = "SELECT id, nomEquipe, dataChallenge FROM Equipe WHERE capitaine = \"" . $_SESSION["username"] . "\";";
@@ -45,7 +45,7 @@
                 <select name="selectUser" id="selectUser" required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
+                        if (mysqli_connect_errno()) {
                             echo mysqli_connect_error();
                         };
                         $req = "SELECT username FROM Users WHERE userType = 'student';";

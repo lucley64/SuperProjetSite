@@ -14,7 +14,7 @@
     <title>Modification de Data Challenge</title>
 </head>
 
-<body> 
+<body>
 <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
 
     <div id="containerCreation" style="top:5;">
@@ -26,7 +26,7 @@
                 <select name="selectDataChallenge" id="selectDataChallenge" required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
+                        if (mysqli_connect_errno()) {
                             echo mysqli_connect_error();
                         };
                         $req = "SELECT challengeName FROM DataChallenges;";
@@ -62,7 +62,7 @@
                 <select name="associateDataChallenge" id="associateDataChallenge"required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
+                        if (mysqli_connect_errno()) {
                             echo mysqli_connect_error();
                         };
                         $req = "SELECT challengeName FROM DataChallenges;";
