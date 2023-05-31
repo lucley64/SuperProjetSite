@@ -19,7 +19,7 @@ if ($res) {
 }
 foreach ($donnees as $cle => $val) {
     $id = $donnees[$cle]['idMessage'];
-    echo "<div class='messageRecu' id='message" . $id . "'>";
-    echo $donnees[$cle]["idMessage"] . ": Message de " . $donnees[$cle]["expediteur"] . "   Sujet:" . $donnees[$cle]["sujet"] . " Message:" . $donnees[$cle]["messages"];
+    echo "<span class=expediteur>Message de " . $donnees[$cle]["expediteur"] ."</span> <div class='messageRecu' id='message" . $id . "'>";
+    echo "Sujet:<span class=sujet>" . $donnees[$cle]["sujet"] . "</span> <br>Message:<br><span class=Message>" . $donnees[$cle]["messages"]."</span>";
     echo "</div>";
 }
