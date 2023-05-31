@@ -62,8 +62,16 @@
         include "header.php";
         ?>
         <div id="principal" class="principal">
-            <div class="projet"> <p>projet<p> </div>            
-            <div class="projet"> <title> projet : deuxième projet</title></div>
+            <a href="/php/messagerie.php" >
+                <button class="projet"> 
+                    <div class="barreMilieu"><p>projet : <p></div>
+                    <ul>
+                        <li>équipe : </li>
+                        <li>date de fin : </li>
+                        <li>description : </li>
+                    </ul>
+                </button>            
+            </a>
         </div>
     </div>
 </body>

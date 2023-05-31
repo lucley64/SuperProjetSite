@@ -25,7 +25,7 @@ session_start();
 			<li>
 				<a href="/php/page_projet.php">
 					<img src="/src/graphique.png" type="icone" alt="graphique">
-					<input type="bouton" value="Projet" class="buttonHeader side" onclick="document.location.href='/php/page_projet.php'" />
+					<input type="bouton" value="Mes data challenges" class="buttonHeader side" onclick="document.location.href='/php/page_projet.php'" />
 				</a>
 			</li>
 			<li>
