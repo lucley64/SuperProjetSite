@@ -43,7 +43,7 @@ async function VoirTousLesMessages() {
     const response = await fetch('messagerie/voirtouslesmessages.php');
     const data = await response.text();
     console.log(data);
-    document.getElementById("voirMessages").innerHTML = data;
+    document.getElementById("ContenuVoirMessages").innerHTML = data;
     setTimeout(VoirTousLesMessages, 5000);
   } catch (error) {
     console.error('Erreur lors de la récupération des messages envoyés:', error);

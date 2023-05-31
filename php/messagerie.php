@@ -15,12 +15,7 @@
 <body>
     <?php
     session_start();
-
-
-
-
     ?>
-
     <img class="background" src="/src/pyrenees.jpg" alt="pyr">
     <div id="sidebarr">
         <?php
@@ -43,9 +38,11 @@
         </div>
         <div id=Contenu>
             <div id="barreGauche">
-                <h1>Messagerie</h1>
-                <ul>
-                    <li class="envoyermail" onclick=afficher(this);>Envoyer Message</li>
+                <h1 class="titre">Messagerie</h1>
+                <ul style="list-style: none;">
+                    <li class="envoyermail" onclick=afficher(this);>
+                        Envoyer Message
+                    </li>
                     <li class="messagesRecus" onclick=afficher(this);>Messages reçus</li>
                     <li class="messagesEnvoyes" onclick=afficher(this);>Messages envoyés</li>
                     <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "manager") {
@@ -58,7 +55,7 @@
 
             <div id="barreDroite">
                 <div class="elt" id="envoyermail" style="display:block">
-                    <h1>Envoyer Message</h1>
+                    <h1 class="titre">Envoyer Message</h1>
                     <form action="messagerie/envoyermail.php" method="POST">
                         <label>Destinataire
                             <input name="destinataire" type="text" value="" placeholder="Destinataire"> <br>
@@ -78,21 +75,18 @@
 
                 </div>
 
-
-
                 <div class="elt" id=messagesRecus style="display:none">
-                    <h1>Messages reçus:</h1><br>
+                    <h1 class="titre">Messages reçus:</h1><br>
                     <div id="ContenuMessages"></div>
                 </div>
                 <div class="elt" id="messagesEnvoyes" style="display:none">
-                    <h1>Messages envoyés:</h1><br>
+                    <h1 class="titre">Messages envoyés:</h1><br>
                     <div id="ContenuMessagesEnvoyes"></div>
                 </div>
 
                 <div class="elt" id="voirMessages" style="display:none">
-                    <h1>Voir tous les messages</h1>
-
-
+                    <h1 class="titre">Voir tous les messages</h1>
+                    <div id="ContenuVoirMessages"></div>
                 </div>
             </div>
         </div>
