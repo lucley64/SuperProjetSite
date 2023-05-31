@@ -45,7 +45,7 @@
             <div id="barreGauche">
                 <h1>Messagerie</h1>
                 <ul>
-                    <li class="envoyermail" onclick=afficher(this);>Envoyer mail</li>
+                    <li class="envoyermail" onclick=afficher(this);>Envoyer Message</li>
                     <li class="messagesRecus" onclick=afficher(this);>Messages reçus</li>
                     <li class="messagesEnvoyes" onclick=afficher(this);>Messages envoyés</li>
                     <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "manager") {
@@ -58,10 +58,10 @@
 
             <div id="barreDroite">
                 <div class="elt" id="envoyermail" style="display:block">
-                    <h1>Envoyer mail</h1>
+                    <h1>Envoyer Message</h1>
                     <form action="messagerie/envoyermail.php" method="POST">
                         <label>Destinataire
-                            <input name="destinataire" type="email" value="" placeholder="Destinataire"> <br>
+                            <input name="destinataire" type="text" value="" placeholder="Destinataire"> <br>
                         </label>
                         <label>Sujet
                             <input id=sujet type="text" name="sujet" placeholder="Sujet"> <br>

@@ -7,16 +7,15 @@
     $challengeName = $_POST["challengeName"];
     $startDate = $_POST["startDate"];
     $endDate = $_POST["endDate"];
-    $associateManager = $_POST["selectManager"];
+    $associateManager = $_POST["associateManager"];
 
-    $req = "INSERT INTO DataChallenges VALUES (\"" . $challengeName . "\",\"" . $startDate . "\",\"" . $endDate . "\",\"" . $associateManager . "\");";
-    $result = mysqli_query($cnx, $req);
-    if (!$result){
-        erreurRequete(mysqli_errno($cnx));
-    }
-    $data = mysqli_fetch_row($result);
-    mysqli_close($cnx);
-
+$req = "INSERT INTO DataChallenges VALUES (\"" . $challengeName . "\",\"" . $startDate . "\",\"" . $endDate . "\",\"" . $associateManager . "\");";
+$_SESSION["utilisateurDouble"] = false;
+$result = mysqli_query($cnx, $req);
+if (!$result){
+    erreurRequete(mysqli_errno($cnx));
+}
+mysqli_close($cnx);
     $_SESSION['temporary'] = $challengeName;
     header('Location: modifDataChallenge.php');
 

@@ -23,7 +23,9 @@ CREATE TABLE IF NOT EXISTS Messages(
   destinataire VARCHAR(30),
   messages TEXT,
   sujet TEXT,
-  idEquipeARejoindre int DEFAULT -1
+  idEquipeARejoindre int DEFAULT -1,
+  FOREIGN KEY fkuserdest(destinataire) REFERENCES Users(username) ON DELETE CASCADE,
+  FOREIGN KEY fkuserexp(expediteur) REFERENCES Users(username) ON DELETE CASCADE
   );
 
 CREATE TABLE IF NOT EXISTS DataChallenges (

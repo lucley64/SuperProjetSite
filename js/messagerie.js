@@ -42,9 +42,9 @@ async function VoirTousLesMessages() {
   try {
     const response = await fetch('messagerie/voirtouslesmessages.php');
     const data = await response.text();
-    //console.log(data);
+    console.log(data);
     document.getElementById("voirMessages").innerHTML = data;
-    setTimeout(MessagesEnvoyes, 5000);
+    setTimeout(VoirTousLesMessages, 5000);
   } catch (error) {
     console.error('Erreur lors de la récupération des messages envoyés:', error);
   }
@@ -53,9 +53,10 @@ VoirTousLesMessages();
 
 
 function ajouterUseraequipe(elt) {
-  //elt.style.display="none";
-  var val = elt.parentNode.innerHTML;
-  var idmessage = val[0];
+
+  var val = elt.parentNode.id;
+  console.log(val);
+  var idmessage = val[val.length-1];//le dernier caractère de l'id du message correspond au idmessage
   console.log(idmessage);
 
   const formdata = new FormData();

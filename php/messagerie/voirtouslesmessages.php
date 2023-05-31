@@ -1,7 +1,6 @@
 <?php 
 
 session_start();
-
 $mysqli = new mysqli("localhost", "thatachallenge", "thatachallenge123", "datas");
 
 if ($mysqli->connect_error) {
@@ -18,7 +17,10 @@ if ($res) {
         $donnees[] = $colonne;
     }
 }
+
+
 foreach ($donnees as $cle => $val) {
+
     $id = $donnees[$cle]['idMessage'];
     echo "<div class='messageEnvoye' id='messagenum" . $id . "'>";
     echo $donnees[$cle]["idMessage"] . ": Message de " . $donnees[$cle]["expediteur"] . " adressé à ". $donnees[$cle]["destinataire"]."   Sujet:" . $donnees[$cle]["sujet"] . " Message:" . $donnees[$cle]["messages"];
