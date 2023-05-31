@@ -47,9 +47,9 @@
                         );
                         $val2 = $res2->fetchAll();
                         echo isset($val2[0]) ? "<h3> Top 3 : </h3>": "";
-                        echo isset($val2[0]) ? "<p> #1 : <a href=\"/php/detailEquipe.php?id=" . $val2[0]["id"] . "\"> " . $val2[0]["nomEquipe"] . "</a></p>" : "";
-                        echo isset($val2[0]) ? "<p> #2 : <a href=\"/php/detailEquipe.php?id=" . $val2[1]["id"] . "\"> " . $val2[1]["nomEquipe"] . "</a> </p>" : "";
-                        echo isset($val2[0]) ? "<p> #3 : <a href=\"/php/detailEquipe.php?id=" . $val2[2]["id"] . "\"> " . $val2[2]["nomEquipe"] . "</a>  </p>" : "";
+                        echo isset($val2[0]) ? "<p> #1 : <a href=\"/php/detailsEquipe.php?id=" . $val2[0]["id"] . "\"> " . $val2[0]["nomEquipe"] . "</a></p>" : "";
+                        echo isset($val2[0]) ? "<p> #2 : <a href=\"/php/detailsEquipe.php?id=" . $val2[1]["id"] . "\"> " . $val2[1]["nomEquipe"] . "</a> </p>" : "";
+                        echo isset($val2[0]) ? "<p> #3 : <a href=\"/php/detailsEquipe.php?id=" . $val2[2]["id"] . "\"> " . $val2[2]["nomEquipe"] . "</a>  </p>" : "";
                     }
                 } else {
                     echo "<h1> Erreur aucun challenge ne corespond au nom de $_GET[challenge] </h1>";
