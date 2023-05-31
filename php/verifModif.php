@@ -16,11 +16,11 @@ if ($_SESSION['userType'] != "admin" && !(password_verify($_POST["oldpwd"], $dat
 } else {
     $username = "\"" . $_SESSION["username"] . "\"";
     $pwd = "\"" . password_hash($_POST["pwd"], PASSWORD_DEFAULT) . "\"";
-    print_r($pwd);
-    if ($_POST["userType"] != "") {
-        $userType = "\"" . $_POST["userType"] . "\"";
+
+    if ($_POST["pwd"] != "") {
+        $pwd = "\"" . password_hash($_POST["pwd"], PASSWORD_DEFAULT) . "\"";
     } else {
-        $userType = "\"student\"";
+        $pwd = "\"" . password_hash($_POST["oldpwd"], PASSWORD_DEFAULT) . "\"";
     }
 
     if ($_POST["lastName"] != "") {
@@ -71,7 +71,7 @@ if ($_SESSION['userType'] != "admin" && !(password_verify($_POST["oldpwd"], $dat
         $endDate = "NULL";
     }
 
-    $req = "UPDATE Users SET pwd = " . $pwd . ", userType = " . $userType . ", lastName =" . $lastName . ", firstName = " . $firstName . ", workplace = " . $workplace . ", studyLvl = " . $studyLvl . ", phone = " . $phone . ", mail = " . $mail . ", startDate = " . $startDate . ", endDate = " . $endDate . " WHERE username =" . $username . ";";
+    $req = "UPDATE Users SET pwd = " . $pwd . ", lastName =" . $lastName . ", firstName = " . $firstName . ", workplace = " . $workplace . ", studyLvl = " . $studyLvl . ", phone = " . $phone . ", mail = " . $mail . ", startDate = " . $startDate . ", endDate = " . $endDate . " WHERE username =" . $username . ";";
     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);

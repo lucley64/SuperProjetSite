@@ -5,7 +5,7 @@ if (mysqli_connect_errno()) {
     echo mysqli_connect_error();
 }
 
-    $challengeName = "\"" . $_POST["selectDataChallenge"] . "\"";
+$challengeName = "\"" . $_POST["selectDataChallenge"] . "\"";
 
 $req = "SELECT * FROM DataChallenges WHERE challengeName = " . $challengeName . ";";
 $result = mysqli_query($cnx, $req) or die($mess . $req);
