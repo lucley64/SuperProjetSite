@@ -31,8 +31,6 @@
 
 <body>
     <?php
-    // error_reporting(E_ALL);
-    // ini_set('display_errors', 'On');
     $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
     $today = date("Y-m-d");
     ?>

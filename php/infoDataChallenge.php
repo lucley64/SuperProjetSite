@@ -11,8 +11,6 @@
 
 <body>
     <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'On');
     ?>
     <img class="background" src="/src/pyrenees.jpg" alt="pyr">
     <div id="sidebarr">
@@ -38,8 +36,20 @@
                     $dateDeb = date_create($val["startDate"]);
                     $dateFin = date_create($val["endDate"]);
 
+                    echo $dateFin < date_create() ? "<h3> Data chalenge finit </h3>" : "";
+
                     echo "<p> Commence le " . date_format($dateDeb, "d/m/Y") . "</p>";
                     echo "<p> Prend fin le " . date_format($dateFin, "d/m/Y") . "</p>";
+
+                    if ($dateFin < date_create()) {
+                        $res2 = $connexion->query(
+                            "SELECT * FROM `Equipe` JOIN `DataChallenges` ON `Equipe`.`dataChallenge` = `DataChallenges`.`challengeName` WHERE `DataChallenges`.`challengeName` = '$_GET[challenge]' ORDER BY `Equipe`.`score` DESC LIMIT 3");
+                        $val2 = $res2->fetchAll();
+                        echo "<h3> Top 3 : </h3>";
+                        echo "<p> #1 : <a href=\"/php/detailEquipe.php?id=" . $val2[0]["id"] . "\"> " . $val2[0]["nomEquipe"] . "</a></p>";
+                        echo "<p> #2 : <a href=\"/php/detailEquipe.php?id=" . $val2[1]["id"] . "\"> " . $val2[1]["nomEquipe"] . "</a> </p>";
+                        echo "<p> #3 : <a href=\"/php/detailEquipe.php?id=" . $val2[2]["id"] . "\"> " . $val2[2]["nomEquipe"] . "</a>  </p>";
+                    }
                 } else {
                     echo "<h1> Erreur aucun challenge ne corespond au nom de $_GET[challenge] </h1>";
                 }
