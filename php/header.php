@@ -20,14 +20,14 @@ ini_set('display_errors', 'On'); ?>
                     <th><a href="/php/actualites.php"><button class="buttonHeader ">Actualités</button></a></th>
                     <th><a href="/php/messagerie.php" ><button class="buttonHeader">Messagerie</button></a></th>
                     <th><a href="https://iapau.org/"><button class="buttonHeader">IA Pau</button></a></th>
-                    <th onmouseover="changerLoupe()" onmouseout="remettreLoupe()"><a href=""> <button class="buttonHeader"><img src="/src/loupe2.png" alt="loupe" id="loupe"> ______</button></a></th>
+                    <th onmouseover="changerLoupe()" onmouseout="remettreLoupe()" hidden><a href=""> <button class="buttonHeader"><img src="/src/loupe2.png" alt="loupe" id="loupe"> ______</button></a></th>
                     <?php
                     if (!isset($_SESSION['connected'])) {
                         echo '<th class="connexion"><a href="/php/connexion.php"><button class="buttonHeader">Connexion</button></a></th>';
                     } else {
                         echo '<th class="connexion"><a href="/php/connexion.php"><button class="buttonHeader">Deconnexion</button></a></th>';
                     }
-                    ?> 
+                    ?>
                 </tr>
             </table>
         </div>

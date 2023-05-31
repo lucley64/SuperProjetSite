@@ -107,8 +107,6 @@
 
 </body>
 <script type="text/javascript" src="/js/messagerie.js">
-
-
 </script>
 
 </html>
