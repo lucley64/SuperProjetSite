@@ -24,7 +24,6 @@
         <form action="verifCreation.php" method="post" id="creation">
             <label for="userType"> Type d'utilisateur
                 <select name="userType" id="userType" required>
-                    <option value="none">Veuillez choisir un type</option>
                     <option value="student">Participant</option>
                     <option value="manager">Gestionnaire</option>
                     <option value="admin">Administrateur</option>
@@ -37,6 +36,15 @@
 
             <label for="pwd"> Password
                 <input type="text " name="pwd" id="pwd" placeholder="Entrez le mot de passe" required>
+            </label>
+
+            <h3>Si le gestionnaire est externe, veuillez remplir sa periode d'activation</h3>
+
+            <label for="starDate"> Start Date
+                <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ">
+            </label>
+            <label for="endDate"> End Date
+                <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin">
             </label>
             <input type="submit" value="Créer le compte">
         </form>
