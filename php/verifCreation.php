@@ -89,5 +89,4 @@ function erreurRequete($numeroErreur)
         $_SESSION["utilisateurDouble"] = true;
         header('Location: creation.php');
     }
-    /*a faire: cas ou une valeur a trop de caractères*/
 }

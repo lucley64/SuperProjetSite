@@ -36,7 +36,7 @@
 </html> -->
 <!DOCTYPE html>
 <?php
-
+    $sql = "SELECT nomEquipe FROM Equipe JOIN Participe ON Equipe.idEquipe = Participe.id WHERE Participe.idUser= {$_SESSION['username']}"
 ?> 
 
 <html lang="fr">
@@ -58,13 +58,13 @@
         ?>
     </div>
     <div id="contenupage">
-        <?php
+        <?php  
         include "header.php";
         ?>
         <div id="principal" class="principal">
             <a href="/php/messagerie.php" >
                 <button class="projet"> 
-                    <div class="barreMilieu"><p>projet : <p></div>
+                    <div class="barreMilieu"><p>projet : <?php echo '' . $_SESSION['firstName'] . '' ?><p></div>
                     <ul>
                         <li>équipe : </li>
                         <li>date de fin : </li>

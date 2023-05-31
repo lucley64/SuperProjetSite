@@ -30,6 +30,6 @@ echo $req;
 $result = mysqli_query($cnx, $req) or die('Pb req : ' . mysqli_error($cnx));
 mysqli_close($cnx);
 
-header('Location: /index.php');
+header('Location: /php/ajoutEquipeUser.php');
 ?>
 
