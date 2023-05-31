@@ -12,13 +12,13 @@
 </head>
 
 <body>
-<img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
+    <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
 
 
     <?php
     session_start();
     if (!isset($_SESSION['userType']) || $_SESSION['userType'] != "admin") {
-            header('Location: /index.php');
+        header('Location: /index.php');
     }
     ?>
     <div id="container">
@@ -38,20 +38,20 @@
                 <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin" required>
             </label>
             <label for="selectManager"> Selectionner un manager
-                <select name="selectManager" id="selectManager" required>
+                <select name="associateManager" id="selectManager" required>
                     <?php
-                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
-                            echo mysqli_connect_error();
-                        };
-                        $req = "SELECT username FROM Users WHERE userType = 'manager';";
-                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-                        mysqli_close($cnx);
-                        while ($data = mysqli_fetch_row($result)) {
-                            echo('
-                            <option value="' . $data[0] .'">' . $data[0] . '</option>
-                            ');
-                        }
+                    $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                    if (mysqli_connect_errno()) {
+                        echo mysqli_connect_error();
+                    }
+                    $req = "SELECT username FROM Users WHERE userType = 'manager';";
+                    $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+                    mysqli_close($cnx);
+                    while ($data = mysqli_fetch_row($result)) {
+                        echo '
+                            <option value="' . $data[0] . '">' . $data[0] . '</option>
+                            ';
+                    }
                     ?>
                 </select>
             </label>
