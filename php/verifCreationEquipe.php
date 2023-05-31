@@ -31,7 +31,7 @@ if ($_SESSION["valid"]) {
     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
     mysqli_close($cnx);
 
-    header('Location: /index.php');
+    header('Location: /php/ajoutEquipeUser.php');
 } else {
     mysqli_close($cnx);
     header('Location: /php/creationEquipe.php');
