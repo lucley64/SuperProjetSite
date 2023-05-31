@@ -18,14 +18,14 @@
     ?> 
     <div id="container">
         <button onclick="window.location='/index.php'" class="nav">Retour</button>
-        <h1>Créer une équipe</h1>
+        <h1>Ajouter des membres</h1>
         <form action="verifAjoutEquipeUser.php" method="post" id="creation">
 
-            <label for="selectEquipe"> Sélectionnez un Data Challenge auquel inscrire l'équipe
+            <label for="selectEquipe"> Sélectionnez votre équipe
                 <select name="selectEquipe" id="selectEquipe" value="" required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
+                        if (mysqli_connect_errno()) {
                             echo mysqli_connect_error();
                         };
                         $req = "SELECT id, nomEquipe, dataChallenge FROM Equipe WHERE capitaine = \"" . $_SESSION["username"] . "\";";
@@ -41,11 +41,11 @@
                 </select>
             </label>
 
-            <label for="selectUser"> Sélectionnez un utilisateur à ajouter au data challenge
+            <label for="selectUser"> Sélectionnez un utilisateur à ajouter à l'équipe
                 <select name="selectUser" id="selectUser" required>
                     <?php
                         $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
+                        if (mysqli_connect_errno()) {
                             echo mysqli_connect_error();
                         };
                         $req = "SELECT username FROM Users WHERE userType = 'student';";
