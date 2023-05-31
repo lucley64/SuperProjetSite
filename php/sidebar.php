@@ -62,6 +62,14 @@ session_start();
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
                     echo "hidden";
                 } ?>>
+                <a href="/php/modifDataChallenge.php">
+                    <input type="button" value="Modifier data challenge" class="buttonHeader side" id="btndata" onclick="document.location.href='/php/modifDataChallenge.php'" cols="5" rows="2"></input>
+
+                </a>
+            </li>
+            <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
+                    echo "hidden";
+                } ?>>
                 <a href="/php/creationAdmin.php">
                     <input type="button" value="Creer nouveau compte<" class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
                 </a>
