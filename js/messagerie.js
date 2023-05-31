@@ -53,7 +53,7 @@ VoirTousLesMessages();
 
 
 function ajouterUseraequipe(elt) {
-  //elt.style.display="none";
+
   var val = elt.parentNode.innerHTML;
   var idmessage = val[0];
   console.log(idmessage);

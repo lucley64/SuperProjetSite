@@ -15,3 +15,7 @@ $idEquipe=$idEquipe->fetch_assoc();
 $idEquipe=$idEquipe["idEquipeARejoindre"];
 var_dump($_SESSION["username"]);
 $req = "INSERT INTO Participe (idEquipe,idUser) VALUES (\"" . $idEquipe . "\",\"" . $_SESSION["username"] . "\");";
+
+/*supprimer le message*/
+$req ="Delete from Messages where idMessage=".$_POST["idmessage"].";";
+$mysqli->query($req);
