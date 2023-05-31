@@ -58,7 +58,7 @@
         ?>
     </div>
     <div id="contenupage">
-        <?php
+        <?php 
         include "header.php";
         ?>
         <div id="principal" class="principal">
