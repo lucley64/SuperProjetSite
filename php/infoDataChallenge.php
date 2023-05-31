@@ -11,8 +11,6 @@
 
 <body>
     <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'On');
     ?>
     <img class="background" src="/src/pyrenees.jpg" alt="pyr">
     <div id="sidebarr">
@@ -34,12 +32,27 @@
                 $res = $connexion->query("SELECT * FROM `DataChallenges` WHERE `challengeName` = '$_GET[challenge]'");
                 $val = $res->fetch();
                 if ($val) {
-                    echo "<h1> Détails du challenge $val[challengeName] </h1>";
+                    echo "<h2> Détails du challenge $val[challengeName] </h2>";
                     $dateDeb = date_create($val["startDate"]);
                     $dateFin = date_create($val["endDate"]);
 
+                    echo $dateFin < date_create() ? "<h3> Data chalenge finit </h3>" : "";
+
                     echo "<p> Commence le " . date_format($dateDeb, "d/m/Y") . "</p>";
                     echo "<p> Prend fin le " . date_format($dateFin, "d/m/Y") . "</p>";
+
+                    
+
+                    if ($dateFin < date_create()) {
+                        $res2 = $connexion->query(
+                            "SELECT * FROM `Equipe` JOIN `DataChallenges` ON `Equipe`.`dataChallenge` = `DataChallenges`.`challengeName` WHERE `DataChallenges`.`challengeName` = '$_GET[challenge]' ORDER BY `Equipe`.`score` DESC LIMIT 3"
+                        );
+                        $val2 = $res2->fetchAll();
+                        echo isset($val2[0]) ? "<h3> Top 3 : </h3>": "";
+                        echo isset($val2[0]) ? "<p> #1 : <a href=\"/php/detailsEquipe.php?id=" . $val2[0]["id"] . "\"> " . $val2[0]["nomEquipe"] . "</a></p>" : "";
+                        echo isset($val2[0]) ? "<p> #2 : <a href=\"/php/detailsEquipe.php?id=" . $val2[1]["id"] . "\"> " . $val2[1]["nomEquipe"] . "</a> </p>" : "";
+                        echo isset($val2[0]) ? "<p> #3 : <a href=\"/php/detailsEquipe.php?id=" . $val2[2]["id"] . "\"> " . $val2[2]["nomEquipe"] . "</a>  </p>" : "";
+                    }
                 } else {
                     echo "<h1> Erreur aucun challenge ne corespond au nom de $_GET[challenge] </h1>";
                 }

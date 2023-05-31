@@ -31,7 +31,7 @@
     $req = "SELECT u.mail FROM Users u JOIN Equipe e ON u.username = e.capitaine WHERE e.dataChallenge = \"" . $_POST["associateDataChallenge"] . "\";";
     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
     $lien = "/php/questionnaire.php?id=" . $idQuestionnaire;
-    $message = "Vous avez un nouveau formulaire à remplir, cliquez <a href='" . $lien . "'>ici.</a>";
+    $message = "Vous avez un nouveau formulaire à remplir,  <a href='" . $lien . "'>cliquez ici.</a>";
     $sujet = "Questionnaire du data Challenge " . $_POST["associateDataChallenge"];
     while ($data = mysqli_fetch_row($result)) {
         $req = "INSERT INTO Messages (expediteur, destinataire, messages, sujet) VALUES (\"" . $_SESSION["username"] . "\",\"" . $data[0] . "\",\"" . $message . "\",\"" . $sujet . "\");";

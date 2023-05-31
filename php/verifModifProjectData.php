@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
 if (mysqli_connect_errno()) {
     echo mysqli_connect_error();
@@ -41,7 +43,6 @@ if ($_POST['selectProject'] == "creation") {
 
     $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", " . $associateDataChallenge . ", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
     $result = mysqli_query($cnx, $req) or die($mess . $req);
-    $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
     header('Location: ./modifDataChallenge.php');
 } else {
@@ -78,7 +79,6 @@ if ($_POST['selectProject'] == "creation") {
 
     $req = "UPDATE ProjectData SET nom = " . $newProjectName . ", details = " . $details . ", img = " . $img . ", phone = " . $phone . ", mail = " . $mail . " WHERE nom = " . $projectName . ";";
     $result = mysqli_query($cnx, $req) or die($mess . $req);
-    $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
     header('Location: ./modifDataChallenge.php');
 }

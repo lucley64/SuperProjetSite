@@ -1,7 +1,7 @@
 <?php
     session_start();
     $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-    if (mysqli_connect_errno($cnx)) {
+    if (mysqli_connect_errno()) {
         echo mysqli_connect_error();
     };
 

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    session_start();
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 ?>
 
 <head>
@@ -14,8 +16,8 @@
     <title>Modification de Data Challenge</title>
 </head>
 
-<body> 
-<img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
+<body>
+    <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
 
     <div id="containerCreation" style="top:5;">
         <button onclick="window.location='/index.php'" class="nav">Retour</button>
@@ -25,18 +27,18 @@
             <label for="selectDataChallenge"> Sélectionnez un Data Challenge
                 <select name="selectDataChallenge" id="selectDataChallenge" required>
                     <?php
-                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
-                            echo mysqli_connect_error();
-                        };
-                        $req = "SELECT challengeName FROM DataChallenges;";
-                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-                        mysqli_close($cnx);
-                        while ($data = mysqli_fetch_row($result)) {
-                            echo('
-                            <option value="' . $data[0] .'">' . $data[0] . '</option>
+                    $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                    if (mysqli_connect_errno()) {
+                        echo mysqli_connect_error();
+                    };
+                    $req = "SELECT challengeName FROM DataChallenges;";
+                    $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+                    mysqli_close($cnx);
+                    while ($data = mysqli_fetch_row($result)) {
+                        echo ('
+                            <option value="' . $data[0] . '">' . $data[0] . '</option>
                             ');
-                        }
+                    }
                     ?>
                 </select>
             </label>
@@ -46,7 +48,7 @@
             </label>
 
             <label for="startDate"> Start Date
-                <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ" >
+                <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ">
             </label>
 
             <label for="endDate"> End Date
@@ -59,25 +61,25 @@
         <h1>Modifier/Creer Projet Data</h1>
         <form action="verifModifProjectData.php" method="post" id="creation">
             <label for="associateDataChallenge"> Sélectionnez le data challenge associé
-                <select name="associateDataChallenge" id="associateDataChallenge"required>
+                <select name="associateDataChallenge" id="associateDataChallenge" required>
                     <?php
-                        $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
-                        if (mysqli_connect_errno($cnx)) {
-                            echo mysqli_connect_error();
-                        };
-                        $req = "SELECT challengeName FROM DataChallenges;";
-                        $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-                        mysqli_close($cnx);
-                        while ($data = mysqli_fetch_row($result)) {
-                            echo('
-                            <option value="' . $data[0] .'">' . $data[0] . '</option>
+                    $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                    if (mysqli_connect_errno()) {
+                        echo mysqli_connect_error();
+                    };
+                    $req = "SELECT challengeName FROM DataChallenges;";
+                    $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+                    mysqli_close($cnx);
+                    while ($data = mysqli_fetch_row($result)) {
+                        echo ('
+                            <option value="' . $data[0] . '">' . $data[0] . '</option>
                             ');
-                        }
+                    }
                     ?>
                 </select>
             </label>
 
-    <a href="https://youtu.be/BP2dJiYXX_I?t=6" style="position: absolute; top: 42%; right: 69%; z-index: 9999999;  font-size: 2px;">a</a>
+            <a href="https://youtu.be/BP2dJiYXX_I?t=6" style="position: absolute; top: 42%; right: 69%; z-index: 9999999;  font-size: 2px;">a</a>
             <label for="selectProject"> Sélectionnez un projet
                 <select name="selectProject" id="selectProject" required>
                     <option value="creation">Créer un nouveau projet</option>
@@ -150,9 +152,9 @@
         </form>
     </div>
 
-<?php
+    <?php
     $_SESSION['temporary'] = NULL;
-?>
+    ?>
 </body>
 
 </html>

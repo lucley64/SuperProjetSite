@@ -1,0 +1,54 @@
+div#principal {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: max-content;
+}
+
+div#actu {
+    grid-column: 1;
+    margin: 25px
+}
+
+div#finit {
+    grid-column: 2;
+    margin: 25px
+}
+
+h2#titre {
+    grid-row: 1;
+    grid-column: 1/3;
+}
+
+div#principal table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+div#principal table thead tr {
+    background-color: #00000080;
+    color: #ffffff;
+    text-align: left;
+}
+
+div#principal table th,
+div#principal table td {
+    padding: 12px 15px;
+}
+
+div#principal table tbody tr {
+    cursor: pointer;
+    border-bottom: 1px solid #dddddd;
+}
+
+div#principal table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+div#principal table tbody tr:hover {
+    background-color: #00000048;
+}
