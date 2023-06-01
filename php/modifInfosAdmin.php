@@ -35,12 +35,7 @@ mysqli_close($cnx);
     <title>Modification de compte</title>
 </head>
 
-<body <?php
-        if ($_SESSION['wrongPwd']) {
-            $_SESSION['wrongPwd'] = false;
-            echo 'onload="alertWrongPassword();"';
-        }
-        ?>>
+<body>
 
     <div id="containerCreation" style="top:5%;">
         <button onclick="window.location='/php/connexion.php'" class="nav">Retour</button>

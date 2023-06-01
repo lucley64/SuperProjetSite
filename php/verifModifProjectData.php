@@ -10,6 +10,7 @@ $projectName = "\"" . $_POST["selectProject"] . "\"";
 
 
 if ($_POST['selectProject'] == "creation") {
+    $_SESSION["hasWorked"] = "okProjectCreate";
 
     $newProjectName = "\"" . $_POST["projectName"] . "\"";
 
@@ -40,11 +41,16 @@ if ($_POST['selectProject'] == "creation") {
     }
 
     $req = "INSERT INTO ProjectData VALUES (" . $newProjectName . ", " . $associateDataChallenge . ", " . $details . ", " . $img . ", " . $phone . ", " . $mail . ");";
-    $result = mysqli_query($cnx, $req) or die($mess . $req);
+    $result = mysqli_query($cnx, $req);
+    if (!$result){
+        erreurRequete(mysqli_errno($cnx));
+    }
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
-    header('Location: ./modifDataChallenge.php');
+    header('Location: /php/modifDataChallenge.php');
 } else {
+
+    $_SESSION["hasWorked"] = "okProjectModif";
 
     $req = "SELECT * FROM ProjectData WHERE nom = " . $projectName . ";";
     $result = mysqli_query($cnx, $req) or die($mess . $req);
@@ -80,16 +86,33 @@ if ($_POST['selectProject'] == "creation") {
         $mail = "\"" . $data[5] . "\"";
     }
 
-    $req = "UPDATE ProjectData SET nom = " . $newProjectName . ", details = " . $details . ", img = " . $img . ", phone = " . $phone . ", mail = " . $mail . " WHERE nom = " . $projectName . ";";
-    $result = mysqli_query($cnx, $req) or die($mess . $req);
-    $data = mysqli_fetch_row($result);
-    mysqli_close($cnx);
-    header('Location: ./modifDataChallenge.php');
+    $req = "SELECT nom FROM ProjectData;";
+    $result = mysqli_query($cnx, $req);
+
+    if ($_POST["projectName"] != "") {
+        while ($data = mysqli_fetch_row($result)) {
+            if ($data[0] == $_POST["projectName"]) {
+                erreurRequete(1062);
+            }
+        }
+    }
+
+    if ($_SESSION["hasWorked"] = "okProjectModif") {
+
+        $req = "UPDATE ProjectData SET nom = " . $newProjectName . ", details = " . $details . ", img = " . $img . ", phone = " . $phone . ", mail = " . $mail . " WHERE nom = " . $projectName . ";";
+        $result = mysqli_query($cnx, $req);
+        if (!$result){
+            erreurRequete(mysqli_errno($cnx));
+        }
+        $data = mysqli_fetch_row($result);
+        mysqli_close($cnx);
+        header('Location: ./modifDataChallenge.php');
+    }
 }
 
 function erreurRequete(int $numeroErreur)
         {
             $_SESSION["hasWorked"] = "pbName";
-            header('Location: /php/creationDataChallenge.php');
+            header('Location: /php/modifDataChallenge.php');
         }
 ?>

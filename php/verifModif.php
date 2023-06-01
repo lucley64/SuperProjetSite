@@ -4,14 +4,14 @@ $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas
 if (mysqli_connect_errno()) {
     echo mysqli_connect_error();
 }
-
+$_SESSION["hasWorked"] = "okModif";
 $req = "SELECT pwd FROM Users WHERE username=\"" . $_SESSION['username'] . "\";";
 $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
 $data = mysqli_fetch_row($result);
 
 if ($_SESSION['userType'] != "admin" && !(password_verify($_POST["oldpwd"], $data[0]))) {
     $_SESSION['wrongPwd'] = true;
-    print_r("mauvais mdp" . $_POST["pwd"]);
+    $_SESSION["hasWorked"] = "nothing";
     header('Location: modifInfos.php');
 } else {
     $username = "\"" . $_SESSION["username"] . "\"";
@@ -72,8 +72,14 @@ if ($_SESSION['userType'] != "admin" && !(password_verify($_POST["oldpwd"], $dat
     }
 
     $req = "UPDATE Users SET pwd = " . $pwd . ", lastName =" . $lastName . ", firstName = " . $firstName . ", workplace = " . $workplace . ", studyLvl = " . $studyLvl . ", phone = " . $phone . ", mail = " . $mail . ", startDate = " . $startDate . ", endDate = " . $endDate . " WHERE username =" . $username . ";";
-    $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+    $result = mysqli_query($cnx, $req);
     $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
-    header('Location: ../index.php');
+
+    if ($_SESSION['userType'] != "admin") {
+        header('Location: /php/modifInfos.php');
+    } else {
+        header('Location: /php/suppression.php');
+    }
+    
 }

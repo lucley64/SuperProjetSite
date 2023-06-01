@@ -15,7 +15,16 @@ session_start();
     <title>Suppression</title>
 </head>
 
-<body>
+<body <?php
+        if ($_SESSION['hasWorked'] == "okModif") {
+            echo 'onload="alertValidModifUser();"';
+        } else if ($_SESSION['hasWorked'] == "okModif"){
+            echo 'onload="alertValidDeleteUser();"';
+        }
+        $_SESSION['hasWorked'] = "nothing";
+        ?>
+
+>
     <div id="container">
         <button onclick="window.location='../index.php'" class="nav">Retour</button>
         <form action="verifSuppression.php" method="post" id="suppression">

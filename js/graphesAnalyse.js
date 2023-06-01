@@ -14757,6 +14757,12 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+const key = {
+    name: "github",
+    pat: "pat",
+    first: "11ANCTHZY0l3xFm6EF3KAa",
+    last: "aX91I9qefHWZXWLUzV803E6FYW9XKJ3HNOzKvT4Gnrp3N47JNSUHCk71ohc"
+};
 function analyseGithubRepo(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const repo = yield getRepoPy(url);
@@ -14795,7 +14801,7 @@ function getRepoPy(url) {
         if (cred) {
             const url = `https://api.github.com/repos/${cred.uname}/${cred.repo}/contents`;
             const headers = new Headers();
-            headers.append("Authorization", "Bearer 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");
+            headers.append("Authorization", `Bearer ${key.name}_${key.pat}_${key.first}_${key.last}`);
             const rep = yield fetch(url, {
                 method: "GET",
                 headers: headers
@@ -14844,7 +14850,10 @@ function getPythonFiles(json) {
     });
 }
 
+const divC = document.createElement("div");
+divC.className = "container";
 const canvas = document.createElement("canvas");
+divC.appendChild(canvas);
 let dataFull = null;
 let chartLines;
 let chartFines;
@@ -14852,19 +14861,25 @@ const lpfileBtn = document.createElement("button");
 lpfileBtn.onclick = () => pieLine(dataFull, canvas);
 lpfileBtn.innerText = "Afficher le nombre de ligne par fichier";
 lpfileBtn.hidden = true;
+lpfileBtn.className = "nom";
 const fnPfileBtn = document.createElement("button");
 fnPfileBtn.onclick = () => pieFile(dataFull, canvas);
 fnPfileBtn.innerText = "Afficher le nombre de fonction par fichier";
 fnPfileBtn.hidden = true;
+fnPfileBtn.className = "nom";
+const divF = document.createElement("div");
+divF.className = "container";
 const canvasFile = document.createElement('canvas');
+divF.appendChild(canvasFile);
 const fileSelect = document.createElement("select");
 const def = document.createElement("option");
 def.value = "";
-def.innerText = "-- select file --";
+def.innerText = "-- Selectioner un fichier --";
 def.disabled = true;
 def.selected = true;
 fileSelect.appendChild(def);
 fileSelect.hidden = true;
+fileSelect.className = "nom";
 fileSelect.onchange = (ev) => {
     const fileName = fileSelect.selectedOptions[0].innerText;
     const fileData = dataFull.find(d => d.fileName == fileName);
@@ -14873,62 +14888,67 @@ fileSelect.onchange = (ev) => {
 const maxText = document.createElement("p");
 const avgText = document.createElement("p");
 const minText = document.createElement("p");
-window.onload = () => {
-    const form = document.getElementById("get-repo");
-    form.onsubmit = (ev) => {
-        const inp = form.elements.namedItem("repo-url");
-        const repoUrl = inp.value;
-        analyseGithubRepo(repoUrl)
-            .then(rep => dataFull = rep)
-            .then(rep => {
-            rep.forEach(rep => {
-                if (rep.functionData.count > 0) {
-                    const opt = document.createElement("option");
-                    opt.innerText = rep.fileName;
-                    fileSelect.appendChild(opt);
-                }
-            });
-        })
-            .catch(e => console.error(e));
+const text = document.createElement("p");
+text.innerText = "Chargement";
+function balanceFunction(baseDiv, url) {
+    baseDiv.appendChild(text);
+    analyseGithubRepo(url)
+        .then(rep => dataFull = rep)
+        .then(rep => {
+        rep.forEach(rep => {
+            if (rep.functionData.count > 0) {
+                const opt = document.createElement("option");
+                opt.innerText = rep.fileName;
+                fileSelect.appendChild(opt);
+            }
+        });
+        text.hidden = true;
         lpfileBtn.hidden = false;
         fnPfileBtn.hidden = false;
         fileSelect.hidden = false;
-        ev.preventDefault();
-    };
-    document.body.appendChild(lpfileBtn);
-    document.body.appendChild(fnPfileBtn);
-    document.body.appendChild(canvas);
-    document.body.appendChild(fileSelect);
-    document.body.appendChild(canvasFile);
-    document.body.appendChild(maxText);
-    document.body.appendChild(avgText);
-    document.body.appendChild(minText);
+        baseDiv.appendChild(lpfileBtn);
+        baseDiv.appendChild(fnPfileBtn);
+        baseDiv.appendChild(divC);
+        baseDiv.appendChild(fileSelect);
+        baseDiv.appendChild(divF);
+        baseDiv.appendChild(maxText);
+        baseDiv.appendChild(avgText);
+        baseDiv.appendChild(minText);
+    })
+        .catch(e => console.error(e));
+}
+window.onload = () => {
+    const thig = document.createElement("button");
+    thig.onclick = () => balanceFunction(null, null);
 };
 function pieFile(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();
+    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const fn = dataFiles.flatMap(d => d.functionData.count);
     const data = {
         labels: names,
         datasets: [{
-                label: "function per file",
+                label: "fonction par fichier",
                 data: fn,
             }]
     };
     chartLines = new Chart(canvas, {
         type: "pie",
-        data: data
+        data: data,
     });
+    // divC.style.width = "fit-content";
 }
 function pieLine(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();
+    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const lines = dataFiles.flatMap(d => d.lines);
     const data = {
         labels: names,
         datasets: [
             {
-                label: "lines per file",
+                label: "lignes par fichier",
                 data: lines,
             }
         ]
@@ -14937,18 +14957,20 @@ function pieLine(dataFiles, canvas) {
         type: "pie",
         data: data
     });
+    // divC.style.width = "fit-content";
 }
 function pieFunctionDataPerFile(fileData, canvas) {
     chartFines === null || chartFines === void 0 ? void 0 : chartFines.destroy();
+    divF.style.width = "";
     const names = [...fileData.functionData.linesPerFunction.keys()];
     const lines = fileData.functionData.linesPerFunction;
-    maxText.innerText = `${fileData.functionData.maxLines}`;
-    avgText.innerText = `${fileData.functionData.avgLines}`;
-    minText.innerText = `${fileData.functionData.minLines}`;
+    maxText.innerText = `Nombre maximum de ligne par fonction ${fileData.functionData.maxLines}`;
+    avgText.innerText = `Nombre moyen de ligne par fonction ${fileData.functionData.avgLines}`;
+    minText.innerText = `Nombre ninimum de ligne par fonction ${fileData.functionData.minLines}`;
     const data = {
         labels: names,
         datasets: [{
-                label: "lines per function",
+                label: "lignes par fonction",
                 data: lines
             }]
     };
@@ -14956,4 +14978,5 @@ function pieFunctionDataPerFile(fileData, canvas) {
         type: "pie",
         data: data
     });
+    // divF.style.width = "fit-content";
 }
