@@ -71,7 +71,7 @@ session_start();
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student") {
                     echo "hidden";
                 } ?>>
-                <a href="/php/creationEquipe.php"><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
+                <a href="/php/creationEquipe.php"><img src="/src/creer-removebg-preview.png" type="icone" alt=""><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
             </li>
 
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
@@ -87,7 +87,6 @@ session_start();
                 } ?>>
                 <a href="/php/modifDataChallenge.php">
                     <input type="button" value="Modifier data challenge" class="buttonHeader side" id="btndata" onclick="document.location.href='/php/modifDataChallenge.php'" cols="5" rows="2"></input>
-
                 </a>
             </li>
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
@@ -132,7 +131,7 @@ session_start();
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student" || !isset($res[0])) {
                     echo "hidden";
                 } ?>>
-                <a href="/php/ajoutEquipeUser.php"><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
+                <a href="/php/ajoutEquipeUser.php"><img src="/src/ajouter-removebg-preview(1).png" type="icone" alt=""><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
             </li>
             <li <?php
                 if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student" || !isset($res[0])) {
