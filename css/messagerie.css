@@ -157,7 +157,12 @@ form{
     text-align: center;
     width: 70%;
 }
-
+.messagesEnvoyes:hover,.messagesRecus:hover,.envoyermail:hover,.voirMessages:hover{
+    background-color: rgba(79, 79, 79, 0.864);
+}
+.messagesEnvoyes:active, .messagesRecus:active,.envoyermail:active,.voirMessages:active{
+    transform: scale(0.9);
+  }
 
 .boutonEquipe{
     width: 5em;
@@ -172,8 +177,6 @@ form{
 .boutonEquipe:hover{
     cursor: pointer;
     background-color: rgb(6, 92, 6);
-    
-
 }
 .boutonEquipe:active{
     background-color: rgb(6, 92, 6);
