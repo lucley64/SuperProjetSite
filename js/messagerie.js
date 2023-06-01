@@ -54,7 +54,7 @@ VoirTousLesMessages();
 
 function ajouterUseraequipe(elt) {
 
-  var val = elt.parentNode.parentNode.id;
+  var val = elt.parentNode.parentNode.parentNode.id;
   var idmessage = parseInt(val.slice(7));;//l'id du message est appelé messageX avec X le numero du message
   const formdata = new FormData();
   formdata.append("idmessage", idmessage);
@@ -65,7 +65,7 @@ function ajouterUseraequipe(elt) {
 }
 
 function NePasajouterUseraequipe(elt){
-  var val = elt.parentNode.parentNode.id;
+  var val = elt.parentNode.parentNode.parentNode.id;
   var idmessage = parseInt(val.slice(7));
   console.log(idmessage);
   const formdata = new FormData();

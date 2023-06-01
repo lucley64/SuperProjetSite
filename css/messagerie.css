@@ -157,3 +157,31 @@ form{
     text-align: center;
     width: 70%;
 }
+
+
+.boutonEquipe{
+    width: 5em;
+    margin: 1em;
+    height: 3em;
+    background-color: rgb(3, 151, 3);
+    color: white;
+    border-radius: 3em;
+    box-shadow: 0 5px #999;
+}
+
+.boutonEquipe:hover{
+    cursor: pointer;
+    background-color: rgb(6, 92, 6);
+    
+
+}
+.boutonEquipe:active{
+    background-color: rgb(6, 92, 6);
+    box-shadow: 0 2px #999;
+    transform: translateY(4px);
+}
+
+.divbtnequipe{
+    margin-left: 40%;
+}
+
