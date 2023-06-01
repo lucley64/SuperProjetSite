@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
-<?php
-    $sql = "SELECT nomEquipe FROM Equipe JOIN Participe ON Equipe.idEquipe = Participe.id WHERE Participe.idUser= {$_SESSION['username']}"
-?> 
 
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
@@ -21,24 +17,40 @@
         <?php
         include "sidebar.php";
         ?>
-    </div> 
+    </div>
     <div id="contenupage">
-        <?php  
+        <?php
         include "header.php";
+        ?>
+        <?php
+        $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+        if (mysqli_connect_errno()) {
+            echo mysqli_connect_error();
+        }
+        $sql = "SELECT nomEquipe FROM Equipe JOIN Participe ON Equipe.id = Participe.idEquipe WHERE Participe.idUser= '$_SESSION[username]'";
+        $result = mysqli_query($cnx, $sql);
+        var_dump($sql);
+        $datas = mysqli_fetch_all($result);
+        foreach ($datas as $key => $value) {
+        }
         ?>
         
         <div id="principal" class="principal">
-            <a href="/php/messagerie.php" >
-                <button class="projet"> 
-                    <div class="barreMilieu"><p>projet : <?php echo '' . $_SESSION['firstName'] . '' ?><p></div>
-                    <ul>
-                        <li>Équipe : </li>
-                        <li>Date de fin : </li>
-                        <li>Description : </li>
-                    </ul>
-                </button>            
-            </a>
-        </div>
+        
+        <a href="/php/messagerie.php">
+            <button class="projet">
+                <div class="barreMilieu">
+                    <p>projet : <?php echo '' . $_SESSION['firstName'] . '' ?>
+                    <p>
+                </div>
+                <ul>
+                    <li>équipe : </li>
+                    <li>date de fin : </li>
+                    <li>description : </li>
+                </ul>
+            </button>
+        </a>
+    </div>
     </div>
     <script>
         const container = document.querySelector("#principal");
