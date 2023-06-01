@@ -50,4 +50,3 @@
         header('Location: /php/ajoutEquipeUser.php');
     }
 ?>
-
