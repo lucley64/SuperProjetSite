@@ -231,3 +231,12 @@ function alertValidQuitTeam(){
         background: 'white',
         });
 }
+
+function alertErrorMessage(){
+    Swal.fire({
+        title: "Erreur",
+        text: "Ce destinataire n'existe pas",
+        icon: 'error',
+        background: 'white',
+        });
+}

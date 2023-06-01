@@ -30,13 +30,16 @@ function erreurEnvoiMessage($num,$erreur){
     switch ($num) {
         case 1452:
             # cas ou l'utilisateur rentré n'existe pas
-            echo "Le destinataire rentré n'existe pas, veuillez un rentrer un destinataire valide";
-            echo "<br> <a href='/php/messagerie.php'>Revenir a la messagerie</a>";
+            $_SESSION["hasWorked"]="pbMessagerie";
+            /*echo "Le destinataire rentré n'existe pas, veuillez un rentrer un destinataire valide";
+            echo "<br> <a href='/php/messagerie.php'>Revenir a la messagerie</a>";*/
+            header('Location:/php/messagerie.php');
             break;
         
         default:
             # autre erreur
             echo "erreur inconnue: ".$erreur;
+            echo "<br> <a href='/php/messagerie.php'>Revenir a la messagerie</a>";
             break;
     }
     

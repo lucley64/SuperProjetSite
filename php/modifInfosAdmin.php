@@ -48,7 +48,7 @@ mysqli_close($cnx);
         ?>
     </div>
 
-    <div id="container" style="top:5%;">
+    <div id="containerCreation" style="top:5%;">
         <h1>Modifier le compte</h1>
         <form action="verifModif.php" method="post" id="creation">
 

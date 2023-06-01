@@ -7,15 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/messagerie.css">
-
-
+    <script type="text/javascript" src="/js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Messagerie</title>
 </head>
 
-<body>
-    <?php
-    session_start();
-    ?>
+<body  <?php
+        session_start();
+        if ($_SESSION['hasWorked'] == "pbMessagerie") {
+            echo 'onload="alertErrorMessage();"';
+        } else if ($_SESSION['hasWorked'] == "pb") {
+            echo 'onload="alertErrorAddedUser();"';
+        }
+        $_SESSION['hasWorked'] = "nothing";
+        ?>>
     <img class="background" src="/src/pyrenees.jpg" alt="pyr">
     <div id="sidebarr">
         <?php
@@ -67,7 +72,7 @@
                             <textarea name="message" id="message" cols="30" rows="10" placeholder="Veuillez ecrire votre message"></textarea>
                         </label>
 
-                        <input type="submit" id="Envoyer">
+                        <input type="submit" id="Envoyer" value="Envoyer"/>
 
                     </form>
 

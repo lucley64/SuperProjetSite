@@ -16,7 +16,7 @@
         <?php
         session_start();
         if ($_SESSION["userType"] != "student") {
-            //header('Location: /index.php');
+            header('Location: /index.php');
         }
         include "sidebar.php";
         ?>
