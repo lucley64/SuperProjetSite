@@ -2,6 +2,8 @@
 
 ## Instructions d'instalation
 
+Important il faut être connecté à internet pour acceder au site
+
 1. Cloner le repository github (`git clone https://github.com/lucley64/SuperProjetSite.git`)
 2. Initialiser le sous-module API (`git submodule update`)
 3. Creer l'itilisateur de la base de données en executant le fichier creerutilisateurbdd.php (`php php/creerutilisateurbdd.php`)
