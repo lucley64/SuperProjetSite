@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
     session_start();
     $_SESSION["hasWorked"] = "okChallenge";
     $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
@@ -6,9 +8,23 @@
         echo mysqli_connect_error();
     }
 
-    if (strtotime($endDate) < strtotime($startDate) || strtotime($startDate) < time()) {
+    $challengeName = "\"" . $_POST["selectDataChallenge"] . "\"";
+
+    $req = "SELECT startDate, endDate FROM DataChallenges WHERE challengeName = " . $challengeName . ";";
+    $result = mysqli_query($cnx, $req);
+    $data = mysqli_fetch_row($result);
+
+    if ($_POST["startDate"] != "") {
+        $data[0] = $_POST["startDate"];
+    }
+
+    if ($_POST["endDate"] != "") {
+        $data[1] = $_POST["endDate"];
+    }
+
+    if (strtotime($data[1]) < strtotime($data[0]) || strtotime($data[0]) < time()) {
         $_SESSION["hasWorked"] = "pbTime";
-        header('Location: /php/creationDataChallenge.php');
+        header('Location: /php/modifDataChallenge.php');
     }
 
     if ($_SESSION["hasWorked"] == "okChallenge") {
@@ -37,19 +53,31 @@
             $endDate = "\"" . $data[2] . "\"";
         }
 
-        $req = "UPDATE DataChallenges SET challengeName = " . $newChallengeName . ", startDate = " . $startDate . ", endDate = " . $endDate . " WHERE challengeName =" . $challengeName . ";";
+        $req = "SELECT challengeName FROM DataChallenges;";
         $result = mysqli_query($cnx, $req);
-        if (!$result){
-            erreurRequete(mysqli_errno($cnx));
-        }
-        $data = mysqli_fetch_row($result);
-        mysqli_close($cnx);
-        header('Location: ../index.php');
 
-        function erreurRequete(int $numeroErreur)
-        {
+        function erreurRequete(int $numeroErreur) {
             $_SESSION["hasWorked"] = "pbName";
-            header('Location: /php/creationDataChallenge.php');
+            header('Location: /php/modifDataChallenge.php');
         }
+        
+        if ($_POST["newChallengeName"] != "") {
+            while ($data = mysqli_fetch_row($result)) {
+                if ($data[0] == $_POST["newChallengeName"]) {
+                    erreurRequete(1062);
+                }
+            }
+        }
+
+        if ($_SESSION["hasWorked"] == "okChallenge") {
+
+            $req = "UPDATE DataChallenges SET challengeName = " . $newChallengeName . ", startDate = " . $startDate . ", endDate = " . $endDate . " WHERE challengeName =" . $challengeName . ";";
+            $result = mysqli_query($cnx, $req) ;
+            $data = mysqli_fetch_row($result);
+            mysqli_close($cnx);
+            header('Location: /php/modifDataChallenge.php');
+
+        }
+        
     }
 ?>

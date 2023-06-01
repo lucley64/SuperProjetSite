@@ -46,7 +46,7 @@ function alertOutOfTime(){
 function alertAlreadyAnswered(){
     Swal.fire({
         title: "Erreur",
-        text: "Vous avez déjà répondu à ce formulaire",
+        text: "Vous avez déjà répondu à ce questionnaire",
         icon: 'error',
         background: 'white',
         });
@@ -91,7 +91,7 @@ function alertErrorCreatedUser(){
 function alertErrorName(){
     Swal.fire({
         title: "Erreur",
-        text: "Un projet avec un tel nom existe déjà",
+        text: "Ce nom existe déjà",
         icon: 'error',
         background: 'white',
         });
@@ -133,11 +133,74 @@ function alertErrorQuestion(){
         });
 }
 
-function alertValidModifForm(){
+function alertValidModifChallenge(){
     Swal.fire({
         title: "Succès",
         text: "Data challenge modifié avec succès",
         icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertValidCreateProject(){
+    Swal.fire({
+        title: "Succès",
+        text: "Project data créé avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertValidModifProject(){
+    Swal.fire({
+        title: "Succès",
+        text: "Project data modifié avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertValidAddRessources(){
+    Swal.fire({
+        title: "Succès",
+        text: "Ressource ajoutée avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertErrorAddRessources(){
+    Swal.fire({
+        title: "Erreur",
+        text: "Cette ressource existe déjà",
+        icon: 'error',
+        background: 'white',
+        });
+}
+
+function alertValidModifUser(){
+    Swal.fire({
+        title: "Succès",
+        text: "Informations modifiées avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertValidAnswer(){
+    Swal.fire({
+        title: "Succès",
+        text: "Réponse au questionnaire envoyée avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertErrorRights(){
+    Swal.fire({
+        title: "Erreur",
+        text: "Vous n'avez pas les droits",
+        icon: 'error',
         background: 'white',
         });
 }
