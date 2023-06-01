@@ -1,6 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+ 
 session_start();
 $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
 if (mysqli_connect_errno()) {
