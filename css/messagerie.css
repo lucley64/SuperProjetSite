@@ -22,13 +22,11 @@ body {
 
 #Contenu,
 #DemanderConnexion {
-
     width: 88%;
     margin: 0 auto;
     border-radius: 25px;
     background-color: rgba(202, 202, 202, 0.666);
-    height: 100%;
-
+    height: 200%;
 }
 
 div#Contenu {
@@ -89,7 +87,7 @@ div#contenupage textarea {
 
 #message {
     width: 75%;
-    height: 25em;
+    height: 20em;
 }
 
 div#sidebarr {
@@ -100,6 +98,8 @@ div#sidebarr {
 div#contenupage {
     grid-column: 2;
     grid-row: 2;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 div#head {

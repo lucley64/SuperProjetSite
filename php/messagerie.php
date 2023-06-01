@@ -16,6 +16,8 @@
         session_start();
         if ($_SESSION['hasWorked'] == "pbMessagerie") {
             echo 'onload="alertErrorMessage();"';
+        } else if ($_SESSION['hasWorked'] == "pbNombre"){
+            echo 'onload="alertErrorTooManyUsers();"';
         }
         $_SESSION['hasWorked'] = "nothing";
         ?>>
@@ -61,8 +63,23 @@
                     <h1 class="titre">Envoyer Message</h1>
                     <form action="messagerie/envoyermail.php" method="POST" id="form">
                         <label>Destinataire
-                            <input name="destinataire" type="text" value="" placeholder="Destinataire" id="destinataire"> <br>
-                        </label>
+                            <select name="destinataire" id="destinataire" required placeholder='big test'>
+                            <?php
+                                $cnx = mysqli_connect("localhost","thatachallenge","thatachallenge123","datas");
+                                if (mysqli_connect_errno()) {
+                                    echo mysqli_connect_error();
+                                };
+                                $req = "SELECT username FROM Users WHERE userType = 'student';";
+                                $result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
+                                mysqli_close($cnx);
+                                while ($data = mysqli_fetch_row($result)) {
+                                    echo('
+                                    <option value="' . $data[0] .'">' . $data[0] . '</option>
+                                    ');
+                                }
+                            ?>
+                            </select>
+                        </label> <br><br>
                         <label>Sujet
                             <input id=sujet type="text" name="sujet" placeholder="Sujet"> <br>
                         </label>

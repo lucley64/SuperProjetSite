@@ -240,3 +240,12 @@ function alertErrorMessage(){
         background: 'white',
         });
 }
+
+function alertErrorTooManyUsers(){
+    Swal.fire({
+        title: "Erreur",
+        text: "Il y déjà 8 membres dans l'équipe",
+        icon: 'error',
+        background: 'white',
+        });
+}

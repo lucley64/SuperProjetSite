@@ -33,7 +33,7 @@
         <div id="principal" class="principal">
             <?php
                 $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
-                $res = $connexion->query("SELECT * FROM `DataChallenges` WHERE `gestionnaire` = '$_SESSION[username]'");
+                $res = $connexion->query("SELECT * FROM `DataChallenges` WHERE `gestionnaire` = '$_SESSION[username]' ORDER BY endDate DESC");
 
                 while ($val = $res->fetch()) {
                     if ($val) {
@@ -43,8 +43,6 @@
 
                         echo $dateFin < date_create() ? "<h3> Data chalenge finit </h3>" : "";
 
-                        echo "<p> Commence le " . date_format($dateDeb, "d/m/Y") . "</p>";
-                        echo "<p> Prend fin le " . date_format($dateFin, "d/m/Y") . "</p>";
 
                         $res3 = $connexion->query("SELECT * FROM `ProjectData` WHERE `dataChallengeId` = '$val[challengeName]'");
                         $val3 = $res3->fetchAll();
@@ -56,11 +54,13 @@
                             echo "<thead>";
                             echo "<tr>";
                             echo "<th>Nom</th>";
-                            echo "<th>details</th>";
-                            echo "<th>image</th>";
-                            echo "<th>equipes</th>";
-                            echo "<th>ressources</th>";
-                            echo "<th>email</th>";
+                            echo "<th>Détails</th>";
+                            echo "<th>Image</th>";
+                            echo "<th>Date de début</th>";
+                            echo "<th>Date de fin</th>";
+                            echo "<th>Equipes inscrites</th>";
+                            echo "<th>Ressources</th>";
+                            echo "<th>Email</th>";
                             echo "</thead>";
                             echo "<tbody>";
                             foreach ($val3 as $key => $value) {
@@ -68,6 +68,9 @@
                                 echo "<td>$value[nom]</td>";
                                 echo "<td>$value[details]</td>";
                                 echo "<td><img src='$value[img]' height='500px' width='500px'></img></td>";
+
+                                echo "<td> " . date_format($dateDeb, "d/m/Y") . "</td>";
+                                echo "<td> " . date_format($dateFin, "d/m/Y") . "</td>";
 
                                 echo "<td>";
                                 echo "<ul>";
