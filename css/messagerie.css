@@ -157,24 +157,34 @@ form{
     text-align: center;
     width: 70%;
 }
+.messagesEnvoyes:hover,.messagesRecus:hover,.envoyermail:hover,.voirMessages:hover{
+    background-color: rgba(79, 79, 79, 0.864);
+}
+.messagesEnvoyes:active, .messagesRecus:active,.envoyermail:active,.voirMessages:active{
+    transform: scale(0.9);
+  }
 
-.buttonInvitation {
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #333333;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
+.boutonEquipe{
+    width: 5em;
+    margin: 1em;
+    height: 3em;
+    background-color: rgb(3, 151, 3);
+    color: white;
+    border-radius: 3em;
+    box-shadow: 0 5px #999;
+}
+
+.boutonEquipe:hover{
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .buttonInvitation:hover {
-    background-color: #f2f2f2;
-    color: #555555;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .buttonInvitation:focus {
-    outline: none;
-  }
-  
+    background-color: rgb(6, 92, 6);
+}
+.boutonEquipe:active{
+    background-color: rgb(6, 92, 6);
+    box-shadow: 0 2px #999;
+    transform: translateY(4px);
+}
+
+.divbtnequipe{
+    margin-left: 40%;
+}
+
