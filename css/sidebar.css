@@ -37,7 +37,7 @@ div[type=Toggled] {
 
 
 .buttonHeader.side {
-    width: 100%;
+    width: 92%;
     text-align: center;
     display: block;
     height: 1cm;
@@ -53,6 +53,8 @@ div[type=Toggled] {
     font-size: 15px;
     bottom: 7.5em;
     cursor: pointer;
+    margin-right: 1em;
+    margin-left: 1em;
 }
 
 .buttonHeader.side option {

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+ 
 ?>
 
 <head>

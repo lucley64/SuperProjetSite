@@ -37,7 +37,7 @@ function alertSuccessDeleteProjectData() {
 function alertOutOfTime(){
     Swal.fire({
         title: "Erreur",
-        text: "Ce formulaire n'est plus disponible",
+        text: "Ce formulaire n'est plus ou pas encore disponible",
         icon: 'error',
         background: 'white',
         });
@@ -236,6 +236,15 @@ function alertErrorMessage(){
     Swal.fire({
         title: "Erreur",
         text: "Ce destinataire n'existe pas",
+        icon: 'error',
+        background: 'white',
+        });
+}
+
+function alertErrorTooManyUsers(){
+    Swal.fire({
+        title: "Erreur",
+        text: "Il y déjà 8 membres dans l'équipe",
         icon: 'error',
         background: 'white',
         });
