@@ -133,12 +133,12 @@ session_start();
                 } ?>>
                 <a href="/php/ajoutEquipeUser.php"><img src="/src/ajouter-removebg-preview(1).png" type="icone" alt=""><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
             </li>
-            <li <?php
+            <li style="display:flex;" <?php
                 if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student" || !isset($res[0])) {
                     echo "hidden";
                 }
                 ?>>
-                <img src="/src/equipe_-removebg-preview.png" type="icone" alt="">
+                <img src="/src/equipe_-removebg-preview.png" id=imgMesEquipes type="icone" alt="">
                 <select class="buttonHeader side" name="mesEquipes" id="mesEquipes">
                 <option value="" disabled selected>Mes équipes</option>
                     <?php
