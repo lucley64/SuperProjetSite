@@ -14918,9 +14918,9 @@ function balanceFunction(baseDiv, url) {
             baseDiv.appendChild(divC);
             baseDiv.appendChild(fileSelect);
             baseDiv.appendChild(divF);
-            baseDiv.appendChild(maxText);
-            baseDiv.appendChild(avgText);
-            baseDiv.appendChild(minText);
+            divF.appendChild(maxText);
+            divF.appendChild(avgText);
+            divF.appendChild(minText);
         }
     })
         .catch(e => console.error(e));
@@ -14931,7 +14931,6 @@ window.onload = () => {
 };
 function pieFile(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();
-    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const fn = dataFiles.flatMap(d => d.functionData.count);
     const data = {
@@ -14945,11 +14944,9 @@ function pieFile(dataFiles, canvas) {
         type: "pie",
         data: data,
     });
-    // divC.style.width = "fit-content";
 }
 function pieLine(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();
-    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const lines = dataFiles.flatMap(d => d.lines);
     const data = {
@@ -14965,11 +14962,9 @@ function pieLine(dataFiles, canvas) {
         type: "pie",
         data: data
     });
-    // divC.style.width = "fit-content";
 }
 function pieFunctionDataPerFile(fileData, canvas) {
     chartFines === null || chartFines === void 0 ? void 0 : chartFines.destroy();
-    divF.style.width = "";
     const names = [...fileData.functionData.linesPerFunction.keys()];
     const lines = fileData.functionData.linesPerFunction;
     maxText.innerText = `Nombre maximum de ligne par fonction ${fileData.functionData.maxLines}`;
@@ -14986,5 +14981,4 @@ function pieFunctionDataPerFile(fileData, canvas) {
         type: "pie",
         data: data
     });
-    // divF.style.width = "fit-content";
 }

@@ -73,9 +73,9 @@ function balanceFunction(baseDiv: HTMLDivElement, url: string) {
                 baseDiv.appendChild(divC);
                 baseDiv.appendChild(fileSelect);
                 baseDiv.appendChild(divF);
-                baseDiv.appendChild(maxText);
-                baseDiv.appendChild(avgText);
-                baseDiv.appendChild(minText);
+                divF.appendChild(maxText);
+                divF.appendChild(avgText);
+                divF.appendChild(minText);
             }
         })
         .catch(e => console.error(e));
@@ -88,7 +88,6 @@ window.onload = () => {
 
 function pieFile(dataFiles: LineData[], canvas: HTMLCanvasElement) {
     chartLines?.destroy();
-    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const fn = dataFiles.flatMap(d => d.functionData.count);
 
@@ -104,12 +103,10 @@ function pieFile(dataFiles: LineData[], canvas: HTMLCanvasElement) {
         type: "pie",
         data: data,
     });
-    // divC.style.width = "fit-content";
 }
 
 function pieLine(dataFiles: LineData[], canvas: HTMLCanvasElement) {
     chartLines?.destroy();
-    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const lines = dataFiles.flatMap(d => d.lines);
 
@@ -126,12 +123,10 @@ function pieLine(dataFiles: LineData[], canvas: HTMLCanvasElement) {
         type: "pie",
         data: data
     });
-    // divC.style.width = "fit-content";
 }
 
 function pieFunctionDataPerFile(fileData: LineData, canvas: HTMLCanvasElement) {
     chartFines?.destroy();
-    divF.style.width = "";
     const names = [...fileData.functionData.linesPerFunction.keys()];
     const lines = fileData.functionData.linesPerFunction
 
@@ -151,5 +146,4 @@ function pieFunctionDataPerFile(fileData: LineData, canvas: HTMLCanvasElement) {
         type: "pie",
         data: data
     });
-    // divF.style.width = "fit-content";
 }

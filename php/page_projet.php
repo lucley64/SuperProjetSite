@@ -12,7 +12,7 @@
 
 <body>
     <?php
-        session_start();/*
+    session_start();/*
         if ($_SESSION["userType"] != "manager") {
             header('Location: /index.php');
         }*/
@@ -31,104 +31,110 @@
     </div>
     <div id="contenupage">
         <div id="principal" class="principal">
+            <h2> Mes data challenges </h2>
             <?php
-                $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
-                $res = $connexion->query("SELECT nomEquipe FROM Equipe JOIN Participe ON Equipe.id = Participe.idEquipe WHERE Participe.idUser= '$_SESSION[username]'");
-                while ($val = $res->fetch()) {
-                    if ($val) {
-                        echo "<h2> Détails du challenge $val[challengeName] </h2>";
-                        $dateDeb = date_create($val["startDate"]);
-                        $dateFin = date_create($val["endDate"]);
+            $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
+            $res = $connexion->query(
+                "SELECT `DataChallenges`.* FROM `DataChallenges`
+                    JOIN `Equipe` ON `Equipe`.`dataChallenge` = `DataChallenges`.`challengeName`
+                    JOIN `Participe` ON `Participe`.`idEquipe` = `Equipe`.`id`
+                    WHERE `Participe`.`idUser` ='$_SESSION[username]'"
+            );
+            while ($val = $res->fetch()) {
+                if ($val) {
+                    echo "<h3> Détails du challenge $val[challengeName] : </h3>";
+                    $dateDeb = date_create($val["startDate"]);
+                    $dateFin = date_create($val["endDate"]);
 
-                        echo $dateFin < date_create() ? "<h3> Data chalenge finit </h3>" : "";
+                    echo $dateFin < date_create() ? "<h3> Data chalenge finit </h3>" : "";
 
-                        echo "<p> Commence le " . date_format($dateDeb, "d/m/Y") . "</p>";
-                        echo "<p> Prend fin le " . date_format($dateFin, "d/m/Y") . "</p>";
+                    echo "<p> Commence le " . date_format($dateDeb, "d/m/Y") . "</p>";
+                    echo "<p> Prend fin le " . date_format($dateFin, "d/m/Y") . "</p>";
 
-                        $res3 = $connexion->query("SELECT * FROM `ProjectData` WHERE `dataChallengeId` = '$val[challengeName]'");
-                        $val3 = $res3->fetchAll();
+                    $res3 = $connexion->query("SELECT * FROM `ProjectData` WHERE `dataChallengeId` = '$val[challengeName]'");
+                    $val3 = $res3->fetchAll();
 
-                        echo "<h3> Projets data : </h3>";
+                    echo "<h3> Projets data : </h3>";
 
-                        if (isset($val3[0])) {
-                            echo "<table>";
-                            echo "<thead>";
+                    if (isset($val3[0])) {
+                        echo "<table>";
+                        echo "<thead>";
+                        echo "<tr>";
+                        echo "<th>Nom</th>";
+                        echo "<th>details</th>";
+                        echo "<th>image</th>";
+                        echo "<th>equipes</th>";
+                        echo "<th>ressources</th>";
+                        echo "<th>email</th>";
+                        echo "</thead>";
+                        echo "<tbody>";
+                        foreach ($val3 as $key => $value) {
                             echo "<tr>";
-                            echo "<th>Nom</th>";
-                            echo "<th>details</th>";
-                            echo "<th>image</th>";
-                            echo "<th>equipes</th>";
-                            echo "<th>ressources</th>";
-                            echo "<th>email</th>";
-                            echo "</thead>";
-                            echo "<tbody>";
-                            foreach ($val3 as $key => $value) {
-                                echo "<tr>";
-                                echo "<td>$value[nom]</td>";
-                                echo "<td>$value[details]</td>";
-                                echo "<td><img src='$value[img]' height='500px' width='500px'></img></td>";
+                            echo "<td>$value[nom]</td>";
+                            echo "<td>$value[details]</td>";
+                            echo "<td><img src='$value[img]' height='500px' width='500px'></img></td>";
 
-                                echo "<td>";
-                                echo "<ul>";
+                            echo "<td>";
+                            echo "<ul>";
 
-                                $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
-                                if (mysqli_connect_errno()) {
-                                    echo mysqli_connect_error();
-                                }
-
-                                $req = "SELECT nomEquipe, id FROM Equipe WHERE dataChallenge = \"" . $val["challengeName"] . "\";";
-                                $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
-
-                                while ($data = mysqli_fetch_row($result)) {
-                                    echo "<li> <a href='/php/detailsEquipe.php?id=" . $data[1] . "'>" . $data[0] . "</a> </li>";
-                                }
-
-                                mysqli_close($cnx);
-                                echo "</ul>";
-                                echo "</td>";
-
-                                $res4 = $connexion->query(
-                                    "SELECT `Ressources`.* FROM `ProjectData` " .
-                                        "JOIN `Ressources` ON `ProjectData`.`nom` = `Ressources`.`projectId` " .
-                                        "WHERE `dataChallengeId` = '$val[challengeName]' AND `nom` = '$value[nom]'"
-                                );
-                                $val4 = $res4->fetchAll();
-                                echo "<td>";
-                                echo "<ul>";
-                                if (isset($val4[0])){
-                                    foreach ($val4 as $key2 => $value2) {
-                                        echo "<li> <a href='$value2[content]'> $value2[content]</a></li>";
-                                    }
-                                } else {
-                                    echo "aucune ressource";
-                                }
-                                echo "</ul>";
-                                echo "</td>";
-                                echo "<td>$value[mail]</td>";
-
-                                echo "</tr>";
+                            $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                            if (mysqli_connect_errno()) {
+                                echo mysqli_connect_error();
                             }
-                            echo "</tbody></table>";
-                        } else {
-                            echo "<p> Aucune ressource disponible </p>";
-                        }
 
+                            $req = "SELECT nomEquipe, id FROM Equipe WHERE dataChallenge = \"" . $val["challengeName"] . "\";";
+                            $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
 
-                        if ($dateFin < date_create()) {
-                            $res2 = $connexion->query(
-                                "SELECT * FROM `Equipe` JOIN `DataChallenges` ON `Equipe`.`dataChallenge` = `DataChallenges`.`challengeName` WHERE `DataChallenges`.`challengeName` = '$_GET[challenge]' ORDER BY `Equipe`.`score` DESC LIMIT 3"
+                            while ($data = mysqli_fetch_row($result)) {
+                                echo "<li> <a href='/php/detailsEquipe.php?id=" . $data[1] . "'>" . $data[0] . "</a> </li>";
+                            }
+
+                            mysqli_close($cnx);
+                            echo "</ul>";
+                            echo "</td>";
+
+                            $res4 = $connexion->query(
+                                "SELECT `Ressources`.* FROM `ProjectData` " .
+                                    "JOIN `Ressources` ON `ProjectData`.`nom` = `Ressources`.`projectId` " .
+                                    "WHERE `dataChallengeId` = '$val[challengeName]' AND `nom` = '$value[nom]'"
                             );
-                            $val2 = $res2->fetchAll();
-                            echo isset($val2[0]) ? "<h3> Top 3 : </h3>" : "";
-                            echo isset($val2[0]) ? "<p> #1 : <a href=\"/php/detailsEquipe.php?id=" . $val2[0]["id"] . "\"> " . $val2[0]["nomEquipe"] . "</a></p>" : "";
-                            echo isset($val2[0]) ? "<p> #2 : <a href=\"/php/detailsEquipe.php?id=" . $val2[1]["id"] . "\"> " . $val2[1]["nomEquipe"] . "</a> </p>" : "";
-                            echo isset($val2[0]) ? "<p> #3 : <a href=\"/php/detailsEquipe.php?id=" . $val2[2]["id"] . "\"> " . $val2[2]["nomEquipe"] . "</a>  </p>" : "";
+                            $val4 = $res4->fetchAll();
+                            echo "<td>";
+                            echo "<ul>";
+                            if (isset($val4[0])) {
+                                foreach ($val4 as $key2 => $value2) {
+                                    echo "<li> <a href='$value2[content]'> $value2[content]</a></li>";
+                                }
+                            } else {
+                                echo "aucune ressource";
+                            }
+                            echo "</ul>";
+                            echo "</td>";
+                            echo "<td>$value[mail]</td>";
+
+                            echo "</tr>";
                         }
+                        echo "</tbody></table>";
                     } else {
-                        echo "<h1> Erreur aucun challenge ne corespond au nom de $_GET[challenge] </h1>";
+                        echo "<p> Aucune ressource disponible </p>";
                     }
+
+
+                    if ($dateFin < date_create()) {
+                        $res2 = $connexion->query(
+                            "SELECT * FROM `Equipe` JOIN `DataChallenges` ON `Equipe`.`dataChallenge` = `DataChallenges`.`challengeName` WHERE `DataChallenges`.`challengeName` = '$_GET[challenge]' ORDER BY `Equipe`.`score` DESC LIMIT 3"
+                        );
+                        $val2 = $res2->fetchAll();
+                        echo isset($val2[0]) ? "<h3> Top 3 : </h3>" : "";
+                        echo isset($val2[0]) ? "<p> #1 : <a href=\"/php/detailsEquipe.php?id=" . $val2[0]["id"] . "\"> " . $val2[0]["nomEquipe"] . "</a></p>" : "";
+                        echo isset($val2[0]) ? "<p> #2 : <a href=\"/php/detailsEquipe.php?id=" . $val2[1]["id"] . "\"> " . $val2[1]["nomEquipe"] . "</a> </p>" : "";
+                        echo isset($val2[0]) ? "<p> #3 : <a href=\"/php/detailsEquipe.php?id=" . $val2[2]["id"] . "\"> " . $val2[2]["nomEquipe"] . "</a>  </p>" : "";
+                    }
+                } else {
+                    echo "<h1> Erreur aucun challenge ne corespond au nom de $_GET[challenge] </h1>";
                 }
-            
+            }
+
             ?>
         </div>
     </div>
