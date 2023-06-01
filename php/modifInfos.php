@@ -31,27 +31,27 @@ session_start();
         <h1>Modifier le compte</h1>
         <form action="verifModif.php" method="post" id="creation">
 
-            <label for="oldpwd"> Old Password
+            <label for="oldpwd"> Ancien mot de passe
                 <input type="password" name="oldpwd" id="oldpwd" placeholder="Entrez votre ancien mot de passe">
             </label>
 
-            <label for="pwd"> New Password
+            <label for="pwd"> Nouveau mot de passe
                 <input type="password" name="pwd" id="pwd" placeholder="Entrez votre nouveau mot de passe">
             </label>
 
-            <label for="firstName"> First Name
+            <label for="firstName"> Prénom  
                 <input type="text " name="firstName" id="firstName" placeholder="Entrez votre prénom" value="<?php echo '' . $_SESSION['firstName'] . '' ?>">
             </label>
 
-            <label for="lastName"> Last Name
+            <label for="lastName"> Nom
                 <input type="text " name="lastName" id="lastName" placeholder="Entrez votre nom de famille" value="<?php echo '' . $_SESSION['lastName'] . '' ?>">
             </label>
 
-            <label for="workplace"> School
+            <label for="workplace"> École
                 <input type="text " name="workplace" id="workplace" placeholder="Entrez le nom de votre école" value="<?php echo '' . $_SESSION['workplace'] . '' ?>">
             </label>
 
-            <label for="studyLvl"> Level of Studies
+            <label for="studyLvl"> Niveau d'études
                 <select name="studyLvl" id="studyLvl" value="<?php echo '' . $_SESSION['studyLvl'] . '' ?>">
                     <option value="none">Veuillez choisir une année d'études</option>
                     <option value="l1">L1</option>
@@ -63,11 +63,11 @@ session_start();
                 </select>
             </label>
 
-            <label for="phone"> Phone number
+            <label for="phone"> Numéro de téléphone
                 <input type="text " name="phone" id="phone" placeholder="Entrez votre numéro de téléphone" value="<?php echo '' . $_SESSION['phone'] . '' ?>">
             </label>
 
-            <label for="mail"> Email adress
+            <label for="mail"> adresse mail
                 <input type="email" name="mail" id="mail" placeholder="Entrez votre adresse email" value="<?php echo '' . $_SESSION['mail'] . '' ?>">
             </label>
 

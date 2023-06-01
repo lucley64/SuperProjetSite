@@ -50,7 +50,7 @@ session_start();
                         '</li>';
                 }
                 ?>
-                <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
+                <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student") {
                     echo "hidden";
                 } ?>>
                     <a href="/php/creationEquipe.php"><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
@@ -104,7 +104,7 @@ session_start();
                         if (isset($_SESSION["userType"]) && $_SESSION["userType"] == "student") {
                             $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
                             $req = $connexion->query(
-                                "SELECT `Equipe`.`id`, `Equipe`.`nomEquipe` FROM `Equipe` JOIN `Participe` ON `Equipe`.`id` = `Participe`.`idEquipe` WHERE `Participe`.`idUser` = 'user'"
+                                "SELECT `Equipe`.`id`, `Equipe`.`nomEquipe` FROM `Equipe` JOIN `Participe` ON `Equipe`.`id` = `Participe`.`idEquipe` WHERE `Participe`.`idUser` = '$_SESSION[username]'"
                             );
                             $res = $req->fetchAll();
                             foreach ($res as $key => $value) {

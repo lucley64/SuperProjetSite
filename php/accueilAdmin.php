@@ -2,7 +2,7 @@
 <?php
     session_start();
     if ($_SESSION["userType"] != "admin") {
-        header('Location : /index.php');
+        header('Location: /index.php');
     }
 ?>
 
