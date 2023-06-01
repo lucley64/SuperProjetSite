@@ -14767,8 +14767,10 @@ function analyseGithubRepo(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const repo = yield getRepoPy(url);
         const dataFull = [];
-        for (const fileData of repo) {
-            dataFull.push(yield getLinesData(fileData));
+        if (repo) {
+            for (const fileData of repo) {
+                dataFull.push(yield getLinesData(fileData));
+            }
         }
         return dataFull;
     });
@@ -14902,18 +14904,24 @@ function balanceFunction(baseDiv, url) {
                 fileSelect.appendChild(opt);
             }
         });
-        text.hidden = true;
-        lpfileBtn.hidden = false;
-        fnPfileBtn.hidden = false;
-        fileSelect.hidden = false;
-        baseDiv.appendChild(lpfileBtn);
-        baseDiv.appendChild(fnPfileBtn);
-        baseDiv.appendChild(divC);
-        baseDiv.appendChild(fileSelect);
-        baseDiv.appendChild(divF);
-        baseDiv.appendChild(maxText);
-        baseDiv.appendChild(avgText);
-        baseDiv.appendChild(minText);
+        if (dataFull.length <= 0) {
+            text.hidden = true;
+            alert("Le repository est inaccessible");
+        }
+        else {
+            text.hidden = true;
+            lpfileBtn.hidden = false;
+            fnPfileBtn.hidden = false;
+            fileSelect.hidden = false;
+            baseDiv.appendChild(lpfileBtn);
+            baseDiv.appendChild(fnPfileBtn);
+            baseDiv.appendChild(divC);
+            baseDiv.appendChild(fileSelect);
+            baseDiv.appendChild(divF);
+            baseDiv.appendChild(maxText);
+            baseDiv.appendChild(avgText);
+            baseDiv.appendChild(minText);
+        }
     })
         .catch(e => console.error(e));
 }

@@ -42,8 +42,10 @@ const key = {
 export async function analyseGithubRepo(url: string): Promise<LineData[]> {
     const repo = await getRepoPy(url);
     const dataFull: LineData[] = [];
-    for (const fileData of repo) {
-        dataFull.push(await getLinesData(fileData));
+    if (repo) {
+        for (const fileData of repo) {
+            dataFull.push(await getLinesData(fileData));
+        }
     }
     return dataFull;
 

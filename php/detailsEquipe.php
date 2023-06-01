@@ -16,12 +16,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
+    <script type="text/javascript" src="../js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Détails équipe</title>
     <script src="/js/graphesAnalyse.js"></script>
     <link rel="stylesheet" href="/css/actu.css">
 </head>
 
-<body>
+<body <?php
+        if ($_SESSION['hasWorked'] == "okQuit") {
+            echo 'onload="alertValidQuitTeam();"';
+        }
+        ?>>
     <?php
     session_start();
     $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");

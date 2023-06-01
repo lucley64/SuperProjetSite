@@ -25,7 +25,8 @@
             echo('onload="alertOutOfTime();"');
         } else if ($_SESSION["hasWorked"] == "pbAnswered") {
             echo('onload="alertAlreadyAnswered();"');
-
+        } else if ($_SESSION["hasWorked"] == "okDelete") {
+            echo('onload="alertValidTeamDelete();"');
         }
         $_SESSION['hasWorked'] = "nothing";
         ?>>

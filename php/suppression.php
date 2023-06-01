@@ -18,7 +18,7 @@ session_start();
 <body <?php
         if ($_SESSION['hasWorked'] == "okModif") {
             echo 'onload="alertValidModifUser();"';
-        } else if ($_SESSION['hasWorked'] == "okModif"){
+        } else if ($_SESSION['hasWorked'] == "okDelete"){
             echo 'onload="alertValidDeleteUser();"';
         }
         $_SESSION['hasWorked'] = "nothing";
