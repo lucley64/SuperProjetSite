@@ -28,6 +28,7 @@ body {
     /* left: 18%; */
     /* top: 15%; */
     /* height: 75%; */
+    border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.85);
     height: 100%;
 
@@ -54,6 +55,7 @@ div#Contenu {
     background-color: rgba(128, 128, 128, 0.864);
     height: 100%;
     /* width: 25%; */
+    border-radius: 25px;
     grid-column: 1;
 }
 
