@@ -34,9 +34,6 @@
         ?>
     </div>
 
-    <?php
-    session_start();
-    ?> 
     <div id="container">
         <h1>Ajouter des membres</h1>
         <form action="verifAjoutEquipeUser.php" method="post" id="creation">
