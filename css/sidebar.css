@@ -64,12 +64,11 @@ div[type=Toggled] {
     display: none;
 }
 
-#sidebar.active,
-#sidebarToggle {
+#sidebar.active {
     display: block;
 }
 
-input[type=bouton] {
+button[type=bouton] {
     border-radius: 22px;
     width: 90px;
     height: 16px;
@@ -92,7 +91,7 @@ input[type=bouton] {
 .barrecote li {
     list-style-type: none;
     /* display: flex; */
-    margin: 0 0 33% 0;
+    margin: 0 0 15% 0;
     /* margin-left: -30px;             décale le bouton ET l'icone */
     /* width: 350px; */
 }

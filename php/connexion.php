@@ -28,9 +28,9 @@ session_start();
     <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
     <div id="container">
         <button onclick="window.location='/index.php'" class="nav">Retour</button>
-        <h1>Se login</h1>
+        <h1>Se connecter</h1>
         <form action="verifConnexion.php" method="post" id="login">
-            <label for="login"> Login
+            <label for="login"> Utilisateur
                 <input required placeholder="Entrez votre nom d'utilisateur" <?php if (isset($loginErr)) {
                                                                                     echo $invalid;
                                                                                 }

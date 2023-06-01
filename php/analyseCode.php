@@ -11,7 +11,7 @@
 <body>
     <form action="" id="get-repo">
         <label for="repo-url"> Entrer le lien du repository
-            <input type="text" name="repo-url" id="repo-url">
+            <input type="text" name="repo-url" id="repo-url" value="<?php echo isset($_GET["url"])? $_GET["url"] : "" ?>">
         </label>
         <input type="submit" value="Valider">
     </form>

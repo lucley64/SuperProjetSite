@@ -20,13 +20,6 @@ while ($data = mysqli_fetch_row($result)) {
     }
 }
 
-/*
-$req="Select username from Users where username='".$selectUser."'";
-$result = mysqli_query($cnx,$req) or die('Pb req : '.$req);
-while ($data = mysqli_fetch_row($result)) {
-    $mailUser=$data[0];
-}*/
-
 if ($_SESSION["hasWorked"] == "ok") {
     $result=mysqli_query($cnx,"Select nomEquipe, dataChallenge from Equipe WHERE id = " . $selectEquipe . ";")or die('Pb req : ' . $req);
     $data = mysqli_fetch_row($result);

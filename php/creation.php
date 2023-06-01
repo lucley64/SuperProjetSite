@@ -28,23 +28,23 @@
                 echo "<p style='color:red'>Cet utilisateur existe déjà </p>";
             }
             ?>
-            <label for="username"> Username
+            <label for="username"> Utilisateur
                 <input type="text " name="username" id="username" placeholder="Entrez votre nom d'utilisateur" required>
             </label>
 
-            <label for="pwd"> Password
+            <label for="pwd"> Mot de Passe
                 <input type="password" name="pwd" id="pwd" placeholder="Entrez votre mot de passe" required>
             </label>
 
-            <label for="firstName"> First Name
+            <label for="firstName"> Prénom
                 <input type="text " name="firstName" id="firstName" placeholder="Entrez votre prénom" required>
             </label>
 
-            <label for="lastName"> Last Name
+            <label for="lastName"> Nom
                 <input type="text " name="lastName" id="lastName" placeholder="Entrez votre nom de famille" required>
             </label>
 
-            <label for="workplace"> School
+            <label for="workplace"> École
                 <input type="text " name="workplace" id="workplace" placeholder="Entrez le nom de votre école" required>
             </label>
 
@@ -54,7 +54,7 @@
             }
             ?>
 
-            <label for="studyLvl"> Level of Studies
+            <label for="studyLvl"> Niveau d'études
                 <select name="studyLvl" id="studyLvl" required>
                     <option value="none">Veuillez choisir une année d'études</option>
                     <option value="l1">L1</option>
@@ -66,11 +66,11 @@
                 </select>
             </label>
 
-            <label for="phone"> Phone number
+            <label for="phone"> Numéro de téléphone
                 <input type="number" name="phone" id="phone" placeholder="Entrez votre numéro de téléphone" required>
             </label>
 
-            <label for="mail"> Email adress
+            <label for="mail"> Adresse mail
                 <input type="email" name="mail" id="mail" placeholder="Entrez votre adresse email" required>
             </label>
 

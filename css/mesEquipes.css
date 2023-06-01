@@ -1,0 +1,35 @@
+#mesEquipes{
+    margin-left: 2em;
+    padding-top: 1em;
+
+}
+
+.nomequipe{
+    font-size: large;
+    font-weight: bold;
+    margin-left: 6em;
+}
+.membres{
+    margin-left: 1em;
+}
+.datachallenges{
+    margin-bottom: 2em;
+    margin-left: 1em ;
+}
+
+#actu h1 a{
+    color: blue;
+    text-decoration: underline;
+}
+#actu{
+    position: absolute;
+    width: 70%;
+    left: 25%;
+    top: 20%;
+}
+
+#Equipes{
+    width: 25%;
+    height: 99.4%;
+    border: solid;
+}
