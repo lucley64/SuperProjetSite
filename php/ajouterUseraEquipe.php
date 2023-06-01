@@ -10,7 +10,6 @@ if ($mysqli->connect_error) {
 $req="Select idEquipeARejoindre from Messages where idMessage="."'".$_POST["idmessage"]."';";
 
 $idEquipe=$mysqli->query($req);
-//print_r($_POST["idmessage"]);
 $idEquipe=$idEquipe->fetch_assoc();
 $idEquipe=$idEquipe["idEquipeARejoindre"];
 var_dump($_SESSION["username"]);
