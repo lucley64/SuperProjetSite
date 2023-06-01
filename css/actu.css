@@ -47,3 +47,12 @@ div#next {
     transition: all .2s ease-out;
     background-position: left bottom;
 }
+
+option, select {
+    text-transform: none !important;
+}
+
+.container {
+    height: 75vh;
+    /* margin: 0 auto; */
+}
