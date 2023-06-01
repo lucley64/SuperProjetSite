@@ -1,75 +1,137 @@
 <!DOCTYPE html>
-
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/projet.css">
-    <title>That'a Challenge</title>
+    <link rel="stylesheet" href="/css/tablo.css">
+    <title>Info</title>
 </head>
 
 <body>
+    <?php
+        session_start();/*
+        if ($_SESSION["userType"] != "manager") {
+            header('Location: /index.php');
+        }*/
+    ?>
     <img class="background" src="/src/pyrenees.jpg" alt="pyr">
     <div id="sidebarr">
         <?php
         include "sidebar.php";
         ?>
     </div>
-    <div id="contenupage">
+    <div id="head">
         <?php
         include "header.php";
         ?>
-        <?php
-        $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
-        if (mysqli_connect_errno()) {
-            echo mysqli_connect_error();
-        }
-        $sql = "SELECT nomEquipe FROM Equipe JOIN Participe ON Equipe.id = Participe.idEquipe WHERE Participe.idUser= '$_SESSION[username]'";
-        $result = mysqli_query($cnx, $sql);
-        var_dump($sql);
-        $datas = mysqli_fetch_all($result);
-        foreach ($datas as $key => $value) {
-        }
-        ?>
-        
+
+    </div>
+    <div id="contenupage">
         <div id="principal" class="principal">
-        
-        <a href="/php/messagerie.php">
-            <button class="projet">
-                <div class="barreMilieu">
-                    <p>projet : <?php echo '' . $_SESSION['firstName'] . '' ?>
-                    <p>
-                </div>
-                <ul>
-                    <li>équipe : </li>
-                    <li>date de fin : </li>
-                    <li>description : </li>
-                </ul>
-            </button>
-        </a>
+            <?php
+                $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
+                $res = $connexion->query("SELECT nomEquipe FROM Equipe JOIN Participe ON Equipe.id = Participe.idEquipe WHERE Participe.idUser= '$_SESSION[username]'");
+                while ($val = $res->fetch()) {
+                    if ($val) {
+                        echo "<h2> Détails du challenge $val[challengeName] </h2>";
+                        $dateDeb = date_create($val["startDate"]);
+                        $dateFin = date_create($val["endDate"]);
+
+                        echo $dateFin < date_create() ? "<h3> Data chalenge finit </h3>" : "";
+
+                        echo "<p> Commence le " . date_format($dateDeb, "d/m/Y") . "</p>";
+                        echo "<p> Prend fin le " . date_format($dateFin, "d/m/Y") . "</p>";
+
+                        $res3 = $connexion->query("SELECT * FROM `ProjectData` WHERE `dataChallengeId` = '$val[challengeName]'");
+                        $val3 = $res3->fetchAll();
+
+                        echo "<h3> Projets data : </h3>";
+
+                        if (isset($val3[0])) {
+                            echo "<table>";
+                            echo "<thead>";
+                            echo "<tr>";
+                            echo "<th>Nom</th>";
+                            echo "<th>details</th>";
+                            echo "<th>image</th>";
+                            echo "<th>equipes</th>";
+                            echo "<th>ressources</th>";
+                            echo "<th>email</th>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                            foreach ($val3 as $key => $value) {
+                                echo "<tr>";
+                                echo "<td>$value[nom]</td>";
+                                echo "<td>$value[details]</td>";
+                                echo "<td><img src='$value[img]' height='500px' width='500px'></img></td>";
+
+                                echo "<td>";
+                                echo "<ul>";
+
+                                $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
+                                if (mysqli_connect_errno()) {
+                                    echo mysqli_connect_error();
+                                }
+
+                                $req = "SELECT nomEquipe, id FROM Equipe WHERE dataChallenge = \"" . $val["challengeName"] . "\";";
+                                $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
+
+                                while ($data = mysqli_fetch_row($result)) {
+                                    echo "<li> <a href='/php/detailsEquipe.php?id=" . $data[1] . "'>" . $data[0] . "</a> </li>";
+                                }
+
+                                mysqli_close($cnx);
+                                echo "</ul>";
+                                echo "</td>";
+
+                                $res4 = $connexion->query(
+                                    "SELECT `Ressources`.* FROM `ProjectData` " .
+                                        "JOIN `Ressources` ON `ProjectData`.`nom` = `Ressources`.`projectId` " .
+                                        "WHERE `dataChallengeId` = '$val[challengeName]' AND `nom` = '$value[nom]'"
+                                );
+                                $val4 = $res4->fetchAll();
+                                echo "<td>";
+                                echo "<ul>";
+                                if (isset($val4[0])){
+                                    foreach ($val4 as $key2 => $value2) {
+                                        echo "<li> <a href='$value2[content]'> $value2[content]</a></li>";
+                                    }
+                                } else {
+                                    echo "aucune ressource";
+                                }
+                                echo "</ul>";
+                                echo "</td>";
+                                echo "<td>$value[mail]</td>";
+
+                                echo "</tr>";
+                            }
+                            echo "</tbody></table>";
+                        } else {
+                            echo "<p> Aucune ressource disponible </p>";
+                        }
+
+
+                        if ($dateFin < date_create()) {
+                            $res2 = $connexion->query(
+                                "SELECT * FROM `Equipe` JOIN `DataChallenges` ON `Equipe`.`dataChallenge` = `DataChallenges`.`challengeName` WHERE `DataChallenges`.`challengeName` = '$_GET[challenge]' ORDER BY `Equipe`.`score` DESC LIMIT 3"
+                            );
+                            $val2 = $res2->fetchAll();
+                            echo isset($val2[0]) ? "<h3> Top 3 : </h3>" : "";
+                            echo isset($val2[0]) ? "<p> #1 : <a href=\"/php/detailsEquipe.php?id=" . $val2[0]["id"] . "\"> " . $val2[0]["nomEquipe"] . "</a></p>" : "";
+                            echo isset($val2[0]) ? "<p> #2 : <a href=\"/php/detailsEquipe.php?id=" . $val2[1]["id"] . "\"> " . $val2[1]["nomEquipe"] . "</a> </p>" : "";
+                            echo isset($val2[0]) ? "<p> #3 : <a href=\"/php/detailsEquipe.php?id=" . $val2[2]["id"] . "\"> " . $val2[2]["nomEquipe"] . "</a>  </p>" : "";
+                        }
+                    } else {
+                        echo "<h1> Erreur aucun challenge ne corespond au nom de $_GET[challenge] </h1>";
+                    }
+                }
+            
+            ?>
+        </div>
     </div>
-    </div>
-    <script>
-        const container = document.querySelector("#principal");
-
-        // Boucle for pour parcourir les données et créer une div pour chaque élément
-        for (let i = 0; i < data.length; i++) {
-            const element = data[i];
-
-            // Création de la div
-            const div = document.createElement("div");
-
-            // Ajout du contenu dans la div
-            div.textContent = `${element.nom}: ${element.valeur}`;
-
-            // Ajout de la div dans le conteneur
-            container.appendChild(div);
-        }
-    </script>
-
 </body>
 
 </html>
