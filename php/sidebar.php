@@ -140,7 +140,7 @@ session_start();
                 }
                 ?>>
                 <select class="buttonHeader side" name="mesEquipes" id="mesEquipes">
-                    <option value="" disabled selected>Mes équipes</option>
+                <option value="" disabled selected>Mes équipes</option>
                     <?php
                     if (isset($_SESSION["userType"]) && $_SESSION["userType"] == "student") {
                         foreach ($res as $key => $value) {
