@@ -9,7 +9,7 @@ ini_set('display_errors', 'On');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/loginsignin.css">
+    <link rel="stylesheet" href="/css/test.css">
     <script type="text/javascript" src="../js/alerts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Modification de Data Challenge</title>
@@ -36,9 +36,18 @@ ini_set('display_errors', 'On');
         ?>>
 
     <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
+    <div id="sidebar">
+        <?php
+        include "sidebar.php";
+        ?>
+    </div>
+    <div id="head">
+        <?php
+        include "header.php";
+        ?>
+    </div>
 
-    <div id="containerCreation" style="top:5;">
-        <button onclick="window.location='/index.php'" class="nav">Retour</button>
+    <div id="container" style="top:5;">
         <h1>Modifier le Data Challenge</h1>
         <form action="verifModifDataChallenge.php" method="post" id="creation">
 
