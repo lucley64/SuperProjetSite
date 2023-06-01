@@ -69,7 +69,7 @@ div[type=Toggled] {
     display: block;
 }
 
-input[type=bouton] {
+button[type=bouton] {
     border-radius: 22px;
     width: 90px;
     height: 16px;
