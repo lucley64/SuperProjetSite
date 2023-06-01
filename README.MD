@@ -1,4 +1,4 @@
-# Perojet de ING1 G1
+# Projet de ING1 G1
 
 ## Instructions d'instalation
 
