@@ -38,7 +38,7 @@ mysqli_close($cnx);
 <body>
 
     <div id="containerCreation" style="top:5%;">
-        <button onclick="window.location='/php/connexion.php'" class="nav">Retour</button>
+        <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Modifier le compte</h1>
         <form action="verifModif.php" method="post" id="creation">
 
