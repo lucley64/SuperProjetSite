@@ -16,8 +16,6 @@
         session_start();
         if ($_SESSION['hasWorked'] == "pbMessagerie") {
             echo 'onload="alertErrorMessage();"';
-        } else if ($_SESSION['hasWorked'] == "pb") {
-            echo 'onload="alertErrorAddedUser();"';
         }
         $_SESSION['hasWorked'] = "nothing";
         ?>>
