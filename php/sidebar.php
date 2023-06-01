@@ -45,10 +45,10 @@ session_start();
             }
             ?>
             <li>
-                <a><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
+                <a href="/php/creationEquipe.php"><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
             </li>
             <li>
-                <a><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
+                <a href="/php/ajoutEquipeUser.php"><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
             </li>
 
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {

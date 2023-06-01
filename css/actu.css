@@ -5,11 +5,13 @@ div#principal {
 }
 
 div#actu {
+    grid-row: 2;
     grid-column: 1;
     margin: 25px
 }
 
 div#finit {
+    grid-row: 2;
     grid-column: 2;
     margin: 25px
 }
@@ -17,4 +19,31 @@ div#finit {
 h2#titre {
     grid-row: 1;
     grid-column: 1/3;
+}
+
+div#next {
+    grid-row: 3;
+    grid-column: 1/3;
+}
+
+.nom {
+    cursor: pointer;
+    width: 100%;
+    height: 1.5cm;
+    border: 4px solid rgb(255, 240, 220);
+    border-radius: 10px;
+    color: rgb(255, 240, 220);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    background: linear-gradient(to right, rgb(255, 240, 220) 50%, #00000041 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .2s ease-out;
+}
+
+.nom:hover {
+    color: rgb(100, 180, 230);
+    transition: all .2s ease-out;
+    background-position: left bottom;
 }

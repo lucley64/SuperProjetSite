@@ -17,26 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
     <title>Détails équipe</title>
-    <style>
-        div#principal {
-            display: grid;
-            grid-template-columns: 50% 50%;
-            grid-template-rows: max-content;
-        }
-
-        div#actu {
-            grid-column: 1;
-        }
-
-        div#finit {
-            grid-column: 2;
-        }
-
-        h2#titre {
-            grid-row: 1;
-            grid-column: 1/3;
-        }
-    </style>
+    <script src="/js/graphesAnalyse.js"></script>
+    <link rel="stylesheet" href="/css/actu.css">
 </head>
 
 <body>
@@ -59,34 +41,34 @@
     </div>
     <div id="contenupage">
         <div id="principal" class="principal">
-            <h2 id="titre"><?php echo("L'Equipe " . $donneesEquipe[0]) ?></h2>
+            <h2 id="titre"><?php echo "L'Equipe " . $donneesEquipe[0] ?></h2>
             <div id="actu">
 
                 <?php
                     $req = "SELECT u.username FROM Participe p JOIN Users u ON u.username = p.idUser WHERE p.idEquipe = " . $idEquipe . ";";
                     $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
 
-                    echo('<h3>Liste des membres :</h3>');
-                    echo('<ul>');
+                    echo '<h3>Liste des membres :</h3>';
+                    echo '<ul>';
 
                     while ($data = mysqli_fetch_row($result)) {
                         if ($_SESSION["username"] == $donneesEquipe[2]) {
                             if ($data[0] == $donneesEquipe[2]) {
-                                echo("<li><p>" . $data[0] . "⭐<a title='Supprimer cette équipe' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">❌</button></a> </p></li>");
+                                echo "<li><p>" . $data[0] . "⭐<a title='Supprimer cette équipe' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">❌</button></a> </p></li>";
                             } else {
-                                echo("<li><p>" . $data[0] . "<a title='Retirer cet utilisateur' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">👋</button></a> </p></li>");
+                                echo "<li><p>" . $data[0] . "<a title='Retirer cet utilisateur' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">👋</button></a> </p></li>";
                             }
                         } else {
                             if ($data[0] == $donneesEquipe[2]) {
-                                echo("<li><p>" . $data[0] . "⭐</p></li>");
-                            } else if ($data[0] != $_SESSION["username"]){
-                                echo("<li><p>" . $data[0] . "</p></li>");
+                                echo "<li><p>" . $data[0] . "⭐</p></li>";
+                            } elseif ($data[0] != $_SESSION["username"]){
+                                echo "<li><p>" . $data[0] . "</p></li>";
                             } else {
-                                echo("<li><p>" . $data[0] . "<a title='Quitter cette équipe' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">🚪</button></a> </p></li>");
+                                echo "<li><p>" . $data[0] . "<a title='Quitter cette équipe' href='/php/verifSupprimerEquipe.php?user=" . $data[0] . "&equipe=" . $idEquipe . "'><button style=\"font-size: 30px\">🚪</button></a> </p></li>";
                             }
                         }
                     }
-                    echo('</ul>');
+                    echo '</ul>';
                     mysqli_close($cnx);
                 ?>
             </div>
@@ -94,12 +76,15 @@
                 <h3>Data challenge auquel l'équipe est inscrite :</h3>
                 <ul>
                     <?php
-                    echo("<a href='/php/infoDataChallenge.php?challenge=" . $donneesEquipe[1] . "'>" . $donneesEquipe[1] . "</a>"); 
+                    echo "<a href='/php/infoDataChallenge.php?challenge=" . $donneesEquipe[1] . "'>" . $donneesEquipe[1] . "</a>";
                     ?>
                 </ul>
 
-                <h3>Score actuel : <?php echo($donneesEquipe[4]) ?></h3>
+                <h3>Score actuel : <?php echo $donneesEquipe[4] ?></h3>
+                <h3>Lien github :  <?php echo "<a href=\"$donneesEquipe[3]\"> $donneesEquipe[3] </a>"?></h3>
+                <button class="nom" onclick='balanceFunction(next, "http://localhost:8081/php/analyseCode.php?url=<?php echo $donneesEquipe[3] ?>")'>Analyser le code</button>
             </div>
+            <div id="next"></div>
         </div>
     </div>
 </body>

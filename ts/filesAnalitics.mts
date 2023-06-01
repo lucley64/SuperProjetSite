@@ -72,7 +72,7 @@ async function getRepoPy(url: string): Promise<RepoFile[]> {
     if (cred) {
         const url = `https://api.github.com/repos/${cred.uname}/${cred.repo}/contents`;
         const headers = new Headers();
-        headers.append("Authorization", "Bearer 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");
+        headers.append("Authorization", "Bearer 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");
         const rep = await fetch(url, {
             method: "GET",
             headers: headers

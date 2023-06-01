@@ -14795,7 +14795,7 @@ function getRepoPy(url) {
         if (cred) {
             const url = `https://api.github.com/repos/${cred.uname}/${cred.repo}/contents`;
             const headers = new Headers();
-            headers.append("Authorization", "Bearer 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");
+            headers.append("Authorization", "Bearer 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");
             const rep = yield fetch(url, {
                 method: "GET",
                 headers: headers
@@ -14852,10 +14852,12 @@ const lpfileBtn = document.createElement("button");
 lpfileBtn.onclick = () => pieLine(dataFull, canvas);
 lpfileBtn.innerText = "Afficher le nombre de ligne par fichier";
 lpfileBtn.hidden = true;
+lpfileBtn.className = "nom";
 const fnPfileBtn = document.createElement("button");
 fnPfileBtn.onclick = () => pieFile(dataFull, canvas);
 fnPfileBtn.innerText = "Afficher le nombre de fonction par fichier";
 fnPfileBtn.hidden = true;
+fnPfileBtn.className = "nom";
 const canvasFile = document.createElement('canvas');
 const fileSelect = document.createElement("select");
 const def = document.createElement("option");
@@ -14865,6 +14867,7 @@ def.disabled = true;
 def.selected = true;
 fileSelect.appendChild(def);
 fileSelect.hidden = true;
+fileSelect.className = "nom";
 fileSelect.onchange = (ev) => {
     const fileName = fileSelect.selectedOptions[0].innerText;
     const fileData = dataFull.find(d => d.fileName == fileName);
@@ -14873,36 +14876,38 @@ fileSelect.onchange = (ev) => {
 const maxText = document.createElement("p");
 const avgText = document.createElement("p");
 const minText = document.createElement("p");
-window.onload = () => {
-    const form = document.getElementById("get-repo");
-    form.onsubmit = (ev) => {
-        const inp = form.elements.namedItem("repo-url");
-        const repoUrl = inp.value;
-        analyseGithubRepo(repoUrl)
-            .then(rep => dataFull = rep)
-            .then(rep => {
-            rep.forEach(rep => {
-                if (rep.functionData.count > 0) {
-                    const opt = document.createElement("option");
-                    opt.innerText = rep.fileName;
-                    fileSelect.appendChild(opt);
-                }
-            });
-        })
-            .catch(e => console.error(e));
+const text = document.createElement("p");
+text.innerText = "Chargement";
+function balanceFunction(baseDiv, url) {
+    baseDiv.appendChild(text);
+    analyseGithubRepo(url)
+        .then(rep => dataFull = rep)
+        .then(rep => {
+        rep.forEach(rep => {
+            if (rep.functionData.count > 0) {
+                const opt = document.createElement("option");
+                opt.innerText = rep.fileName;
+                fileSelect.appendChild(opt);
+            }
+        });
+        text.hidden = true;
         lpfileBtn.hidden = false;
         fnPfileBtn.hidden = false;
         fileSelect.hidden = false;
-        ev.preventDefault();
-    };
-    document.body.appendChild(lpfileBtn);
-    document.body.appendChild(fnPfileBtn);
-    document.body.appendChild(canvas);
-    document.body.appendChild(fileSelect);
-    document.body.appendChild(canvasFile);
-    document.body.appendChild(maxText);
-    document.body.appendChild(avgText);
-    document.body.appendChild(minText);
+        baseDiv.appendChild(lpfileBtn);
+        baseDiv.appendChild(fnPfileBtn);
+        baseDiv.appendChild(canvas);
+        baseDiv.appendChild(fileSelect);
+        baseDiv.appendChild(canvasFile);
+        baseDiv.appendChild(maxText);
+        baseDiv.appendChild(avgText);
+        baseDiv.appendChild(minText);
+    })
+        .catch(e => console.error(e));
+}
+window.onload = () => {
+    const thig = document.createElement("button");
+    thig.onclick = () => balanceFunction(null, null);
 };
 function pieFile(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();
