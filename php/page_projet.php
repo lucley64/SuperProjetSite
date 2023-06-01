@@ -21,7 +21,7 @@
         <?php
         include "sidebar.php";
         ?>
-    </div>
+    </div> 
     <div id="contenupage">
         <?php  
         include "header.php";
