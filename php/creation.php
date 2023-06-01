@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="/js/alerts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="../css/loginsignin.css">
+    <!-- <link rel="stylesheet" href="../css/loginsignin.css"> -->
+    <link rel="stylesheet" href="/css/test.css">
+
+
     <title>Création de compte</title>
 </head>
 
@@ -19,15 +22,20 @@
         $_SESSION['hasWorked'] = "nothing";
         ?>>
     <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
-    <div id="containerCreation">
-        <button onclick="window.location='../index.php'" class="nav">Retour</button>
+    <div id="sidebar">
+        <?php
+        include "sidebar.php";
+        ?>
+    </div>
+    <div id="head">
+        <?php
+        include "header.php";
+        ?>
+    </div>
+    <div id="container">
         <h1>Créer un compte</h1>
         <form action="verifCreation.php" method="post" id="creation">
-            <?php
-            if ($_SESSION["utilisateurDouble"]) {
-                echo "<p style='color:red'>Cet utilisateur existe déjà </p>";
-            }
-            ?>
+
             <label for="username"> Utilisateur
                 <input type="text " name="username" id="username" placeholder="Entrez votre nom d'utilisateur" required>
             </label>
@@ -48,11 +56,6 @@
                 <input type="text " name="workplace" id="workplace" placeholder="Entrez le nom de votre école" required>
             </label>
 
-            <?php
-            if ($_SESSION["ErreurCreation"]) {
-                echo "<p style='color:red'>Veuillez entrer votre année d'étude </p>";
-            }
-            ?>
 
             <label for="studyLvl"> Niveau d'études
                 <select name="studyLvl" id="studyLvl" required>
@@ -67,7 +70,7 @@
             </label>
 
             <label for="phone"> Numéro de téléphone
-                <input type="number" name="phone" id="phone" placeholder="Entrez votre numéro de téléphone" required>
+                <input type="text" name="phone" id="phone" placeholder="Entrez votre numéro de téléphone" required>
             </label>
 
             <label for="mail"> Adresse mail

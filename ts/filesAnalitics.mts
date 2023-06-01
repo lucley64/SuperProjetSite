@@ -104,7 +104,7 @@ async function getRepoPy(url: string): Promise<RepoFile[]> {
 
 async function makeRequest(url: string): Promise<RepoFile[]> {
     const headers = new Headers();
-    headers.append("Authorization", "Bearer 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");
+    headers.append("Authorization", `Bearer ${key.name}_${key.pat}_${key.first}_${key.last}`);
     const rep = await fetch(url, {
         method: "GET",
         headers: headers
