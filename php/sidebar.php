@@ -49,9 +49,19 @@ session_start();
                 </a>
             </li>
             <?php
-            if (isset($_SESSION['userType'])) {
+            if (isset($_SESSION['userType']) && $_SESSION['userType'] != 'admin') {
                 echo '<li>' .
                     '<a href="/php/modifInfos.php">' .
+                    '<img src="/src/modifier_profil.png" type="icone" alt="">' .
+                    '<input type="bouton" value="Modifier profil" class="buttonHeader side" onclick="document.location.href=\'/php/modifInfos.php\'"/>' .
+                    '</a>' .
+                    '</li>';
+            }
+            ?>
+            <?php
+            if (isset($_SESSION['userType']) && $_SESSION['userType'] == 'admin') {
+                echo '<li>' .
+                    '<a href="/php/modifInfosAdmin.php">' .
                     '<img src="/src/modifier_profil.png" type="icone" alt="">' .
                     '<input type="bouton" value="Modifier profil" class="buttonHeader side" onclick="document.location.href=\'/php/modifInfos.php\'"/>' .
                     '</a>' .
@@ -62,11 +72,6 @@ session_start();
                     echo "hidden";
                 } ?>>
                 <a href="/php/creationEquipe.php"><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
-            </li>
-            <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student") {
-                    echo "hidden";
-                } ?>>
-                <a href="/php/ajoutEquipeUser.php"><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
             </li>
 
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
@@ -92,6 +97,20 @@ session_start();
                     <input type="button" value="Creer nouveau compte" class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
                 </a>
             </li>
+            <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
+                    echo "hidden";
+                } ?>>
+                <a href="/php/suppression.php">
+                    <input type="button" value="Supprimer un compte" class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
+                </a>
+            </li>
+            <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
+                    echo "hidden";
+                } ?>>
+                <a href="/php/suppressionDatas.php">
+                    <input type="button" value="Supprimer un Data Challenge" class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
+                </a>
+            </li>
             <li <?php
                 if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "manager") {
                     echo "hidden";
@@ -101,8 +120,22 @@ session_start();
                     <input type="button" value="Creer nouveau questionnaire" class="buttonHeader side" id="btnquest"></input>
                 </a>
             </li>
+            <?php
+            if (isset($_SESSION["userType"]) && $_SESSION["userType"] == "student") {
+                $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
+                $req = $connexion->query(
+                    "SELECT `Equipe`.`id`, `Equipe`.`nomEquipe`,`Equipe`.`capitaine` FROM `Equipe` JOIN `Participe` ON `Equipe`.`id` = `Participe`.`idEquipe` WHERE `Participe`.`idUser` = '$_SESSION[username]'"
+                );
+                $res = $req->fetchAll();
+            }
+            ?>
+            <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student" || !isset($res[0])) {
+                    echo "hidden";
+                } ?>>
+                <a href="/php/ajoutEquipeUser.php"><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
+            </li>
             <li <?php
-                if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student") {
+                if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student" || !isset($res[0])) {
                     echo "hidden";
                 }
                 ?>>
@@ -110,11 +143,6 @@ session_start();
                     <option value="" disabled selected>Mes équipes</option>
                     <?php
                     if (isset($_SESSION["userType"]) && $_SESSION["userType"] == "student") {
-                        $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
-                        $req = $connexion->query(
-                            "SELECT `Equipe`.`id`, `Equipe`.`nomEquipe` FROM `Equipe` JOIN `Participe` ON `Equipe`.`id` = `Participe`.`idEquipe` WHERE `Participe`.`idUser` = '$_SESSION[username]'"
-                        );
-                        $res = $req->fetchAll();
                         foreach ($res as $key => $value) {
                             echo "<option value=\"$value[id]\"> $value[nomEquipe] </option>";
                         }
