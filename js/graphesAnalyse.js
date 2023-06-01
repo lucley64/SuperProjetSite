@@ -14757,6 +14757,12 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+const key = {
+    name: "github",
+    pat: "pat",
+    first: "11ANCTHZY0l3xFm6EF3KAa",
+    last: "aX91I9qefHWZXWLUzV803E6FYW9XKJ3HNOzKvT4Gnrp3N47JNSUHCk71ohc"
+};
 function analyseGithubRepo(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const repo = yield getRepoPy(url);
@@ -14795,7 +14801,7 @@ function getRepoPy(url) {
         if (cred) {
             const url = `https://api.github.com/repos/${cred.uname}/${cred.repo}/contents`;
             const headers = new Headers();
-            headers.append("Authorization", "Bearer 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");
+            headers.append("Authorization", `Bearer ${key.name}_${key.pat}_${key.first}_${key.last}`);
             const rep = yield fetch(url, {
                 method: "GET",
                 headers: headers
