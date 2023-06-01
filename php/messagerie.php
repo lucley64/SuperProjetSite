@@ -84,7 +84,7 @@
                             <input id=sujet type="text" name="sujet" placeholder="Sujet"> <br>
                         </label>
                         <label>Message
-                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Veuillez ecrire votre message"></textarea>
+                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Veuillez écrire votre message"></textarea>
                         </label>
 
                         <input type="submit" id="Envoyer" value="Envoyer"/>

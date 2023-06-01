@@ -1,4 +1,5 @@
 <?php
+ 
 session_start();
 $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
 if (mysqli_connect_errno()) {
@@ -45,7 +46,6 @@ if ($_POST['selectProject'] == "creation") {
     if (!$result){
         erreurRequete(mysqli_errno($cnx));
     }
-    $data = mysqli_fetch_row($result);
     mysqli_close($cnx);
     header('Location: /php/modifDataChallenge.php');
 } else {
@@ -104,7 +104,6 @@ if ($_POST['selectProject'] == "creation") {
         if (!$result){
             erreurRequete(mysqli_errno($cnx));
         }
-        $data = mysqli_fetch_row($result);
         mysqli_close($cnx);
         header('Location: ./modifDataChallenge.php');
     }

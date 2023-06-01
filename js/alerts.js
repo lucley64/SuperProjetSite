@@ -37,7 +37,7 @@ function alertSuccessDeleteProjectData() {
 function alertOutOfTime(){
     Swal.fire({
         title: "Erreur",
-        text: "Ce formulaire n'est plus disponible",
+        text: "Ce formulaire n'est plus ou pas encore disponible",
         icon: 'error',
         background: 'white',
         });

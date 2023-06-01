@@ -1,5 +1,6 @@
 <?php
     session_start();
+     
     $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
     if (mysqli_connect_errno()) {
         echo mysqli_connect_error();
@@ -42,11 +43,11 @@
         }
 
         $req = "SELECT u.username FROM Users u JOIN Equipe e ON u.username = e.capitaine WHERE e.dataChallenge = \"" . $_POST["associateDataChallenge"] . "\";";
-        $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+        $result2 = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
         $lien = "/php/questionnaire.php?id=" . $idQuestionnaire;
         $message = "Vous avez un nouveau formulaire à remplir,  <a href='" . $lien . "'>cliquez ici.</a>";
         $sujet = "Questionnaire du data Challenge " . $_POST["associateDataChallenge"];
-        while ($data = mysqli_fetch_row($result)) {
+        while ($result2 && $data = mysqli_fetch_row($result2)) {
             $req = "INSERT INTO Messages (expediteur, destinataire, messages, sujet) VALUES (\"" . $_SESSION["username"] . "\",\"" . $data[0] . "\",\"" . $message . "\",\"" . $sujet . "\");";
             $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
         }
@@ -55,4 +56,3 @@
 
         header('Location: /php/creationForm.php');
     }
-?>
