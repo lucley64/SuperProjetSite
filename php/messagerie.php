@@ -67,7 +67,7 @@
                             <textarea name="message" id="message" cols="30" rows="10" placeholder="Veuillez ecrire votre message"></textarea>
                         </label>
 
-                        <input type="submit" id="Envoyer">
+                        <input type="submit" id="Envoyer" value="Envoyer"/>
 
                     </form>
 
