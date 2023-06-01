@@ -60,6 +60,7 @@ function balanceFunction(baseDiv: HTMLDivElement, url: string) {
                 }
             });
             if (dataFull.length <= 0){
+                text.hidden = true;
                 alert("Le repository est inaccessible");
             }
             else{
