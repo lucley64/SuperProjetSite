@@ -138,6 +138,7 @@ session_start();
                     echo "hidden";
                 }
                 ?>>
+                <img src="/src/equipe_-removebg-preview.png" type="icone" alt="">
                 <select class="buttonHeader side" name="mesEquipes" id="mesEquipes">
                 <option value="" disabled selected>Mes équipes</option>
                     <?php
