@@ -5,6 +5,8 @@
         echo mysqli_connect_error();
     }
 
+    
+
     $idEquipe = $_GET["equipe"];
     $user = $_GET["user"];
 
@@ -17,9 +19,11 @@
     if ($data[0] == $user) {
         $req = "DELETE FROM Equipe WHERE id=\"" . $idEquipe . "\";";
         $location = "Location: /index.php";
+        $_SESSION["hasWorked"] = "okDelete";
     } else {
         $req = "DELETE FROM Participe WHERE idEquipe=\"" . $idEquipe . "\" AND idUser=\"" . $user . "\";";
         $location = "Location: detailsEquipe.php?id=" . $idEquipe . "";
+        $_SESSION["hasWorked"] = "okQuit";
     }
     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
 
