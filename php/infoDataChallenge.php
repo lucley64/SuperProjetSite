@@ -75,7 +75,6 @@
 
                             $req = "SELECT nomEquipe, id FROM Equipe WHERE dataChallenge = \"" . $val["challengeName"] . "\";";
                             $result = mysqli_query($cnx, $req) or die('Pb req: ' . $req);
-
                             while ($data = mysqli_fetch_row($result)) {
                                 echo "<li> <a href='/php/detailsEquipe.php?id=" . $data[1] . "'>" . $data[0] . "</a> </li>";
                             }
