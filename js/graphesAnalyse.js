@@ -14850,7 +14850,10 @@ function getPythonFiles(json) {
     });
 }
 
+const divC = document.createElement("div");
+divC.className = "container";
 const canvas = document.createElement("canvas");
+divC.appendChild(canvas);
 let dataFull = null;
 let chartLines;
 let chartFines;
@@ -14864,11 +14867,14 @@ fnPfileBtn.onclick = () => pieFile(dataFull, canvas);
 fnPfileBtn.innerText = "Afficher le nombre de fonction par fichier";
 fnPfileBtn.hidden = true;
 fnPfileBtn.className = "nom";
+const divF = document.createElement("div");
+divF.className = "container";
 const canvasFile = document.createElement('canvas');
+divF.appendChild(canvasFile);
 const fileSelect = document.createElement("select");
 const def = document.createElement("option");
 def.value = "";
-def.innerText = "-- select file --";
+def.innerText = "-- Selectioner un fichier --";
 def.disabled = true;
 def.selected = true;
 fileSelect.appendChild(def);
@@ -14902,9 +14908,9 @@ function balanceFunction(baseDiv, url) {
         fileSelect.hidden = false;
         baseDiv.appendChild(lpfileBtn);
         baseDiv.appendChild(fnPfileBtn);
-        baseDiv.appendChild(canvas);
+        baseDiv.appendChild(divC);
         baseDiv.appendChild(fileSelect);
-        baseDiv.appendChild(canvasFile);
+        baseDiv.appendChild(divF);
         baseDiv.appendChild(maxText);
         baseDiv.appendChild(avgText);
         baseDiv.appendChild(minText);
@@ -14917,29 +14923,32 @@ window.onload = () => {
 };
 function pieFile(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();
+    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const fn = dataFiles.flatMap(d => d.functionData.count);
     const data = {
         labels: names,
         datasets: [{
-                label: "function per file",
+                label: "fonction par fichier",
                 data: fn,
             }]
     };
     chartLines = new Chart(canvas, {
         type: "pie",
-        data: data
+        data: data,
     });
+    // divC.style.width = "fit-content";
 }
 function pieLine(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();
+    divF.style.width = "";
     const names = dataFiles.flatMap(d => d.fileName);
     const lines = dataFiles.flatMap(d => d.lines);
     const data = {
         labels: names,
         datasets: [
             {
-                label: "lines per file",
+                label: "lignes par fichier",
                 data: lines,
             }
         ]
@@ -14948,18 +14957,20 @@ function pieLine(dataFiles, canvas) {
         type: "pie",
         data: data
     });
+    // divC.style.width = "fit-content";
 }
 function pieFunctionDataPerFile(fileData, canvas) {
     chartFines === null || chartFines === void 0 ? void 0 : chartFines.destroy();
+    divF.style.width = "";
     const names = [...fileData.functionData.linesPerFunction.keys()];
     const lines = fileData.functionData.linesPerFunction;
-    maxText.innerText = `${fileData.functionData.maxLines}`;
-    avgText.innerText = `${fileData.functionData.avgLines}`;
-    minText.innerText = `${fileData.functionData.minLines}`;
+    maxText.innerText = `Nombre maximum de ligne par fonction ${fileData.functionData.maxLines}`;
+    avgText.innerText = `Nombre moyen de ligne par fonction ${fileData.functionData.avgLines}`;
+    minText.innerText = `Nombre ninimum de ligne par fonction ${fileData.functionData.minLines}`;
     const data = {
         labels: names,
         datasets: [{
-                label: "lines per function",
+                label: "lignes par fonction",
                 data: lines
             }]
     };
@@ -14967,4 +14978,5 @@ function pieFunctionDataPerFile(fileData, canvas) {
         type: "pie",
         data: data
     });
+    // divF.style.width = "fit-content";
 }
