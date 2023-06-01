@@ -4,7 +4,7 @@ async function NvMessages() {
     const data = await response.text();
     //console.log(data);
     document.getElementById("ContenuMessages").innerHTML = data;
-    setTimeout(NvMessages, 5000);
+    setTimeout(NvMessages, 500);
   } catch (error) {
     console.error('Erreur lors de la récupération des nouveaux messages:', error);
   }
@@ -19,7 +19,7 @@ async function MessagesEnvoyes() {
     const data = await response.text();
     //console.log(data);
     document.getElementById("ContenuMessagesEnvoyes").innerHTML = data;
-    setTimeout(MessagesEnvoyes, 5000);
+    setTimeout(MessagesEnvoyes, 500);
   } catch (error) {
     console.error('Erreur lors de la récupération des messages envoyés:', error);
   }
@@ -44,7 +44,7 @@ async function VoirTousLesMessages() {
     const data = await response.text();
     console.log(data);
     document.getElementById("ContenuVoirMessages").innerHTML = data;
-    setTimeout(VoirTousLesMessages, 5000);
+    setTimeout(VoirTousLesMessages, 500);
   } catch (error) {
     console.error('Erreur lors de la récupération des messages envoyés:', error);
   }
