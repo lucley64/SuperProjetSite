@@ -14767,8 +14767,10 @@ function analyseGithubRepo(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const repo = yield getRepoPy(url);
         const dataFull = [];
-        for (const fileData of repo) {
-            dataFull.push(yield getLinesData(fileData));
+        if (repo) {
+            for (const fileData of repo) {
+                dataFull.push(yield getLinesData(fileData));
+            }
         }
         return dataFull;
     });
