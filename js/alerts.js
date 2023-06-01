@@ -204,3 +204,30 @@ function alertErrorRights(){
         background: 'white',
         });
 }
+
+function alertValidDeleteUser(){
+    Swal.fire({
+        title: "Succès",
+        text: "Utilisateur supprimé avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertValidTeamDelete(){
+    Swal.fire({
+        title: "Succès",
+        text: "L'équipe a été supprimée avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
+
+function alertValidQuitTeam(){
+    Swal.fire({
+        title: "Succès",
+        text: "Vous avez quitté cette équipe avec succès",
+        icon: 'success',
+        background: 'white',
+        });
+}
