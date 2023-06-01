@@ -6,12 +6,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/loginsignin.css">
     <title>Ajout d'utilisateurs dans l'équipe</title>
 </head>
 
-<body>
-<img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
+<body <?php
+        session_start();
+        if ($_SESSION['hasWorked'] == "ok") {
+            echo 'onload="alertValidAddedUser();"';
+        } else if ($_SESSION['hasWorked'] == "pb") {
+            echo 'onload="alertErrorAddedUser();"';
+        }
+        $_SESSION['hasWorked'] = "nothing";
+        ?>>
+
+    <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
 
     <?php
     session_start();
@@ -63,7 +74,12 @@
             <input type="submit" value="Ajouter l'utilisateur à l'équipe">
         
         </form>
-    </div>
+        <?php
+            if (isset($_SESSION["dataChallenge"])) {
+                echo("<button onclick=\"window.location='/php/infoDataChallenge.php?challenge=" . $_SESSION['dataChallenge'] . "'\">Data Challenge</button>");
+            }
+        ?>
+        </div>
 </body>
 
 </html>

@@ -6,20 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/loginsignin.css">
+    <script type="text/javascript" src="/js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="/js/questionnaire.js"></script>
     <title>Création de data challenge</title>
 </head>
 
-<body>
+<body <?php
+        session_start();
+        if ($_SESSION['hasWorked'] == "ok") {
+            echo 'onload="alertValidForm();"';
+        } else if ($_SESSION['hasWorked'] == "pbTime") {
+            echo 'onload="alertErrorTime();"';
+        } else if ($_SESSION['hasWorked'] == "pbQuestion") {
+            echo 'onload="alertErrorQuestion();"';
+        }
+        $_SESSION['hasWorked'] = "nothing";
+        ?>>
+
     <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
 
-
-    <?php
-    session_start();
-    // if (!isset($_SESSION['userType']) || $_SESSION['userType'] != "student") {
-    //         header('Location: /index.php');
-    // }
-    ?>
     <div id="container">
         <button onclick="window.location='/index.php'" class="nav">Retour</button>
         <h1>Créer un questionnaire</h1>
