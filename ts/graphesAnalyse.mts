@@ -59,18 +59,23 @@ function balanceFunction(baseDiv: HTMLDivElement, url: string) {
                     fileSelect.appendChild(opt);
                 }
             });
-            text.hidden = true;
-            lpfileBtn.hidden = false;
-            fnPfileBtn.hidden = false;
-            fileSelect.hidden = false;
-            baseDiv.appendChild(lpfileBtn);
-            baseDiv.appendChild(fnPfileBtn);
-            baseDiv.appendChild(divC);
-            baseDiv.appendChild(fileSelect);
-            baseDiv.appendChild(divF);
-            baseDiv.appendChild(maxText);
-            baseDiv.appendChild(avgText);
-            baseDiv.appendChild(minText);
+            if (dataFull.length <= 0){
+                alert("Le repository est inaccessible");
+            }
+            else{
+                text.hidden = true;
+                lpfileBtn.hidden = false;
+                fnPfileBtn.hidden = false;
+                fileSelect.hidden = false;
+                baseDiv.appendChild(lpfileBtn);
+                baseDiv.appendChild(fnPfileBtn);
+                baseDiv.appendChild(divC);
+                baseDiv.appendChild(fileSelect);
+                baseDiv.appendChild(divF);
+                baseDiv.appendChild(maxText);
+                baseDiv.appendChild(avgText);
+                baseDiv.appendChild(minText);
+            }
         })
         .catch(e => console.error(e));
 }
