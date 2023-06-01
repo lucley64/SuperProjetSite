@@ -81,7 +81,7 @@ session_start();
                         echo "hidden";
                     } ?>>
                     <a href="/php/creationAdmin.php">
-                        <input type="button" value="Creer nouveau compte<" class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
+                        <input type="button" value="Creer nouveau compte" class="buttonHeader side" id="btnadmin" onclick="document.location.href='/php/creationAdmin.php'" cols="5" rows="2"></input>
                     </a>
                 </li>
                 <li <?php
