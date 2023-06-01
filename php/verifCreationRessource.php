@@ -5,6 +5,8 @@ if (mysqli_connect_errno()) {
     echo mysqli_connect_error();
 }
 
+$_SESSION["hasWorked"] = "okRessources";
+
 $ressourceName = "\"" . $_POST["ressourceProject"] . "\"";
 
 if ($_POST["fichier"] != "") {
@@ -20,6 +22,16 @@ if ($_POST["projectId"] != "" || $_POST["dataChallengeId"] != "none") {
 }
 
 $req = "INSERT INTO Ressources VALUES (" . $fichier . ", " . $projectId . ");";
-$result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
+$result = mysqli_query($cnx, $req);
+if (!$result){
+    erreurRequete(mysqli_errno($cnx));
+}
 mysqli_close($cnx);
 header('Location: ./modifDataChallenge.php');
+
+function erreurRequete(int $numeroErreur)
+        {
+            $_SESSION["hasWorked"] = "pbRessources";
+            header('Location: /php/modifDataChallenge.php');
+        }
+?>

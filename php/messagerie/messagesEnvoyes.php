@@ -16,11 +16,10 @@ if ($res == true) {
     while ($colonne = $res->fetch_assoc()) {
         $donnees[] = $colonne;
     }
-    //encore ?? menfin print_r($donnees);
 }
 foreach ($donnees as $cle => $val) {
     $id = $donnees[$cle]['idMessage'];
-    echo "<div class='messageEnvoye' id='messageEnvoye" . $id . "'>";
-    echo $donnees[$cle]["idMessage"] . ": Message envoyé à " . $donnees[$cle]["destinataire"] . "   Sujet:" . $donnees[$cle]["sujet"] . " Message:" . $donnees[$cle]["messages"];
+    echo "<span class=destinataire>Message envoyé à " . $donnees[$cle]["destinataire"] . " </span>  <div class='messageEnvoye' id='messageEnvoye" . $id . "'>";
+    echo "Sujet:<span class=sujet>" . $donnees[$cle]["sujet"] . "</span> <br>Message:<br><span class=Message>" . $donnees[$cle]["messages"]."</span>";
     echo "</div>";
 }

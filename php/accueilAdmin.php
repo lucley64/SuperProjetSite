@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
-
+    session_start();
+    if ($_SESSION["userType"] != "admin") {
+        header('Location : /index.php');
+    }
 ?>
 
 <html lang="fr">
@@ -9,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 
     <title>That'a Challenge</title>
@@ -20,8 +23,8 @@
 
 
         <?php
-        include "php/header.php";
-        include "php/barrecote.php";
+        include "/php/header.php";
+        include "/php/barrecote.php";
         ?>
         <div id="principal" class="principal">
             <h2>Participez à des challenges avec l'association IA Pau</h2>

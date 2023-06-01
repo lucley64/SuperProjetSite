@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Messages(
   destinataire VARCHAR(30),
   messages TEXT,
   sujet TEXT,
-  idEquipeARejoindre int DEFAULT -1,
+  idEquipeARejoindre INT DEFAULT -1,
   FOREIGN KEY fkuserdest(destinataire) REFERENCES Users(username) ON DELETE CASCADE,
   FOREIGN KEY fkuserexp(expediteur) REFERENCES Users(username) ON DELETE CASCADE
   );
@@ -42,13 +42,13 @@ CREATE TABLE IF NOT EXISTS ProjectData (
   img TEXT,
   phone TEXT,
   mail TEXT,
-  FOREIGN KEY fk_dataChallenge(dataChallengeId) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
+  FOREIGN KEY fk_dataChallenge(dataChallengeId) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Ressources (
   content VARCHAR(300) PRIMARY KEY,
   projectId VARCHAR(50),
-  FOREIGN KEY fk_project(projectId) REFERENCES ProjectData(nom) ON DELETE CASCADE
+  FOREIGN KEY fk_project(projectId) REFERENCES ProjectData(nom) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Equipe(
@@ -58,15 +58,15 @@ CREATE TABLE IF NOT EXISTS Equipe(
   capitaine VARCHAR(30),
   githubLink TEXT,
   score INT DEFAULT 0 NOT NULL,
-  FOREIGN KEY fk_dataChallenge(dataChallenge) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
+  FOREIGN KEY fk_dataChallenge(dataChallenge) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Participe(
 	idEquipe INT,
 	idUser VARCHAR(30),
   CONSTRAINT pk_Participe PRIMARY KEY (idEquipe, idUser),
-	FOREIGN KEY fk_equipe(idEquipe) REFERENCES Equipe(id) ON DELETE CASCADE,
-	FOREIGN KEY fk_user(idUser) REFERENCES Users(username) ON DELETE CASCADE
+	FOREIGN KEY fk_equipe(idEquipe) REFERENCES Equipe(id) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY fk_user(idUser) REFERENCES Users(username) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Questionnaire(
@@ -74,14 +74,14 @@ CREATE TABLE IF NOT EXISTS Questionnaire(
   startDate DATE,
   endDate DATE,
   dataChallenge VARCHAR(50),
-  FOREIGN KEY fk_dataChallenge(dataChallenge) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE
+  FOREIGN KEY fk_dataChallenge(dataChallenge) REFERENCES DataChallenges(challengeName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Question(
   id INT PRIMARY KEY AUTO_INCREMENT,
   questionnaire INT,
   content TEXT,
-  FOREIGN KEY fk_questionnaire(questionnaire) REFERENCES Questionnaire(id) ON DELETE CASCADE
+  FOREIGN KEY fk_questionnaire(questionnaire) REFERENCES Questionnaire(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Reponse(
@@ -89,6 +89,6 @@ CREATE TABLE IF NOT EXISTS Reponse(
   content TEXT,
   question INT,
   idEquipe INT,
-  FOREIGN KEY fk_question(question) REFERENCES Question(id) ON DELETE CASCADE,
-  FOREIGN KEY fk_Equipe(idEquipe) REFERENCES Equipe(id) ON DELETE CASCADE
+  FOREIGN KEY fk_question(question) REFERENCES Question(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY fk_Equipe(idEquipe) REFERENCES Equipe(id) ON DELETE CASCADE ON UPDATE CASCADE
 );

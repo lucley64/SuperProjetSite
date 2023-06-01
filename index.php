@@ -11,10 +11,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <script type="text/javascript" src="../js/alerts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>That'a Challenge</title>
 </head>
 
-<body>
+<body <?php
+        if ($_SESSION['hasWorked'] == "okReponse") {
+            echo 'onload="alertValidAnswer();"';
+        } else if ($_SESSION["hasWorked"] == "pbDroits"){
+            echo 'onload="alertErrorRights();"';
+        } else if ($_SESSION['hasWorked'] == "pbOutOfTime"){
+            echo('onload="alertOutOfTime();"');
+        } else if ($_SESSION["hasWorked"] == "pbAnswered") {
+            echo('onload="alertAlreadyAnswered();"');
+
+        }
+        $_SESSION['hasWorked'] = "nothing";
+        ?>>
     <img class="background" src="/src/pyrenees.jpg" alt="pyr">
     <div id="sidebarr">
         <?php

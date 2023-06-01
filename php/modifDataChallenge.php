@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 ?>
@@ -16,7 +15,26 @@ ini_set('display_errors', 'On');
     <title>Modification de Data Challenge</title>
 </head>
 
-<body>
+<body <?php
+        session_start();
+        if ($_SESSION['hasWorked'] == "okChallenge") {
+            echo 'onload="alertValidModifChallenge();"';
+        } else if ($_SESSION['hasWorked'] == "pbTime") {
+            echo 'onload="alertErrorTime();"';
+        } else if ($_SESSION['hasWorked'] == "pbName") {
+            echo 'onload="alertErrorName();"';
+        } else if ($_SESSION['hasWorked'] == "okProjectCreate") {
+            echo 'onload="alertValidCreateProject();"';
+        } else if ($_SESSION['hasWorked'] == "okProjectModif") {
+            echo 'onload="alertValidModifProject();"';
+        } else if ($_SESSION['hasWorked'] == "okRessources") {
+            echo 'onload="alertValidAddRessources();"';
+        } else if ($_SESSION['hasWorked'] == "pbRessources") {
+            echo 'onload="alertErrorAddRessources();"';
+        } 
+        $_SESSION['hasWorked'] = "nothing";
+        ?>>
+
     <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
 
     <div id="containerCreation" style="top:5;">
@@ -78,8 +96,6 @@ ini_set('display_errors', 'On');
                     ?>
                 </select>
             </label>
-
-            <a href="https://youtu.be/BP2dJiYXX_I?t=6" style="position: absolute; top: 42%; right: 69%; z-index: 9999999;  font-size: 2px;">a</a>
             <label for="selectProject"> Sélectionnez un projet
                 <select name="selectProject" id="selectProject" required>
                     <option value="creation">Créer un nouveau projet</option>
@@ -88,12 +104,12 @@ ini_set('display_errors', 'On');
                     if (mysqli_connect_errno()) {
                         echo mysqli_connect_error();
                     }
-                    $req = "SELECT nom FROM ProjectData;";
+                    $req = "SELECT nom, dataChallengeId FROM ProjectData;";
                     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
                     mysqli_close($cnx);
                     while ($data = mysqli_fetch_row($result)) {
                         echo '
-                            <option value="' . $data[0] . '">' . $data[0] . '</option>
+                            <option value="' . $data[0] . '">' . $data[0] . ' - ' . $data[1] . '</option>
                             ';
                     }
                     ?>
@@ -145,7 +161,7 @@ ini_set('display_errors', 'On');
             </label>
 
             <label for="fichier"> Ressource
-                <input type="text" name="fichier" id="fichier" placeholder="Sélectionnez un fichier">
+                <input type="text" name="fichier" id="fichier" placeholder="Rentrez le lien d'un fichier">
             </label>
 
             <input type="submit" value="Ajouter la ressource">

@@ -1,14 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+
 <?php
 session_start();
 ?>
-<!DOCTYPE html>
-<html lang="fr">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <a href="https://youtu.be/BP2dJiYXX_I?t=6" style="position: absolute; top: 42%; right: 69%; z-index: 9999999;  font-size: 2px;">a</a>
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" hreg="/css/header.css">
 
@@ -44,12 +44,12 @@ session_start();
                     '</li>';
             }
             ?>
-			<li>
-				<a><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
-			</li>
-			<li>
-				<a><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
-			</li>
+            <li>
+                <a href="/php/creationEquipe.php"><input type="button" class="buttonHeader side" value="Creer une équipe" onclick="document.location.href='/php/creationEquipe.php'"></a>
+            </li>
+            <li>
+                <a href="/php/ajoutEquipeUser.php"><input type="button" class="buttonHeader side" value="Ajouter des membres a votre equipe" onclick="document.location.href='/php/ajoutEquipeUser.php'"></a>
+            </li>
 
             <li <?php if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "admin") {
                     echo "hidden";
@@ -75,13 +75,35 @@ session_start();
                 </a>
             </li>
             <li <?php
-            if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "manager") {
-                echo "hidden";
-            }
-            ?>>
+                if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "manager") {
+                    echo "hidden";
+                }
+                ?>>
                 <a href="/php/creationForm.php">
                     <input type="button" value="Creer nouveau questionnaire" class="buttonHeader side" id="btnquest"></input>
                 </a>
+            </li>
+            <li <?php
+                if (!isset($_SESSION["userType"]) || $_SESSION["userType"] != "student") {
+                    echo "hidden";
+                }
+                ?>>
+                <select class="buttonHeader side" name="mesEquipes" id="mesEquipes">
+                    <option value="" disabled selected>Mes équipes</option>
+                    <?php
+                    if (isset($_SESSION["userType"]) && $_SESSION["userType"] == "student") {
+                        $connexion = new PDO("mysql:host=localhost;dbname=datas", "thatachallenge", "thatachallenge123");
+                        $req = $connexion->query(
+                            "SELECT `Equipe`.`id`, `Equipe`.`nomEquipe` FROM `Equipe` JOIN `Participe` ON `Equipe`.`id` = `Participe`.`idEquipe` WHERE `Participe`.`idUser` = 'user'"
+                        );
+                        $res = $req->fetchAll();
+                        foreach ($res as $key => $value) {
+                            echo "<option value=\"$value[id]\"> $value[nomEquipe] </option>";
+                        }
+                    }
+                    ?>
+                </select>
+
             </li>
         </ul>
     </div>
@@ -102,6 +124,23 @@ session_start();
         sidebar.addEventListener('click', function() {
             sidebar.classList.toggle('active');
         });
+
+
+        mesEquipes.onchange = goEquipe;
+        /**
+         * @param {Event} ev
+         */
+        function goEquipe(ev) {
+            /**
+             * @type {HTMLSelectElement}
+             */
+            const select = ev.target;
+
+            const opt = select.selectedOptions[0];
+
+            if (select.selectedIndex != 0)
+                window.location.assign(`/php/detailsEquipe.php?id=${opt.value}`);
+        }
     </script>
 </body>
 

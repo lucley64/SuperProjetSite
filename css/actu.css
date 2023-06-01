@@ -5,11 +5,13 @@ div#principal {
 }
 
 div#actu {
+    grid-row: 2;
     grid-column: 1;
     margin: 25px
 }
 
 div#finit {
+    grid-row: 2;
     grid-column: 2;
     margin: 25px
 }
@@ -19,36 +21,29 @@ h2#titre {
     grid-column: 1/3;
 }
 
-div#principal table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+div#next {
+    grid-row: 3;
+    grid-column: 1/3;
 }
 
-div#principal table thead tr {
-    background-color: #00000080;
-    color: #ffffff;
-    text-align: left;
-}
-
-div#principal table th,
-div#principal table td {
-    padding: 12px 15px;
-}
-
-div#principal table tbody tr {
+.nom {
     cursor: pointer;
-    border-bottom: 1px solid #dddddd;
+    width: 100%;
+    height: 1.5cm;
+    border: 4px solid rgb(255, 240, 220);
+    border-radius: 10px;
+    color: rgb(255, 240, 220);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    background: linear-gradient(to right, rgb(255, 240, 220) 50%, #00000041 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .2s ease-out;
 }
 
-div#principal table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-div#principal table tbody tr:hover {
-    background-color: #00000048;
+.nom:hover {
+    color: rgb(100, 180, 230);
+    transition: all .2s ease-out;
+    background-position: left bottom;
 }
