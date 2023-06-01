@@ -31,7 +31,7 @@ session_start();
             <li>
                 <a href="/php/messagerie.php">
                     <img src="/src/messagerie.png" type="icone" alt="">
-                    <button type="bouton" value="Messagerie" class="buttonHeader side" onclick="document.location.href='/php/messagerie.php'" />
+                    <input type="bouton" value="Messagerie" class="buttonHeader side" onclick="document.location.href='/php/messagerie.php'" />
                 </a>
             </li>
             <?php
