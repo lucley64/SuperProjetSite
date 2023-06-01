@@ -23,7 +23,7 @@ $idmax = mysqli_query($cnx,"Select max(idMessage) from Messages;")or die('Pb req
 $idmax = mysqli_fetch_assoc($idmax);
 $idmax = $idmax["max(idMessage)"] + 1;
 
-$message="Bonjour, vous avez été invité à rejoindre l'équipe suivante:".$nomEquipe.". Si vous voulez rejoindre cette équipe, cliquez sur le bouton suivant: <br> <input  onclick='ajouterUseraequipe(this)' type='button' value='Rejoindre l équipe'>";
+$message="Bonjour, vous avez été invité à rejoindre l'équipe suivante:".$nomEquipe.". Souhaitez vous rejoindre l'equipe? <br> <input  onclick='ajouterUseraequipe(this)' type='button' value='Rejoindre l équipe'>";
 
 $req='INSERT INTO Messages Values(' . '"' . $idmax . '"' . ',' . '"' . $_SESSION["username"] . '"' . ',' . '"' . $selectUser . '"' . ',' . '"' . $message . '"' . ',' . '"' . "Invitation a une équipe" . '",' .'"'.$selectEquipe.'"'.');';
 echo $req;
