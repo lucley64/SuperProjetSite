@@ -13,6 +13,16 @@ $idEquipe=$mysqli->query($req);
 $idEquipe=$idEquipe->fetch_assoc();
 $idEquipe=$idEquipe["idEquipeARejoindre"];
 var_dump($_SESSION["username"]);
+
+$req = "SELECT COUNT(idUser) FROM Participe WHERE idEquipe = " . $selectEquipe . ";";
+$result=mysqli_query($cnx, $req)or die('Pb req : ' . $req);
+$data = mysqli_fetch_row($result);
+
+if ($data[0] >= 8) {
+    $_SESSION["hasWorked"] = "pbNombre";
+    header('Location: /php/messagerie.php');
+}
+
 $req = "INSERT INTO Participe (idEquipe,idUser) VALUES (\"" . $idEquipe . "\",\"" . $_SESSION["username"] . "\");";
 $mysqli->query($req) or erreurRequete($mysqli->errno);
 /*supprimer le message*/

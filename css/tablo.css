@@ -5,11 +5,12 @@ div#principal table{
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px #00000050;
+    
 }
 
 div#principal table thead tr {
-    background-color: #00000080;
+    background-color: #008e406b;
     color: #ffffff;
     text-align: left;
 }
@@ -20,17 +21,17 @@ div#principal table td {
 }
 
 div#principal table tbody tr {
-    cursor: pointer;
-    border-bottom: 1px solid #dddddd;
+    /* cursor: pointer; */
+    border-bottom: 2px solid #008e406b;
 }
 
 div#principal table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
 
-div#principal table tbody tr:hover {
+/* div#principal table tbody tr:hover {
     background-color: #00000048;
-}
+} */
 
 div#principal table img {
     height: 25%;

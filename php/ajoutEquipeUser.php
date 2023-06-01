@@ -18,6 +18,8 @@
             echo 'onload="alertValidAddedUser();"';
         } else if ($_SESSION['hasWorked'] == "pb") {
             echo 'onload="alertErrorAddedUser();"';
+        } else if ($_SESSION['hasWorked'] == "pbNombre"){
+            echo 'onload="alertErrorTooManyUsers();"';
         }
         $_SESSION['hasWorked'] = "nothing";
         ?>>
