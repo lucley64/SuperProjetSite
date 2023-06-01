@@ -54,14 +54,23 @@ VoirTousLesMessages();
 
 function ajouterUseraequipe(elt) {
 
-  var val = elt.parentNode.id;
-  console.log(val);
-  var idmessage = val[val.length-1];//le dernier caractère de l'id du message correspond au idmessage
-  console.log(idmessage);
-
+  var val = elt.parentNode.parentNode.id;
+  var idmessage = parseInt(val.slice(7));;//l'id du message est appelé messageX avec X le numero du message
   const formdata = new FormData();
   formdata.append("idmessage", idmessage);
   fetch("/php/ajouterUseraEquipe.php", {
+    method: "POST",
+    body: formdata
+  }).then(res => res.text()).then(res => console.log(res))
+}
+
+function NePasajouterUseraequipe(elt){
+  var val = elt.parentNode.parentNode.id;
+  var idmessage = parseInt(val.slice(7));
+  console.log(idmessage);
+  const formdata = new FormData();
+  formdata.append("idmessage", idmessage);
+  fetch("/php/nepasajouterUseraEquipe.php", {
     method: "POST",
     body: formdata
   }).then(res => res.text()).then(res => console.log(res))
