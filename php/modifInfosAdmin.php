@@ -46,23 +46,23 @@ mysqli_close($cnx);
                 <input type="hidden" name="oldpwd" id="oldpwd" placeholder="Entrez l'identifiant du compte à modifier" value="<?php echo '' . $_POST['username'] . '' ?>">
             </label>
 
-            <label for="pwd"> New Password
+            <label for="pwd"> Nouveau mot de passe
                 <input type="password " name="pwd" id="pwd" placeholder="Entrez votre nouveau mot de passe">
             </label>
 
-            <label for="firstName"> First Name
+            <label for="firstName"> Prénom
                 <input type="text " name="firstName" id="firstName" placeholder="Entrez votre prénom" value="<?php echo '' . $firstName . '' ?>">
             </label>
 
-            <label for="lastName"> Last Name
+            <label for="lastName"> Nom
                 <input type="text " name="lastName" id="lastName" placeholder="Entrez votre nom de famille" value="<?php echo '' . $lastName . '' ?>">
             </label>
 
-            <label for="workplace"> School
+            <label for="workplace"> École
                 <input type="text " name="workplace" id="workplace" placeholder="Entrez le nom de votre école" value="<?php echo '' . $workplace . '' ?>">
             </label>
 
-            <label for="studyLvl"> Level of Studies
+            <label for="studyLvl"> Niveau d'études
                 <select name="studyLvl" id="studyLvl" value="<?php echo '' . $studyLvl . '' ?>">
                     <option value="none">Veuillez choisir une année d'études</option>
                     <option value="l1">L1</option>
@@ -74,21 +74,21 @@ mysqli_close($cnx);
                 </select>
             </label>
 
-            <label for="phone"> Phone number
+            <label for="phone"> Numéro de téléphone
                 <input type="text " name="phone" id="phone" placeholder="Entrez votre numéro de téléphone" value="<?php echo '' . $phone . '' ?>">
             </label>
 
-            <label for="mail"> Email adress
+            <label for="mail"> Adresse mail
                 <input type="email" name="mail" id="mail" placeholder="Entrez votre adresse email" value="<?php echo '' . $mail . '' ?>">
             </label>
 
             <?php
             if ($userType == "manager") {
                 echo '
-                    <label for="starDate"> Start Date
+                    <label for="starDate"> Date de début
                     <input type="date" name="startDate" id="startDate" placeholder="Entrez la date de départ" value="' . $startDate . '">
                     </label>
-                    <label for="endDate"> End Date
+                    <label for="endDate"> Date de fin
                     <input type="date" name="endDate" id="endDate" placeholder="Entrez la date de fin" value="' . $endDate . '">
                     </label>
                     ';

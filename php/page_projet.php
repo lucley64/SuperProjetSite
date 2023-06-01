@@ -21,7 +21,7 @@
         <?php
         include "sidebar.php";
         ?>
-    </div>
+    </div> 
     <div id="contenupage">
         <?php  
         include "header.php";
@@ -32,9 +32,9 @@
                 <button class="projet"> 
                     <div class="barreMilieu"><p>projet : <?php echo '' . $_SESSION['firstName'] . '' ?><p></div>
                     <ul>
-                        <li>équipe : </li>
-                        <li>date de fin : </li>
-                        <li>description : </li>
+                        <li>Équipe : </li>
+                        <li>Date de fin : </li>
+                        <li>Description : </li>
                     </ul>
                 </button>            
             </a>

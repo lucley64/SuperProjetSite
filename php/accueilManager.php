@@ -13,8 +13,8 @@
 <body>
     <?php
         session_start();
-        if ($_SESSION["userType"] != "admin") {
-            header('Location : /index.php');
+        if ($_SESSION["userType"] != "manager") {
+            header('Location: /index.php');
         }
     ?>
     <img class="background" src="/src/pyrenees.jpg" alt="pyr">
