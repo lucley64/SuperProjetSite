@@ -13,7 +13,7 @@
     $questionNumber = $_POST["questionNumber"];
 
 
-    if (strtotime($endDate) < strtotime($startDate) || strtotime($startDate) < time()) {
+    if (strtotime($endDate) < strtotime($startDate)) { //} || strtotime($startDate) < time()) {
         $_SESSION["hasWorked"] = "pbTime";
         header('Location: /php/creationForm.php');
     }

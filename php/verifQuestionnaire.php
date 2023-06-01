@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_SESSION["hasWorked"] = "okReponse";
     $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
     if (mysqli_connect_errno()) {
         echo mysqli_connect_error();
@@ -23,7 +24,7 @@
     $message = "Vous avez recu une reponse de formulaire,  <a href='" . $lien . "'>cliquez ici</a> pour la noter";
     $sujet = "Reponse Questionnaire du data Challenge " . $dataChallenge[0];
 
-    $req = "SELECT u.mail FROM Users u JOIN DataChallenges d ON u.username = d.gestionnaire WHERE d.challengeName = \"" . $dataChallenge[0] . "\";";
+    $req = "SELECT u.username FROM Users u JOIN DataChallenges d ON u.username = d.gestionnaire WHERE d.challengeName = \"" . $dataChallenge[0] . "\";";
     $result = mysqli_query($cnx, $req) or die('Pb req : ' . $req);
     $data = mysqli_fetch_row($result);
 

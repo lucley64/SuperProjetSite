@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 ?>
@@ -24,7 +23,15 @@ ini_set('display_errors', 'On');
             echo 'onload="alertErrorTime();"';
         } else if ($_SESSION['hasWorked'] == "pbName") {
             echo 'onload="alertErrorName();"';
-        }
+        } else if ($_SESSION['hasWorked'] == "okProjectCreate") {
+            echo 'onload="alertValidCreateProject();"';
+        } else if ($_SESSION['hasWorked'] == "okProjectModif") {
+            echo 'onload="alertValidModifProject();"';
+        } else if ($_SESSION['hasWorked'] == "okRessources") {
+            echo 'onload="alertValidAddRessources();"';
+        } else if ($_SESSION['hasWorked'] == "pbRessources") {
+            echo 'onload="alertErrorAddRessources();"';
+        } 
         $_SESSION['hasWorked'] = "nothing";
         ?>>
 
@@ -154,7 +161,7 @@ ini_set('display_errors', 'On');
             </label>
 
             <label for="fichier"> Ressource
-                <input type="text" name="fichier" id="fichier" placeholder="Sélectionnez un fichier">
+                <input type="text" name="fichier" id="fichier" placeholder="Rentrez le lien d'un fichier">
             </label>
 
             <input type="submit" value="Ajouter la ressource">

@@ -19,6 +19,10 @@ session_start();
             $_SESSION['wrongPwd'] = false;
             echo 'onload="alertWrongPassword();"';
         }
+        if ($_SESSION['hasWorked'] == "ok") {
+            echo 'onload="alertValidModifUser();"';
+        }
+        $_SESSION['hasWorked'] = "nothing";
         ?> >
 
     <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
