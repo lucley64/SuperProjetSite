@@ -157,3 +157,24 @@ form{
     text-align: center;
     width: 70%;
 }
+
+.buttonInvitation {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .buttonInvitation:hover {
+    background-color: #f2f2f2;
+    color: #555555;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .buttonInvitation:focus {
+    outline: none;
+  }
+  
