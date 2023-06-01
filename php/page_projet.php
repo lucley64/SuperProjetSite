@@ -26,6 +26,7 @@
         <?php  
         include "header.php";
         ?>
+        
         <div id="principal" class="principal">
             <a href="/php/messagerie.php" >
                 <button class="projet"> 
@@ -39,6 +40,24 @@
             </a>
         </div>
     </div>
+    <script>
+        const container = document.querySelector("#principal");
+
+        // Boucle for pour parcourir les données et créer une div pour chaque élément
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+
+            // Création de la div
+            const div = document.createElement("div");
+
+            // Ajout du contenu dans la div
+            div.textContent = `${element.nom}: ${element.valeur}`;
+
+            // Ajout de la div dans le conteneur
+            container.appendChild(div);
+        }
+    </script>
+
 </body>
 
 </html>
