@@ -61,9 +61,9 @@
             <div id="barreDroite">
                 <div class="elt" id="envoyermail" style="display:block">
                     <h1 class="titre">Envoyer Message</h1>
-                    <form action="messagerie/envoyermail.php" method="POST">
+                    <form action="messagerie/envoyermail.php" method="POST" id="form">
                         <label>Destinataire
-                            <input name="destinataire" type="text" value="" placeholder="Destinataire"> <br>
+                            <input name="destinataire" type="text" value="" placeholder="Destinataire" id="destinataire"> <br>
                         </label>
                         <label>Sujet
                             <input id=sujet type="text" name="sujet" placeholder="Sujet"> <br>
