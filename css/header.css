@@ -39,20 +39,19 @@ h1 a{
     width: 100%;
     display: block;
     height: 1.5cm; 
-    border: 4px solid rgb(255, 240, 220);
+    border: 4px solid #f0fffb;
     border-radius: 10px;
-    color: rgb(255, 240, 220);
+    color: #f0fffb;
     font-weight: bold;
-    /* top: 11%;
-    position: relative;*/
+    top: 7%;
     text-transform: uppercase;
     font-size: 20px;
-    background: linear-gradient(to right, rgb(255, 240, 220) 50%, transparent 50%);
+    background: linear-gradient(to right, #f0fffb 50%, transparent 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all .2s ease-out;
 }
-  
+
 
 .connexion {
     position: absolute ;
@@ -60,7 +59,7 @@ h1 a{
 }
 
 .buttonHeader:hover{
-    color: rgb(100, 180, 230);
+    color: #20Bb79;
     transition: all .2s ease-out;
     background-position: left bottom;
 }

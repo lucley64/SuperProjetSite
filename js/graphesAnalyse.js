@@ -14763,26 +14763,28 @@ const key = {
     first: "11ANCTHZY0l3xFm6EF3KAa",
     last: "aX91I9qefHWZXWLUzV803E6FYW9XKJ3HNOzKvT4Gnrp3N47JNSUHCk71ohc"
 };
-function analyseGithubRepo(url) {
+function analyseGithubRepo(url, keyword) {
     return __awaiter(this, void 0, void 0, function* () {
         const repo = yield getRepoPy(url);
         const dataFull = [];
         if (repo) {
             for (const fileData of repo) {
-                dataFull.push(yield getLinesData(fileData));
+                dataFull.push(yield getLinesData(fileData, keyword));
             }
         }
         return dataFull;
     });
 }
-function getLinesData(fileData) {
+function getLinesData(fileData, keyword) {
     return __awaiter(this, void 0, void 0, function* () {
         const blob = yield fetch(fileData.download_url).then(rep => rep.blob());
         const file = new File([blob], fileData.name);
         const formData = new FormData();
         formData.append("file", file);
+        formData.append("keywords", keyword);
         formData.append("user", "codeAnalyzer");
-        const data = yield fetch("http://localhost:8001/lines", { method: "POST", body: formData }).then(rep => rep.json());
+        const fun = keyword ? "keywords" : "lines";
+        const data = yield fetch(`http://localhost:8001/${fun}`, { method: "POST", body: formData }).then(rep => rep.json());
         data.fileName = fileData.name;
         return data;
     });
@@ -14824,7 +14826,7 @@ function getRepoPy(url) {
 function makeRequest(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const headers = new Headers();
-        headers.append("Authorization", "Bearer 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");
+        headers.append("Authorization", `Bearer ${key.name}_${key.pat}_${key.first}_${key.last}`);
         const rep = yield fetch(url, {
             method: "GET",
             headers: headers
@@ -14892,42 +14894,52 @@ const avgText = document.createElement("p");
 const minText = document.createElement("p");
 const text = document.createElement("p");
 text.innerText = "Chargement";
-function balanceFunction(baseDiv, url) {
+function verifKw(baseDiv, url, keyword) {
+    const kw = document.getElementById("keywords");
+    const kws = kw ? kw.value : null;
+    balanceFunction(baseDiv, url, kws);
+}
+function balanceFunction(baseDiv, url, keyword) {
     baseDiv.appendChild(text);
-    analyseGithubRepo(url)
+    analyseGithubRepo(url, keyword)
         .then(rep => dataFull = rep)
         .then(rep => {
-        rep.forEach(rep => {
-            if (rep.functionData.count > 0) {
-                const opt = document.createElement("option");
-                opt.innerText = rep.fileName;
-                fileSelect.appendChild(opt);
+        if (!keyword) {
+            rep.forEach(rep => {
+                if (rep.functionData.count > 0) {
+                    const opt = document.createElement("option");
+                    opt.innerText = rep.fileName;
+                    fileSelect.appendChild(opt);
+                }
+            });
+            if (dataFull.length <= 0) {
+                text.hidden = true;
+                alert("Le repository est inaccessible");
             }
-        });
-        if (dataFull.length <= 0) {
-            text.hidden = true;
-            alert("Le repository est inaccessible");
+            else {
+                text.hidden = true;
+                lpfileBtn.hidden = false;
+                fnPfileBtn.hidden = false;
+                fileSelect.hidden = false;
+                baseDiv.appendChild(lpfileBtn);
+                baseDiv.appendChild(fnPfileBtn);
+                baseDiv.appendChild(divC);
+                baseDiv.appendChild(fileSelect);
+                baseDiv.appendChild(divF);
+                divF.appendChild(maxText);
+                divF.appendChild(avgText);
+                divF.appendChild(minText);
+            }
         }
         else {
-            text.hidden = true;
-            lpfileBtn.hidden = false;
-            fnPfileBtn.hidden = false;
-            fileSelect.hidden = false;
-            baseDiv.appendChild(lpfileBtn);
-            baseDiv.appendChild(fnPfileBtn);
-            baseDiv.appendChild(divC);
-            baseDiv.appendChild(fileSelect);
-            baseDiv.appendChild(divF);
-            divF.appendChild(maxText);
-            divF.appendChild(avgText);
-            divF.appendChild(minText);
+            console.log(rep);
         }
     })
         .catch(e => console.error(e));
 }
 window.onload = () => {
     const thig = document.createElement("button");
-    thig.onclick = () => balanceFunction(null, null);
+    thig.onclick = () => verifKw(null, null);
 };
 function pieFile(dataFiles, canvas) {
     chartLines === null || chartLines === void 0 ? void 0 : chartLines.destroy();

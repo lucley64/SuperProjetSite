@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-if ($_SESSION["userType"] != "manager") {
-    header('Location: /index.php');
-    $_SESSION["hasWorked"] = "pbDroits";
-}
+    session_start();
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'On');
+    if ($_SESSION["userType"] != "manager") {
+        header('Location: /index.php');
+        $_SESSION["hasWorked"] = "pbDroits";
+    }
 ?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/loginsignin.css">
+    <link rel="stylesheet" href="/css/test.css">
     <script type="text/javascript" src="../js/alerts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Modification de Data Challenge</title>
@@ -23,11 +23,20 @@ if ($_SESSION["userType"] != "manager") {
 <body>
     <img class="background" src="../src/pyrenees.jpg" alt="pyrenees">
 
-    <div id="containerCreation" style="top:5;">
-        <button onclick="window.location='/index.php'" class="nav">Retour</button>
+    <div id="sidebar">
+        <?php
+        include "sidebar.php";
+        ?>
+    </div>
+    <div id="head">
+        <?php
+        include "header.php";
+        ?>
+    </div>
+
+    <div id="container" style="top:5;">
         <h1>Corriger le questionnaire</h1>
         <?php
-            session_start();
             $idQuestionnaire = $_GET["idQuestionnaire"];
             $idEquipe = $_GET["idEquipe"];
 
@@ -39,7 +48,7 @@ if ($_SESSION["userType"] != "manager") {
             $req = "SELECT q.content, r.content FROM (Question q JOIN Questionnaire que ON q.questionnaire = que.id) JOIN Reponse r ON q.id = r.question WHERE que.id = " . $idQuestionnaire . " AND r.idEquipe = " . $idEquipe . ";";
             $result = mysqli_query($cnx, $req);
 
-            echo('<form action="verifCorrection.php?id=' . $id . '" method="post" id="verifQuestionnaire">');
+            echo('<form action="verifCorrection.php?id=' . $idEquipe . '" method="post" id="verifQuestionnaire">');
 
             $compteur = 0;
 
@@ -51,8 +60,6 @@ if ($_SESSION["userType"] != "manager") {
                 ');
                 $compteur = $compteur + 1;
             }
-
-
 
             echo('<label for="nbReponse">
                     <input type="hidden" name="nbReponse" id="nbReponse" value="' . $compteur . '">

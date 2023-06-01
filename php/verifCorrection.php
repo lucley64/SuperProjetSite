@@ -5,13 +5,14 @@
         echo mysqli_connect_error();
     }
     $nbReponse = $_POST["nbReponse"];
+    $idEquipe = "\"" . $_GET["id"] . "\"";
 
     $noteFinale = 0;
     for ($i=0; $i < $nbReponse; $i++) { 
         $noteFinale = $noteFinale + $_POST["note" . $i];
     }
 
-    $req = "UPDATE Equipe SET score = score + " . $noteFinale . ";";
+    $req = "UPDATE Equipe SET score = score + " . $noteFinale . " WHERE id = " . $idEquipe . ";";
     $result = mysqli_query($cnx, $req); 
 
     if (!$result){

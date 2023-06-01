@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/loginsignin.css">
+    <link rel="stylesheet" href="/css/test.css">
     <script type="text/javascript" src="/js/alerts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Questionnaire</title>
@@ -48,7 +48,20 @@
             mysqli_close($cnx);
         ?>
 >
+    <img class="background" src="/src/pyrenees.jpg" alt="pyrenees">
 
+    <div id="sidebar">
+        <?php
+        include "sidebar.php";
+        ?>
+    </div>
+    <div id="head">
+        <?php
+        include "header.php";
+        ?>
+    </div>
+
+    <div id="container" style="top:5;">
 <?php
     if ($valid) {
         $cnx = mysqli_connect("localhost", "thatachallenge", "thatachallenge123", "datas");
@@ -92,4 +105,5 @@
         mysqli_close($cnx);
     }
 ?>
+</div>
 </body>
