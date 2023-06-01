@@ -88,7 +88,8 @@
 
                 <h3>Score actuel : <?php echo $donneesEquipe[4] ?></h3>
                 <h3>Lien github :  <?php echo "<a href=\"$donneesEquipe[3]\"> $donneesEquipe[3] </a>"?></h3>
-                <button class="nom" onclick='balanceFunction(next, "http://localhost:8081/php/analyseCode.php?url=<?php echo $donneesEquipe[3] ?>")'>Analyser le code</button>
+                <input id="keywords" type="text" placeholder="Entrer des mots clé" hidden/>
+                <button class="nom" onclick='verifKw(next, "http://localhost:8081/php/analyseCode.php?url=<?php echo $donneesEquipe[3] ?>")'>Analyser le code</button>
             </div>
             <div id="next"></div>
         </div>

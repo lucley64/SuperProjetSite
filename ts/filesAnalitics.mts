@@ -39,25 +39,27 @@ const key = {
     last: "aX91I9qefHWZXWLUzV803E6FYW9XKJ3HNOzKvT4Gnrp3N47JNSUHCk71ohc"
 }
 
-export async function analyseGithubRepo(url: string): Promise<LineData[]> {
+export async function analyseGithubRepo(url: string, keyword?: string): Promise<LineData[]> {
     const repo = await getRepoPy(url);
     const dataFull: LineData[] = [];
     if (repo) {
         for (const fileData of repo) {
-            dataFull.push(await getLinesData(fileData));
+            dataFull.push(await getLinesData(fileData, keyword));
         }
     }
     return dataFull;
 
 }
 
-async function getLinesData(fileData: RepoFile): Promise<LineData> {
+async function getLinesData(fileData: RepoFile, keyword?: string): Promise<LineData> {
     const blob = await fetch(fileData.download_url).then(rep => rep.blob());
     const file = new File([blob], fileData.name);
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("keywords", keyword);
     formData.append("user", "codeAnalyzer");
-    const data: LineData = await fetch("http://localhost:8001/lines", { method: "POST", body: formData }).then(rep => rep.json());
+    const fun = keyword? "keywords" : "lines";
+    const data: LineData = await fetch(`http://localhost:8001/${fun}`, { method: "POST", body: formData }).then(rep => rep.json());
     data.fileName = fileData.name;
     return data;
 }
